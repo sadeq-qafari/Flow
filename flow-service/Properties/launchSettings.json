@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "Tourism": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONNECTION_STRING": "Server=127.0.0.1;Database=SaanaaApp;User Id=sa;Password=123;MultipleActiveResultSets=True",
+        "SERVICE_NAME": "Flow"
+      }
+    }
+  }
+}

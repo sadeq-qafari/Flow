@@ -1,0 +1,14 @@
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "%NAMESPACE%": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONNECTION_STRING": "Server=192.168.2.3;Database=SaanaaApp;User Id=sa;Password=123;",
+        "SERVICE_NAME": "%SERVICE_NAME%"
+      }
+    }
+  }
+}

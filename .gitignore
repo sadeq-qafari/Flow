@@ -1,0 +1,7 @@
+﻿*/node_modules
+*/bin
+*/obj
+*/logs
+*/.idea
+cdn-service/files
+identity-service/Certificate

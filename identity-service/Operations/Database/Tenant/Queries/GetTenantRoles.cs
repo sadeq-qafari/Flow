@@ -1,0 +1,16 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Meteor.Operation.Db;
+using Saanaa.Core.Meteor.Dto;
+
+namespace Identity.Operations.Database.Tenant.Queries
+{
+    public class GetTenantRoles : DbOperationAsync<SaanaaDbSelectInDto, IEnumerable<int>>
+    {
+        protected override async Task ExecutionAsync()
+        {
+            Output = await NewSql("EXECUTE [Identity].sp_TenantRoles @TenantId = @TenantId")
+                .QueryAsync<int>();
+        }
+    }
+}

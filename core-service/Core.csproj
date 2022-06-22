@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <LangVersion>9</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Dapper" Version="2.0.35" />
+        <PackageReference Include="Humanizer.Core" Version="2.8.26" />
+        <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+        <PackageReference Include="Saanaa.Core.AspNetCore" Version="1.3.52" />
+        <PackageReference Include="Saanaa.Providers.Notification.SignalR" Version="1.0.5" />
+        <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="5.6.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Remove="Template\appsettings.json" />
+        <Content Remove="Template\appsettings.Development.json" />
+        <Content Remove="Template\launchSettings.json" />
+        <Content Update="appsettings.json">
+            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        </Content>
+        <Content Remove="Logger\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Template\Program.cs" />
+        <Compile Remove="Template\Startup.cs" />
+        <Compile Remove="Logger\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Template" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="Messages\Notification\**" />
+        <EmbeddedResource Remove="Messages\NotificationUser\**" />
+        <EmbeddedResource Remove="Logger\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Messages\Notification\**" />
+        <None Remove="Messages\NotificationUser\**" />
+        <None Remove="Logger\**" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+<!--      <ProjectReference Include="..\..\framework\Core\Saanaa.Core.AspNetCore\Saanaa.Core.AspNetCore.csproj" />-->
+    </ItemGroup>
+
+</Project>

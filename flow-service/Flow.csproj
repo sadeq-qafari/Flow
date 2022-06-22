@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+    <PackageReference Include="Saanaa.Core.AspNetCore" Version="1.3.52" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Operations\TourAttraction\**" />
+    <Compile Remove="Controllers\TourAttractionController.cs" />
+    <Compile Remove="Controllers\TourFlightController.cs" />
+    <Compile Remove="Operations\TourTag\**" />
+    <Compile Remove="Operations\TourNotification\**" />
+    <Compile Remove="Controllers\TourNotificationController.cs" />
+    <Compile Remove="Controllers\TourTagController.cs" />
+    <Compile Remove="Operations\TourPrice\**" />
+    <Compile Remove="Controllers\TourPriceController.cs" />
+    <Compile Remove="Controllers\TourPriceItemController.cs" />
+    <Compile Remove="Controllers\TourPricePlanController.cs" />
+    <Compile Remove="Controllers\TourPricePlanItemController.cs" />
+    <Compile Remove="Controllers\TourHotelController.cs" />
+    <Compile Remove="Operations\TourHotel\**" />
+    <Compile Remove="Operations\TourPriceItem\**" />
+    <Compile Remove="Operations\TourPricePlan\**" />
+    <Compile Remove="Operations\TourPricePlanItem\**" />
+    <Compile Remove="Operations\TourFlight\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Operations\TourAttraction\**" />
+    <EmbeddedResource Remove="Operations\TourTag\**" />
+    <EmbeddedResource Remove="Operations\TourNotification\**" />
+    <EmbeddedResource Remove="Operations\TourPrice\**" />
+    <EmbeddedResource Remove="Operations\TourHotel\**" />
+    <EmbeddedResource Remove="Operations\TourPriceItem\**" />
+    <EmbeddedResource Remove="Operations\TourPricePlan\**" />
+    <EmbeddedResource Remove="Operations\TourPricePlanItem\**" />
+    <EmbeddedResource Remove="Operations\TourFlight\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Operations\TourAttraction\**" />
+    <None Remove="Operations\TourTag\**" />
+    <None Remove="Operations\TourNotification\**" />
+    <None Remove="Operations\TourPrice\**" />
+    <None Remove="Operations\TourHotel\**" />
+    <None Remove="Operations\TourPriceItem\**" />
+    <None Remove="Operations\TourPricePlan\**" />
+    <None Remove="Operations\TourPricePlanItem\**" />
+    <None Remove="Operations\TourFlight\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Operations\TourAttraction\**" />
+    <Content Remove="Operations\TourTag\**" />
+    <Content Remove="Operations\TourNotification\**" />
+    <Content Remove="Operations\TourPrice\**" />
+    <Content Remove="Operations\TourHotel\**" />
+    <Content Remove="Operations\TourPriceItem\**" />
+    <Content Remove="Operations\TourPricePlan\**" />
+    <Content Remove="Operations\TourPricePlanItem\**" />
+    <Content Remove="Operations\TourFlight\**" />
+  </ItemGroup>
+
+</Project>

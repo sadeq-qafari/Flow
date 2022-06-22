@@ -1,0 +1,14 @@
+using Flow.Operations.Workflow.Dtos;
+using Saanaa.Core.Meteor;
+
+namespace Flow.Operations.Workflow.Commands
+{
+    public class WorkflowUpdate : SaanaaDbUpdateAsync<WorkflowUpdateInDto>
+    {
+        public WorkflowUpdate() : base("[Flow].[Workflow]",
+            @"[Title]=@Title,
+					[Description]=@Description")
+        {
+        }
+    }
+}

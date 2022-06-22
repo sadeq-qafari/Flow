@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Saanaa.Core.AspNetCore" Version="1.3.34" />
+        <PackageReference Include="SixLabors.ImageSharp" Version="1.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="files\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="files\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="files\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="files\**" />
+    </ItemGroup>
+
+</Project>
