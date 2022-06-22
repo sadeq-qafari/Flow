@@ -3,5 +3,6 @@
 */obj
 */logs
 */.idea
+.idea
 cdn-service/files
 identity-service/Certificate
