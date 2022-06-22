@@ -1,6 +1,6 @@
-# Saanaa Panel (saanaa-panel)
+# Panel
 
-Saanaa Company Admin Panel
+Flow Admin Panel
 
 ## Install the dependencies
 ```bash
