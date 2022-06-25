@@ -1,5 +1,5 @@
 dotnet dev-certs https --trust
-cd panel-quasar
+cd ../panel
 xcopy "dist/spa" "C:/Projects/Publish/Panel" /e /h /c /i
 cd ..
 cd api-service
@@ -21,6 +21,6 @@ cd ..
 cd tenant-service
 dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained false -o C:/Projects/Publish/Tenant
 cd ..
-xcopy "bats" "C:/Projects/Publish" /e /h /c /i
+xcopy "release_bats" "C:/Projects/Publish" /e /h /c /i
 cd C:/Projects/Publish/Panel
 npm i

@@ -58,16 +58,11 @@ namespace Flow.Operations.Form.Commands
 
                             var formProperty =
                                 form
-                                    .Properties //.Where(x => (x.RelatedFormPropertyId ?? 0) == 0 && (x.LookupId ?? 0) == 0)
+                                    .Properties.Where(x => (x.RelatedFormPropertyId ?? 0) == 0 && (x.LookupId ?? 0) == 0)
                                     .FirstOrDefault(x => x.Title.Replace(" ", string.Empty) == title);
                             
                             if (formProperty == null)
                                 continue;
-                            
-                            if (formProperty.RelatedFormId > 0)
-                            {
-                                
-                            }
 
                             cols.Add(formProperty.Id, i);
                         }

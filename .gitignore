@@ -4,5 +4,7 @@
 */logs
 */.idea
 .idea
+panel/dist
+panel/.quasar
 cdn-service/files
 identity-service/Certificate
