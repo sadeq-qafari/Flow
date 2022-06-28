@@ -717,6 +717,11 @@ export default {
           this.errors.push(`${'نام انگلیسی فیلد شماره'} ${index + 1} ${'به درستی وارد نشده است'}`)
           prop.hasError = true;
         }
+        if (!prop.type?.trim()) {
+          this.hasError = true;
+          this.errors.push(`${'نوع فیلد شماره'} ${index + 1} ${'به درستی وارد نشده است'}`)
+          prop.hasError = true;
+        }
       })
 
       this.layout = [...this.layout]
