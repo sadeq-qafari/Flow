@@ -1,5 +1,5 @@
 using Meteor.Operation.Db.Default;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.PricingDetailTenant.Dtos
 {

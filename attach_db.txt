@@ -1,0 +1,7 @@
+USE [master]
+GO
+CREATE DATABASE [FlowDb] ON 
+( FILENAME = N'/var/opt/mssql/data/FlowDb.mdf' ),
+( FILENAME = N'/var/opt/mssql/data/FlowDb_log.ldf' )
+ FOR ATTACH
+GO

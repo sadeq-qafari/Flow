@@ -8,8 +8,8 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 
 namespace Identity.Controllers
 {
@@ -27,29 +27,29 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.Role.Read")]
         [HttpGet]
-        public Task<QueryPage<RoleDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<RoleDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetRolePage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetRoleAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Identity.Role.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<Role>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<Role>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetRoleByIds>().ExecuteAsync(m);
 
         [NeedPermission("Identity.Role.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetRoleExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Role.xlsx");
 
 
         [NeedPermission("Identity.Role.Read")]
         [HttpGet("{id}")]
-        public Task<RoleDto?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<RoleDto?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetRole>().ExecuteAsync(m);
 
         [NeedPermission("Identity.Role.Create")]
@@ -64,7 +64,7 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.Role.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<RoleRemove>().ExecuteAsync(m);
     }
 }

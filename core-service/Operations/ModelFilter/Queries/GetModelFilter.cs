@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.ModelFilter.Queries
 {
-    public class GetModelFilter : SaanaaDbSelectAsync<ModelFilter?>
+    public class GetModelFilter : DbSelectAsync<ModelFilter?>
     {
         public GetModelFilter() : base("[Core].[ModelFilter]")
         {

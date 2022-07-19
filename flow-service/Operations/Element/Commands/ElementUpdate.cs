@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Flow.Operations.Element.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.Element.Commands
 {
-    public class ElementUpdate : SaanaaDbUpdateAsync<ElementUpdateInDto>
+    public class ElementUpdate : DbUpdateAsync<ElementUpdateInDto>
     {
         public ElementUpdate() : base("[Flow].[Element]",
             @"[Name]=@Name,

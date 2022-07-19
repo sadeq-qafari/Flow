@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.User.Queries
 {
-    public class GetUserExcel : SaanaaDbQueryExcel<User>
+    public class GetUserExcel : DbQueryExcel<User>
     {
         public GetUserExcel() : base("[Identity].[User]")
         {

@@ -1,11 +1,11 @@
 using Humanizer;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Favorite.Dtos;
 
 namespace Tenant.Operations.Favorite.Queries
 {
-    public class GetFavoritePage : SaanaaDbQueryPage<FavoriteDto>
+    public class GetFavoritePage : DbQueryPage<FavoriteDto>
     {
         public GetFavoritePage() : base("[Tenant].[Favorite]")
         {

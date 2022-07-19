@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
+using Core.Meteor;
 using Core.Operations.ModelPropertyLookup.Dto;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.ModelPropertyLookup.Commands
 {
-    public class AddModelPropertyLookup : SaanaaDbInsertAsync<AddModelPropertyLookupInDto>
+    public class AddModelPropertyLookup : DbInsertAsync<AddModelPropertyLookupInDto>
     {
         protected override Task PrepareExecutionAsync()
         {

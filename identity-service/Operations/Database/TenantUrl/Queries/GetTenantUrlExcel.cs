@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Identity.Operations.Database.TenantUrl.Dtos;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.TenantUrl.Queries
 {
-    public class GetTenantUrlExcel : SaanaaDbQueryExcel<TenantUrlDto>
+    public class GetTenantUrlExcel : DbQueryExcel<TenantUrlDto>
     {
         public GetTenantUrlExcel() : base("[Identity].[TenantUrl]")
         {

@@ -2,12 +2,12 @@ using System;
 using System.Threading.Tasks;
 using Identity.Operations.Database.UserPermission.Dtos;
 using Meteor.Utils;
-using Saanaa.Core.AspNetCore.Redis;
-using Saanaa.Core.Meteor;
+using Core.AspNetCore.Redis;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.UserPermission.Commands
 {
-    public class UserPermissionAdd : SaanaaDbInsertAsync<UserPermissionAddInDto>
+    public class UserPermissionAdd : DbInsertAsync<UserPermissionAddInDto>
     {
         public UserPermissionAdd() : base("[Identity].[UserPermission]",
             @"[UserId],

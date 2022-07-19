@@ -1,9 +1,9 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Transaction.Dtos;
 
 namespace Tenant.Operations.Transaction.Commands
 {
-    public class TransactionAdd : SaanaaDbInsertAsync<TransactionAddInDto>
+    public class TransactionAdd : DbInsertAsync<TransactionAddInDto>
     {
         public TransactionAdd() : base("[Tenant].[Transaction]",
             @"[PersonId],

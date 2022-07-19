@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.TenantService.Queries
 {
-    public class GetTenantServiceByIds : SaanaaDbQueryByIds<TenantService>
+    public class GetTenantServiceByIds : DbQueryByIds<TenantService>
     {
         public GetTenantServiceByIds() : base("[Identity].[TenantService]")
         {

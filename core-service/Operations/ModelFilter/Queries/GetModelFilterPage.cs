@@ -1,10 +1,10 @@
+using Core.Meteor;
 using Core.Operations.ModelFilter.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.ModelFilter.Queries
 {
-    public class GetModelFilterPage : SaanaaDbQueryPage<ModelFilterDto>
+    public class GetModelFilterPage : DbQueryPage<ModelFilterDto>
     {
         public GetModelFilterPage() : base("[Core].[ModelFilter]")
         {
@@ -14,7 +14,7 @@ namespace Core.Operations.ModelFilter.Queries
 
         protected override ISqlDialect GetSelectSql(bool isForCount = false)
         {
-            Parameters.Add("TypeLookup", SaanaaServices.GetModelProperty("Core","ModelFilter","typeLookup")!.Id);
+            Parameters.Add("TypeLookup", SqServices.GetModelProperty("Core","ModelFilter","typeLookup")!.Id);
             return SqlFactory!.Create().Select("[Core].[ModelFilter] ModelFilter", isForCount ? "COUNT(*)" : @"
 						ModelFilter.*, 
 						Model.Title AS ModelTitle,

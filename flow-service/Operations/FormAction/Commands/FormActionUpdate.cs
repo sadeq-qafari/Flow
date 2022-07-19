@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Flow.Operations.FormAction.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.FormAction.Commands
 {
-    public class FormActionUpdate : SaanaaDbUpdateAsync<FormActionUpdateInDto>
+    public class FormActionUpdate : DbUpdateAsync<FormActionUpdateInDto>
     {
         public FormActionUpdate() : base("[Flow].[FormAction]",
             @"[Name]=@Name,

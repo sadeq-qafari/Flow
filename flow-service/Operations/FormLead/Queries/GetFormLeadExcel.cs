@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Flow.Operations.FormLead.Dtos;
-using Saanaa.Core.Meteor;
+using Meteor.Operation;
 
 namespace Flow.Operations.FormLead.Queries
 {
-    public class GetFormLeadExcel : SaanaaDbQueryExcel<FormLeadDto>
+    public class GetFormLeadExcel : DbQueryExcel<FormLeadDto>
     {
         public GetFormLeadExcel() : base("[Flow].[FormLead]")
         {

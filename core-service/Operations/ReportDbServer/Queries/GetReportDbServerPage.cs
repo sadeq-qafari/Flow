@@ -1,11 +1,11 @@
+using Core.Meteor;
 using Core.Operations.ReportDbServer.Dtos;
 using Humanizer;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.ReportDbServer.Queries
 {
-    public class GetReportDbServerPage : SaanaaDbQueryPage<ReportDbServerDto>
+    public class GetReportDbServerPage : DbQueryPage<ReportDbServerDto>
     {
         public GetReportDbServerPage() : base("[Core].[ReportDbServer]")
         {
@@ -15,7 +15,7 @@ namespace Core.Operations.ReportDbServer.Queries
 
         protected override ISqlDialect GetSelectSql(bool isForCount = false)
         {
-            Parameters.Add("EngineTypeLookup", SaanaaServices.GetModelProperty("Core","ReportDbServer","engineTypeLookup")!.Id);
+            Parameters.Add("EngineTypeLookup", SqServices.GetModelProperty("Core","ReportDbServer","engineTypeLookup")!.Id);
             return SqlFactory!.Create().Select("[Core].[ReportDbServer] ReportDbServer", isForCount ? "COUNT(*)" : @"
 						ReportDbServer.*, 
 						EngineTypeLookup.Title AS EngineTypeLookupTitle")

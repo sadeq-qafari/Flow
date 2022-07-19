@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Core.Operations.ModelReport;
 using Core.Operations.ModelReport.Commands;
 using Core.Operations.ModelReport.Dtos;
@@ -8,8 +10,6 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Core.Controllers
 {
@@ -27,29 +27,29 @@ namespace Core.Controllers
 
         [NeedPermission("Core.ModelReport.Read")]
         [HttpGet]
-        public Task<QueryPage<ModelReportDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<ModelReportDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetModelReportPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetModelReportAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Core.ModelReport.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<ModelReport>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<ModelReport>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetModelReportByIds>().ExecuteAsync(m);
 
         [NeedPermission("Core.ModelReport.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetModelReportExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "ModelReport.xlsx");
 
 
         [NeedPermission("Core.ModelReport.Read")]
         [HttpGet("{id}")]
-        public Task<ModelReport?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<ModelReport?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetModelReport>().ExecuteAsync(m);
 
         [NeedPermission("Core.ModelReport.Create")]
@@ -64,7 +64,7 @@ namespace Core.Controllers
 
         [NeedPermission]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<ModelReportRemove>().ExecuteAsync(m);
 
         // ============ Custom Actions:
@@ -81,7 +81,7 @@ namespace Core.Controllers
 
         [NeedPermission]
         [HttpGet("info/{id}")]
-        public Task<ModelReportInfoDto?> GetReportInfo([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<ModelReportInfoDto?> GetReportInfo([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetModelReportInfo>().ExecuteAsync(m);
 
 

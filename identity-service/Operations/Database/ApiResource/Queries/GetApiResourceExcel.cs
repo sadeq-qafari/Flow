@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.ApiResource.Queries
 {
-    public class GetApiResourceExcel : SaanaaDbQueryExcel<ApiResource>
+    public class GetApiResourceExcel : DbQueryExcel<ApiResource>
     {
         public GetApiResourceExcel() : base("[Identity].[ApiResource]")
         {

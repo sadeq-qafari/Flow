@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.FormLeadLog.Commands
 {
-    public class FormLeadLogRemove : SaanaaDbDeleteAsync
+    public class FormLeadLogRemove : DbDeleteAsync
     {
         public FormLeadLogRemove() : base("[Flow].[FormLeadLog]")
         {

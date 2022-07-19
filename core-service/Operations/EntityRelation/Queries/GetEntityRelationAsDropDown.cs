@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.EntityRelation.Queries
 {
-    public class GetEntityRelationAsDropDown : SaanaaDbQueryAsDropDown<EntityRelation>
+    public class GetEntityRelationAsDropDown : DbQueryAsDropDown<EntityRelation>
     {
         public GetEntityRelationAsDropDown() : base("[Core].[EntityRelation]")
         {

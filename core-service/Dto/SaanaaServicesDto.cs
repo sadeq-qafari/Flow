@@ -2,9 +2,9 @@
 
 namespace Core.Dto
 {
-    public class SaanaaServicesDto
+    public class ServicesDto
     {
-        public IEnumerable<Saanaa.Core.Meteor.Models.Service>? Services { get; set; }
+        public IEnumerable<Core.Meteor.Models.Service>? Services { get; set; }
         public long Version { get; set; }
     }
 }

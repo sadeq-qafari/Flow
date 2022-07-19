@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Flow.Operations.FormProperty.Dtos
 {
-    public class FormPropertyAddInDto : SaanaaDbInsertInDto
+    public class FormPropertyAddInDto : DbInsertInDto
     {
         public int LayoutIndex { get; set; }
         public string? Name { get; set; }

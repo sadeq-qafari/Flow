@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.UserRole.Queries
 {
-    public class GetUserRole : SaanaaDbSelectAsync<UserRole?>
+    public class GetUserRole : DbSelectAsync<UserRole?>
     {
         public GetUserRole() : base("[Identity].[UserRole]")
         {

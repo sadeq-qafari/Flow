@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Core.Operations.ServiceConfig.Dto;
-using Saanaa.Core.Meteor;
+using Meteor.Operation;
 
 namespace Core.Operations.ServiceConfig.Queries
 {
-    public class GetServiceConfigExcel : SaanaaDbQueryExcel<ServiceConfigDto>
+    public class GetServiceConfigExcel : DbQueryExcel<ServiceConfigDto>
     {
         public GetServiceConfigExcel() : base("[Core].[ServiceConfig]")
         {

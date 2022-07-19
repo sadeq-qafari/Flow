@@ -1,10 +1,10 @@
 using Identity.Operations.Database.Role.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.Role.Queries
 {
-    public class GetRolePage : SaanaaDbQueryPage<RoleDto>
+    public class GetRolePage : DbQueryPage<RoleDto>
     {
         public GetRolePage() : base("[Identity].[Role]")
         {

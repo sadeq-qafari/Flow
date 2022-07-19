@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Core.Operations.ModelFilter.Dtos;
-using Saanaa.Core.Meteor;
+using Meteor.Operation;
 
 namespace Core.Operations.ModelFilter.Queries
 {
-    public class GetModelFilterExcel : SaanaaDbQueryExcel<ModelFilterDto>
+    public class GetModelFilterExcel : DbQueryExcel<ModelFilterDto>
     {
         public GetModelFilterExcel() : base("[Core].[ModelFilter]")
         {

@@ -1,9 +1,9 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Favorite.Dtos;
 
 namespace Tenant.Operations.Favorite.Commands
 {
-    public class FavoriteAdd : SaanaaDbInsertAsync<FavoriteAddInDto>
+    public class FavoriteAdd : DbInsertAsync<FavoriteAddInDto>
     {
         public FavoriteAdd() : base("[Tenant].[Favorite]",
             @"[ModelId],

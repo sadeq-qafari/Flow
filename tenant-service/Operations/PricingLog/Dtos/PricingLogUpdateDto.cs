@@ -1,9 +1,9 @@
 using NodaTime;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Tenant.Operations.PricingLog.Dtos
 {
-    public class PricingLogUpdateInDto : SaanaaDbUpdateInDto
+    public class PricingLogUpdateInDto : DbUpdateInDto
     {
         public int PricingItemId { get; set; }
         public float? Percent { get; set; }

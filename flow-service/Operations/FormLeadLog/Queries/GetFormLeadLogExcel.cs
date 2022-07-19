@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Flow.Operations.FormLeadLog.Dtos;
-using Saanaa.Core.Meteor;
+using Meteor.Operation;
 
 namespace Flow.Operations.FormLeadLog.Queries
 {
-    public class GetFormLeadLogExcel : SaanaaDbQueryExcel<FormLeadLogDto>
+    public class GetFormLeadLogExcel : DbQueryExcel<FormLeadLogDto>
     {
         public GetFormLeadLogExcel() : base("[Flow].[FormLeadLog]")
         {

@@ -1,0 +1,70 @@
+version: "3.9"
+services:
+  identity:
+    depends_on:
+      - "db"
+    build: 
+      context: ./
+      dockerfile: ./Dockerfile.Identity
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - CONNECTION_STRING=Server=db;Database=FlowDb;User Id=sa;Password=FlowDb123;MultipleActiveResultSets=True
+      - SERVICE_NAME=Identity
+      - CERTIFICATE_FILE_NAME=/Certificate/token_signing.pfx
+      - CERTIFICATE_PASSWORD=qw12QW!@
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=qw12QW!@
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/Certificate/token_signing.pfx
+      - ASPNETCORE_URLS=https://+:5200
+      - ASPNETCORE_HTTPS_PORT=5200
+    ports:
+      - "5200:5200"
+    volumes:
+      - ./identity-service/Certificate:/Certificate:ro
+  core:
+    depends_on:
+      - "db"
+    build: 
+      context: ./
+      dockerfile: ./Dockerfile.Core
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - CONNECTION_STRING=Server=db;Database=FlowDb;User Id=sa;Password=FlowDb123;MultipleActiveResultSets=True
+      - SERVICE_NAME=Core
+      - ASPNETCORE_URLS=http://+:5001
+    ports:
+      - "5001:5001"
+  api:
+    depends_on:
+      - "db"
+    build: 
+      context: ./
+      dockerfile: ./Dockerfile.Api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - CONNECTION_STRING=Server=db;Database=FlowDb;User Id=sa;Password=FlowDb123;MultipleActiveResultSets=True
+      - SERVICE_NAME=Api
+      - ASPNETCORE_URLS=http://+:5000
+    ports:
+      - "5000:5000"
+
+  panel:
+    build: 
+      context: ./
+      dockerfile: ./Dockerfile.Panel
+    ports:
+      - "4200:4200"
+  redis:
+    image: "redis"
+    ports:
+      - "6379:6379"
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    user: root
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=FlowDb123
+    volumes:
+      - ./flow_db_data:/var/opt/mssql/data

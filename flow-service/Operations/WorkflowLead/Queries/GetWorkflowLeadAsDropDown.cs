@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.WorkflowLead.Queries
 {
-    public class GetWorkflowLeadAsDropDown : SaanaaDbQueryAsDropDown<WorkflowLead>
+    public class GetWorkflowLeadAsDropDown : DbQueryAsDropDown<WorkflowLead>
     {
         public GetWorkflowLeadAsDropDown() : base("[Flow].[WorkflowLead]")
         {

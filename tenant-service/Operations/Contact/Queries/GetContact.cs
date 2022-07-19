@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Contact.Queries
 {
-    public class GetContact : SaanaaDbSelectAsync<Contact?>
+    public class GetContact : DbSelectAsync<Contact?>
     {
         public GetContact() : base("[Tenant].[Contact]")
         {

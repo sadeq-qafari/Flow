@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Core.Operations.ModelFilter.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.ModelFilter.Commands
 {
-    public class ModelFilterAdd : SaanaaDbInsertAsync<ModelFilterAddInDto>
+    public class ModelFilterAdd : DbInsertAsync<ModelFilterAddInDto>
     {
         public ModelFilterAdd() : base("[Core].[ModelFilter]",
             @"[Title],

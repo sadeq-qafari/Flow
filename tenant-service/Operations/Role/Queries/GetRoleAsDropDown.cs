@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Role.Queries
 {
-    public class GetRoleAsDropDown : SaanaaDbQueryAsDropDown<Role>
+    public class GetRoleAsDropDown : DbQueryAsDropDown<Role>
     {
         public GetRoleAsDropDown() : base("[Tenant].[Role]")
         {

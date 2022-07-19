@@ -1,11 +1,11 @@
+using Core.Meteor;
 using Core.Operations.Model.Dto;
 using Humanizer;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.Model.Queries
 {
-    public class GetModelPage : SaanaaDbQueryPage<ModelDto>
+    public class GetModelPage : DbQueryPage<ModelDto>
     {
         public GetModelPage() : base("[Core].[Model]")
         {

@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Flow.Operations.Workflow.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.Workflow.Queries
 {
-    public class GetWorkflowPage : SaanaaDbQueryPage<WorkflowDto>
+    public class GetWorkflowPage : DbQueryPage<WorkflowDto>
     {
         public GetWorkflowPage() : base("[Flow].[Workflow]")
         {

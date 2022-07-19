@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.TenantUser.Dtos
 {
-    public class TenantUserAddInDto : SaanaaDbInsertInDto
+    public class TenantUserAddInDto : DbInsertInDto
     {
         public int? BranchId { get; set; }
         public int UserId { get; set; }

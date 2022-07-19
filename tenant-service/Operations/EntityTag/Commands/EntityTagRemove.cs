@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.EntityTag.Commands
 {
-    public class EntityTagRemove : SaanaaDbDeleteAsync
+    public class EntityTagRemove : DbDeleteAsync
     {
         public EntityTagRemove() : base("[Tenant].[EntityTag]")
         {

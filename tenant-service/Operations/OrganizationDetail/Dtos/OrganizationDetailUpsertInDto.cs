@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Meteor.Operation.Db.Default;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.OrganizationDetail.Dtos
 {

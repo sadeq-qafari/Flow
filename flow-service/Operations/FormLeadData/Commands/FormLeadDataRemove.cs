@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.FormLeadData.Commands
 {
-    public class FormLeadDataRemove : SaanaaDbDeleteAsync
+    public class FormLeadDataRemove : DbDeleteAsync
     {
         public FormLeadDataRemove() : base("[Flow].[FormLeadData]")
         {

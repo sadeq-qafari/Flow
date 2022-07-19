@@ -1,10 +1,10 @@
+using Core.Meteor;
 using Flow.Operations.FormProperty.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.FormProperty.Queries
 {
-    public class GetFormPropertyPage : SaanaaDbQueryPage<FormPropertyDto>
+    public class GetFormPropertyPage : DbQueryPage<FormPropertyDto>
     {
         public GetFormPropertyPage() : base("[Flow].[FormProperty]")
         {

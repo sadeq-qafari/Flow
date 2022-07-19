@@ -1,9 +1,9 @@
 using Identity.Operations.Database.Client.Dtos;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.Client.Commands
 {
-    public class ClientUpdate : SaanaaDbUpdateAsync<ClientUpdateInDto>
+    public class ClientUpdate : DbUpdateAsync<ClientUpdateInDto>
     {
         public ClientUpdate() : base("[Identity].[Client]",
             @"[Enabled]=@Enabled,

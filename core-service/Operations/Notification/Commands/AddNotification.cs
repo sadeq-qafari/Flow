@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Core.Operations.Notification.Dto;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.Notification.Commands
 {
-    public class AddNotification : SaanaaDbInsertAsync<AddNotificationInDto>
+    public class AddNotification : DbInsertAsync<AddNotificationInDto>
     {
 
         public AddNotification() : base("[Base].[Notification]",

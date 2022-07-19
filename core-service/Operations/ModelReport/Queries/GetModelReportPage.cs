@@ -1,10 +1,10 @@
+using Core.Meteor;
 using Core.Operations.ModelReport.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.ModelReport.Queries
 {
-    public class GetModelReportPage : SaanaaDbQueryPage<ModelReportDto>
+    public class GetModelReportPage : DbQueryPage<ModelReportDto>
     {
         public GetModelReportPage() : base("[Core].[ModelReport]")
         {

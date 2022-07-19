@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Core.Models.SignalR;
 using Core.Operations.Notification.Queries;
 using Core.Operations.NotificationUser.Commands;
@@ -8,9 +10,6 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
-using Saanaa.Providers.Notification.SignalR;
 
 namespace Core.Controllers
 {
@@ -50,7 +49,7 @@ namespace Core.Controllers
             var userTenantId = HttpContext.UserInfo()!.TenantId;
             var createdBy = HttpContext.UserInfo()!.Id;
             var notification = await _operationFactory.New<GetNotification>().ExecuteAsync(
-                new SaanaaDbSelectInDto
+                new DbSelectInDto
                 {
                     Id = model.NotificationId,
                     TenantId = userTenantId

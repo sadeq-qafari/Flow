@@ -4,9 +4,9 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor;
+using Core.Meteor.Dto;
 using Tenant.Operations.Banner;
 using Tenant.Operations.Banner.Commands;
 using Tenant.Operations.Banner.Dtos;
@@ -28,29 +28,29 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.Banner.Read")]
         [HttpGet]
-        public Task<QueryPage<BannerDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<BannerDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetBannerPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetBannerAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Banner.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<Banner>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<Banner>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetBannerByIds>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Banner.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetBannerExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Banner.xlsx");
 
 
         [NeedPermission("Tenant.Banner.Read")]
         [HttpGet("{id}")]
-        public Task<Banner?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<Banner?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetBanner>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Banner.Create")]
@@ -65,7 +65,7 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.Banner.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<BannerRemove>().ExecuteAsync(m);
 
         // ============= Custom Actions:
@@ -73,7 +73,7 @@ namespace Tenant.Controllers
         [HttpGet("list")]
         public Task<IEnumerable<Banner>?> GetBannerList()
         {
-            var tenantId = SaanaaTenants.GetTenant(HttpContext)!.Id;
+            var tenantId = SqTenants.GetTenant(HttpContext)!.Id;
             return _operationFactory.New<GetBannerList>().ExecuteAsync(tenantId);
         }
     }

@@ -1,12 +1,12 @@
 using System;
 using System.Threading.Tasks;
 using Meteor.Utils;
-using Saanaa.Core.AspNetCore.Redis;
-using Saanaa.Core.Meteor;
+using Core.AspNetCore.Redis;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.UserPermission.Commands
 {
-    public class UserPermissionRemove : SaanaaDbDeleteAsync
+    public class UserPermissionRemove : DbDeleteAsync
     {
         public UserPermissionRemove() : base("[Identity].[UserPermission]")
         {

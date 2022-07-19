@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Tenant.Operations.Report.Dtos
 {
-    public class ReportAddInDto : SaanaaDbInsertInDto
+    public class ReportAddInDto : DbInsertInDto
     {
         public string? Title { get; set; }
         public string Name { get; set; }

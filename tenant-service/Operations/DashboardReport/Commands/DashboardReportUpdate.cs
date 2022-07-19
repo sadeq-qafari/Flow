@@ -1,9 +1,9 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.DashboardReport.Dtos;
 
 namespace Tenant.Operations.DashboardReport.Commands
 {
-    public class DashboardReportUpdate : SaanaaDbUpdateAsync<DashboardReportUpdateInDto>
+    public class DashboardReportUpdate : DbUpdateAsync<DashboardReportUpdateInDto>
     {
         public DashboardReportUpdate() : base("[Tenant].[DashboardReport]",
             @"[ReportId]=@ReportId,

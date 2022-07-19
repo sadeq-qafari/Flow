@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Role.Queries
 {
-    public class GetRole : SaanaaDbSelectAsync<Role?>
+    public class GetRole : DbSelectAsync<Role?>
     {
         public GetRole() : base("[Tenant].[Role]")
         {

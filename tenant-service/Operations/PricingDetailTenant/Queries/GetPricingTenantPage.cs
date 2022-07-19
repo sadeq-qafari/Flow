@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor;
+using Core.Meteor.Dto;
 using Tenant.Operations.PricingDetailTenant.Dtos;
 
 namespace Tenant.Operations.PricingDetailTenant.Queries
 {
-    public class GetPricingDetailTenantPage : SaanaaDbQueryPage<PricingDetailTenantDto>
+    public class GetPricingDetailTenantPage : DbQueryPage<PricingDetailTenantDto>
     {
         public GetPricingDetailTenantPage() : base("[Tenant].[PricingDetailTenant]")
         {

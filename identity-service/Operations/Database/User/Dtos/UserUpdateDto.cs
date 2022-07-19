@@ -1,9 +1,9 @@
 using NodaTime;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.User.Dtos
 {
-    public class UserUpdateInDto : SaanaaDbUpdateInDto
+    public class UserUpdateInDto : DbUpdateInDto
     {
         public string? UserName { get; set; }
         public string? FirstName { get; set; }

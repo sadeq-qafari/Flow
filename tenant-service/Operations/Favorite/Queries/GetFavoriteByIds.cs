@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Favorite.Queries
 {
-    public class GetFavoriteByIds : SaanaaDbQueryByIds<Favorite>
+    public class GetFavoriteByIds : DbQueryByIds<Favorite>
     {
         public GetFavoriteByIds() : base("[Tenant].[Favorite]")
         {

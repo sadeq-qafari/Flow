@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
+using Core.Meteor;
 using Core.Operations.Menu.Dto;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.Menu.Commands
 {
-    public class AddMenu : SaanaaDbInsertAsync<AddMenuInDto>
+    public class AddMenu : DbInsertAsync<AddMenuInDto>
     {
         protected override Task PrepareExecutionAsync()
         {

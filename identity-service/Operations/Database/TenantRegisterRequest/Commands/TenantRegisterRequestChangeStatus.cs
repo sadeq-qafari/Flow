@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Identity.Operations.Database.TenantRegisterRequest.Dtos;
 using Meteor.Operation.Db;
 using Meteor.Utils;
-using Saanaa.Core.AspNetCore.Operations.Logic.SendMessage;
-using Saanaa.Core.AspNetCore.Operations.Logic.SendMessage.Dto;
-using Saanaa.Core.Meteor;
+using Core.AspNetCore.Operations.Logic.SendMessage;
+using Core.AspNetCore.Operations.Logic.SendMessage.Dto;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.TenantRegisterRequest.Commands
 {
@@ -34,7 +34,7 @@ namespace Identity.Operations.Database.TenantRegisterRequest.Commands
                     {
                         MessageName = "TenantRegisterConfirm",
                         Receivers = Output.PhoneNumber,
-                        TenantId = SaanaaTenants.Tenants.First(x => x.Name.ToLowerInvariant() == "hamiane")?.Id,
+                        TenantId = SqTenants.Tenants.First(x => x.Name.ToLowerInvariant() == "hamiane")?.Id,
                         Params = new List<string>()
                         {
                             "https://my.hamiane.com",

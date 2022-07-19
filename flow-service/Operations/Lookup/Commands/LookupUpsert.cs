@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
+using Core.Meteor.Extensions;
 using Dapper;
 using Flow.Operations.Lookup.Dtos;
 using Meteor.Operation.Db;
-using Saanaa.Core.Meteor.Extensions;
 
 namespace Flow.Operations.Lookup.Commands
 {

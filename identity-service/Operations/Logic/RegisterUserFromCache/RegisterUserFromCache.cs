@@ -4,8 +4,8 @@ using Identity.Operations.Database.User.Dtos;
 using Identity.Operations.Logic.ValidateVerificationCode.Dto;
 using Meteor.Operation;
 using Meteor.Utils;
-using Saanaa.Core.AspNetCore.Redis;
-using Saanaa.Core.Meteor;
+using Core.AspNetCore.Redis;
+using Core.Meteor;
 
 namespace Identity.Operations.Logic.RegisterUserFromCache
 {

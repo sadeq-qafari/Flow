@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.DashboardReport.Commands
 {
-    public class DashboardReportRemove : SaanaaDbDeleteAsync
+    public class DashboardReportRemove : DbDeleteAsync
     {
         public DashboardReportRemove() : base("[Tenant].[DashboardReport]")
         {

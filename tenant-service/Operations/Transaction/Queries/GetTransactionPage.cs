@@ -1,10 +1,10 @@
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Transaction.Dtos;
 
 namespace Tenant.Operations.Transaction.Queries
 {
-    public class GetTransactionPage : SaanaaDbQueryPage<TransactionDto>
+    public class GetTransactionPage : DbQueryPage<TransactionDto>
     {
         public GetTransactionPage() : base("[Tenant].[Transaction]")
         {

@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Flow.Operations.Form.Dtos;
-using Saanaa.Core.Meteor; //
+using Meteor.Operation;
+
+//
 
 namespace Flow.Operations.Form.Queries
 {
-    public class GetFormExcel : SaanaaDbQueryExcel<FormDto>
+    public class GetFormExcel : DbQueryExcel<FormDto>
     {
         public GetFormExcel() : base("[Flow].[Form]")
         {

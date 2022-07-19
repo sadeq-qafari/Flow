@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Flow.Operations.FormProperty.Dtos;
-using Saanaa.Core.Meteor;
+using Meteor.Operation;
 
 namespace Flow.Operations.FormProperty.Queries
 {
-    public class GetFormPropertyExcel : SaanaaDbQueryExcel<FormPropertyDto>
+    public class GetFormPropertyExcel : DbQueryExcel<FormPropertyDto>
     {
         public GetFormPropertyExcel() : base("[Flow].[FormProperty]")
         {

@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.TenantUrl.Queries
 {
-    public class GetTenantUrlAsDropDown : SaanaaDbQueryAsDropDown<TenantUrl>
+    public class GetTenantUrlAsDropDown : DbQueryAsDropDown<TenantUrl>
     {
         public GetTenantUrlAsDropDown() : base("[Identity].[TenantUrl]")
         {

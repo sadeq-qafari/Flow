@@ -1,9 +1,9 @@
 using Identity.Operations.Database.UserPermission.Dtos;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.UserPermission.Commands
 {
-    public class UserPermissionUpdate : SaanaaDbUpdateAsync<UserPermissionUpdateInDto>
+    public class UserPermissionUpdate : DbUpdateAsync<UserPermissionUpdateInDto>
     {
         public UserPermissionUpdate() : base("[Identity].[UserPermission]",
             @"[UserId]=@UserId,

@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.Form.Queries
 {
-    public class GetForm : SaanaaDbSelectAsync<Form?>
+    public class GetForm : DbSelectAsync<Form?>
     {
         public GetForm() : base("[Flow].[Form]")
         {

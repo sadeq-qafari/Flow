@@ -1,10 +1,10 @@
+using Core.Meteor;
 using Flow.Operations.FormLeadLog.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.FormLeadLog.Queries
 {
-    public class GetFormLeadLogPage : SaanaaDbQueryPage<FormLeadLogDto>
+    public class GetFormLeadLogPage : DbQueryPage<FormLeadLogDto>
     {
         public GetFormLeadLogPage() : base("[Flow].[FormLeadLog]")
         {
@@ -14,7 +14,7 @@ namespace Flow.Operations.FormLeadLog.Queries
 
         protected override ISqlDialect GetSelectSql(bool isForCount = false)
         {
-            Parameters.Add("ActionLookup", SaanaaServices.GetModelProperty("Flow","FormLeadLog","actionLookup")!.Id);
+            Parameters.Add("ActionLookup", SqServices.GetModelProperty("Flow","FormLeadLog","actionLookup")!.Id);
             return SqlFactory!.Create().Select("[Flow].[FormLeadLog] FormLeadLog", isForCount ? "COUNT(*)" : @"
 						FormLeadLog.*, 
 						FormLead.Title AS FormLeadTitle,

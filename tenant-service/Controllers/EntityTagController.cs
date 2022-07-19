@@ -4,8 +4,8 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Tenant.Operations.EntityTag;
 using Tenant.Operations.EntityTag.Commands;
 using Tenant.Operations.EntityTag.Dtos;
@@ -27,29 +27,29 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.EntityTag.Read")]
         [HttpGet]
-        public Task<QueryPage<EntityTagDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<EntityTagDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetEntityTagPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetEntityTagAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.EntityTag.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<EntityTag>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<EntityTag>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetEntityTagByIds>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.EntityTag.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetEntityTagExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "EntityTag.xlsx");
 
 
         [NeedPermission("Tenant.EntityTag.Read")]
         [HttpGet("{id}")]
-        public Task<EntityTag?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<EntityTag?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetEntityTag>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.EntityTag.Create")]
@@ -64,7 +64,7 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.EntityTag.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<EntityTagRemove>().ExecuteAsync(m);
 
         // Customized Actions:

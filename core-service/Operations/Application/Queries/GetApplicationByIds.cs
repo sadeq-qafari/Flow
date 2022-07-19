@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.Application.Queries
 {
-    public class GetApplicationByIds : SaanaaDbQueryByIds<Application>
+    public class GetApplicationByIds : DbQueryByIds<Application>
     {
         public GetApplicationByIds() : base("[Core].[Application]")
         {

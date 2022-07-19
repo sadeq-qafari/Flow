@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Threading.Tasks;
 using Meteor.Operation.Db;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Dashboard.Dtos;
 
 namespace Tenant.Operations.Dashboard.Commands

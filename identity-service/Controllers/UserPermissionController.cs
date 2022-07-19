@@ -8,8 +8,8 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 
 namespace Identity.Controllers
 {
@@ -27,29 +27,29 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.UserPermission.Read")]
         [HttpGet]
-        public Task<QueryPage<UserPermissionDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<UserPermissionDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetUserPermissionPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetUserPermissionAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Identity.UserPermission.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<UserPermission>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<UserPermission>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetUserPermissionByIds>().ExecuteAsync(m);
 
         [NeedPermission("Identity.UserPermission.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetUserPermissionExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "UserPermission.xlsx");
 
 
         [NeedPermission("Identity.UserPermission.Read")]
         [HttpGet("{id}")]
-        public Task<UserPermission?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<UserPermission?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetUserPermission>().ExecuteAsync(m);
 
         [NeedPermission("Identity.UserPermission.Create")]
@@ -64,7 +64,7 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.UserPermission.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<UserPermissionRemove>().ExecuteAsync(m);
     }
 }

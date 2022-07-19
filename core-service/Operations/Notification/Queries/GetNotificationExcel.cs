@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.Notification.Queries
 {
-    public class GetNotificationExcel : SaanaaDbQueryExcel<Notification>
+    public class GetNotificationExcel : DbQueryExcel<Notification>
     {
         public GetNotificationExcel() : base("[Base].[Notification]")
         {

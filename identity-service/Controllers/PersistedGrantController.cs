@@ -8,8 +8,8 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 
 namespace Identity.Controllers
 {
@@ -27,29 +27,29 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.PersistedGrant.Read")]
         [HttpGet]
-        public Task<QueryPage<PersistedGrantDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<PersistedGrantDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetPersistedGrantPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetPersistedGrantAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Identity.PersistedGrant.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<PersistedGrant>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<PersistedGrant>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetPersistedGrantByIds>().ExecuteAsync(m);
 
         [NeedPermission("Identity.PersistedGrant.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetPersistedGrantExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "PersistedGrant.xlsx");
 
 
         [NeedPermission("Identity.PersistedGrant.Read")]
         [HttpGet("{id}")]
-        public Task<PersistedGrant?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<PersistedGrant?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetPersistedGrant>().ExecuteAsync(m);
 
         [NeedPermission("Identity.PersistedGrant.Create")]
@@ -64,7 +64,7 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.PersistedGrant.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<PersistedGrantRemove>().ExecuteAsync(m);
     }
 }

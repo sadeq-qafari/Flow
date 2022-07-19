@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Tag.Queries
 {
-    public class GetTagAsDropDown : SaanaaDbQueryAsDropDown<Tag>
+    public class GetTagAsDropDown : DbQueryAsDropDown<Tag>
     {
         public GetTagAsDropDown() : base("[Tenant].[Tag]")
         {

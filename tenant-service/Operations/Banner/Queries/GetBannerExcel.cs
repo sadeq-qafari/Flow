@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Banner.Queries
 {
-    public class GetBannerExcel : SaanaaDbQueryExcel<Banner>
+    public class GetBannerExcel : DbQueryExcel<Banner>
     {
         public GetBannerExcel() : base("[Tenant].[Banner]")
         {

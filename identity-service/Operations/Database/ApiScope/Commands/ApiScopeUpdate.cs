@@ -1,9 +1,9 @@
 using Identity.Operations.Database.ApiScope.Dtos;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.ApiScope.Commands
 {
-    public class ApiScopeUpdate : SaanaaDbUpdateAsync<ApiScopeUpdateInDto>
+    public class ApiScopeUpdate : DbUpdateAsync<ApiScopeUpdateInDto>
     {
         public ApiScopeUpdate() : base("[Identity].[ApiScope]",
             @"[Name]=@Name,

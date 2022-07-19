@@ -1,0 +1,18 @@
+# https://hub.docker.com/_/microsoft-dotnet
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /
+
+# copy csproj and restore as distinct layers
+COPY core-service/*.csproj ./core-service/
+
+# copy everything else and build app
+COPY core-service/. ./core-service/
+WORKDIR /core-service
+RUN dotnet publish -c release -o /app -r linux-x64 --self-contained false 
+RUN dotnet dev-certs https --trust
+
+# final stage/image
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
+WORKDIR /app
+COPY --from=build /app ./
+ENTRYPOINT ["dotnet", "Core.dll", "--server.urls", "http://+:5001"]

@@ -5,7 +5,7 @@
       "DownstreamScheme": "ws",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "core",
           "Port": 5001
         }
       ],
@@ -23,7 +23,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "core",
           "Port": 5001
         }
       ],
@@ -41,115 +41,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5005
-        }
-      ],
-      "UpstreamPathTemplate": "/attendance/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5006
-        }
-      ],
-      "UpstreamPathTemplate": "/base/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5007
-        }
-      ],
-      "UpstreamPathTemplate": "/Car/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5009
-        }
-      ],
-      "UpstreamPathTemplate": "/charity/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5010
-        }
-      ],
-      "UpstreamPathTemplate": "/cms/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5014
-        }
-      ],
-      "UpstreamPathTemplate": "/Fund/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
+          "Host": "tenant",
           "Port": 5036
         }
       ],
@@ -167,43 +59,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5005
-        }
-      ],
-      "UpstreamPathTemplate": "/Attendance/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5002
-        }
-      ],
-      "UpstreamPathTemplate": "/Accounting/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
+          "Host": "cdn",
           "Port": 5110
         }
       ],
@@ -218,139 +74,14 @@
     },
     {
       "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5020
-        }
-      ],
-      "UpstreamPathTemplate": "/Product/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5022
-        }
-      ],
-      "UpstreamPathTemplate": "/Request/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5023
-        }
-      ],
-      "UpstreamPathTemplate": "/Task/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5026
-        }
-      ],
-      "UpstreamPathTemplate": "/Personal/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5025
-        }
-      ],
-      "UpstreamPathTemplate": "/Tourism/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5027
-        }
-      ],
-      "UpstreamPathTemplate": "/Residence/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5037
-        }
-      ],
-      "UpstreamPathTemplate": "/Inventory/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "identity",
           "Port": 5200
         }
       ],
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/Identity/{everything}",
       "UpstreamHttpMethod": [
         "Get",
@@ -365,97 +96,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5210
-        }
-      ],
-      "UpstreamPathTemplate": "/Payment/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5004
-        }
-      ],
-      "UpstreamPathTemplate": "/Assessment/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5013
-        }
-      ],
-      "UpstreamPathTemplate": "/Flight/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/ws/{everything}",
-      "DownstreamScheme": "ws",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5028
-        }
-      ],
-      "UpstreamPathTemplate": "/Notify/ws/{everything}",
-      "UpstreamHttpMethod": [
-        "GET",
-        "POST",
-        "PUT",
-        "DELETE",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5028
-        }
-      ],
-      "UpstreamPathTemplate": "/Notify/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
+          "Host": "flow",
           "Port": 5038
         }
       ],
@@ -467,64 +108,10 @@
         "Delete",
         "OPTIONS"
       ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5039
-        }
-      ],
-      "UpstreamPathTemplate": "/Shop/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5040
-        }
-      ],
-      "UpstreamPathTemplate": "/Log/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5011
-        }
-      ],
-      "UpstreamPathTemplate": "/Crm/{everything}",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete",
-        "OPTIONS"
-      ]
     }
 
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5000"
+    "BaseUrl": "http://*:5000"
   }
 }

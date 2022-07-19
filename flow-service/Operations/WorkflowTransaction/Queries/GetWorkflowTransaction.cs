@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.WorkflowTransaction.Queries
 {
-    public class GetWorkflowTransaction : SaanaaDbSelectAsync<WorkflowTransaction?>
+    public class GetWorkflowTransaction : DbSelectAsync<WorkflowTransaction?>
     {
         public GetWorkflowTransaction() : base("[Flow].[WorkflowTransaction]")
         {

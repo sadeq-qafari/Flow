@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
+using Core.Meteor;
 using Core.Operations.ModelPropertyDatagrid.Dto;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.ModelPropertyDatagrid.Commands
 {
-    public class AddModelPropertyDatagrid : SaanaaDbInsertAsync<AddModelPropertyDatagridInDto>
+    public class AddModelPropertyDatagrid : DbInsertAsync<AddModelPropertyDatagridInDto>
     {
         protected override Task PrepareExecutionAsync()
         {

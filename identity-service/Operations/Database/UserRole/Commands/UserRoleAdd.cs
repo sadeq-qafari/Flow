@@ -2,12 +2,12 @@ using System;
 using System.Threading.Tasks;
 using Identity.Operations.Database.UserRole.Dtos;
 using Meteor.Utils;
-using Saanaa.Core.AspNetCore.Redis;
-using Saanaa.Core.Meteor;
+using Core.AspNetCore.Redis;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.UserRole.Commands
 {
-    public class UserRoleAdd : SaanaaDbInsertAsync<UserRoleAddInDto>
+    public class UserRoleAdd : DbInsertAsync<UserRoleAddInDto>
     {
         public UserRoleAdd() : base("[Identity].[UserRole]",
             @"[UserId],

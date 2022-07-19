@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.ModelPropertyLookup.Commands
 {
-    public class RemoveModelPropertyLookup : SaanaaDbDeleteAsync
+    public class RemoveModelPropertyLookup : DbDeleteAsync
     {
         public RemoveModelPropertyLookup() : base("[Core].[ModelPropertyLookup]")
         {

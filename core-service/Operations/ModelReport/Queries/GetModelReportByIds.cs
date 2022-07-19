@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.ModelReport.Queries
 {
-    public class GetModelReportByIds : SaanaaDbQueryByIds<ModelReport>
+    public class GetModelReportByIds : DbQueryByIds<ModelReport>
     {
         public GetModelReportByIds() : base("[Core].[ModelReport]")
         {

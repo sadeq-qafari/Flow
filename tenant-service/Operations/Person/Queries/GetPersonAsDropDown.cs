@@ -1,9 +1,9 @@
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Person.Queries
 {
-    public class GetPersonAsDropDown : SaanaaDbQueryAsDropDown<Person>
+    public class GetPersonAsDropDown : DbQueryAsDropDown<Person>
     {
         public GetPersonAsDropDown() : base("[Tenant].[Person]")
         {

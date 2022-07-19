@@ -1,11 +1,11 @@
+using Core.Meteor;
 using Core.Operations.ModelPropertyLookup.Dto;
 using Humanizer;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.ModelPropertyLookup.Queries
 {
-    public class GetModelPropertyLookupPage : SaanaaDbQueryPage<ModelPropertyLookupDto>
+    public class GetModelPropertyLookupPage : DbQueryPage<ModelPropertyLookupDto>
     {
         public GetModelPropertyLookupPage() : base("[Core].[ModelPropertyLookup]")
         {

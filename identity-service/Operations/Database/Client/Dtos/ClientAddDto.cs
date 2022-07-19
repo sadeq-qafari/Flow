@@ -1,9 +1,9 @@
 using NodaTime;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.Client.Dtos
 {
-    public class ClientAddInDto : SaanaaDbInsertInDto
+    public class ClientAddInDto : DbInsertInDto
     {
         public bool Enabled { get; set; }
         public int ClientId { get; set; }

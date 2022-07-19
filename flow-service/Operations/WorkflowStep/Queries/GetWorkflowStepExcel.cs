@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Flow.Operations.WorkflowStep.Dtos;
-using Saanaa.Core.Meteor;
+using Meteor.Operation;
 
 namespace Flow.Operations.WorkflowStep.Queries
 {
-    public class GetWorkflowStepExcel : SaanaaDbQueryExcel<WorkflowStepDto>
+    public class GetWorkflowStepExcel : DbQueryExcel<WorkflowStepDto>
     {
         public GetWorkflowStepExcel() : base("[Flow].[WorkflowStep]")
         {

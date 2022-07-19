@@ -8,8 +8,8 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 
 namespace Identity.Controllers
 {
@@ -27,29 +27,29 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.DeviceCode.Read")]
         [HttpGet]
-        public Task<QueryPage<DeviceCodeDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<DeviceCodeDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetDeviceCodePage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetDeviceCodeAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Identity.DeviceCode.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<DeviceCode>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<DeviceCode>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetDeviceCodeByIds>().ExecuteAsync(m);
 
         [NeedPermission("Identity.DeviceCode.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetDeviceCodeExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "DeviceCode.xlsx");
 
 
         [NeedPermission("Identity.DeviceCode.Read")]
         [HttpGet("{id}")]
-        public Task<DeviceCode?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<DeviceCode?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetDeviceCode>().ExecuteAsync(m);
 
         [NeedPermission("Identity.DeviceCode.Create")]
@@ -64,7 +64,7 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.DeviceCode.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<DeviceCodeRemove>().ExecuteAsync(m);
     }
 }

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Staff.Dtos;
 
 namespace Tenant.Operations.Staff.Queries
 {
-    public class GetStaffExcel : SaanaaDbQueryExcel<StaffDto>
+    public class GetStaffExcel : DbQueryExcel<StaffDto>
     {
         public GetStaffExcel() : base("[Tenant].[v_Staff]")
         {

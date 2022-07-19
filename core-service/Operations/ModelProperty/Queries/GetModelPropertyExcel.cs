@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Core.Operations.ModelProperty.Dto;
-using Saanaa.Core.Meteor;
+using Meteor.Operation;
 
 namespace Core.Operations.ModelProperty.Queries
 {
-    public class GetModelPropertyExcel : SaanaaDbQueryExcel<ModelPropertyDto>
+    public class GetModelPropertyExcel : DbQueryExcel<ModelPropertyDto>
     {
         public GetModelPropertyExcel() : base("[Core].[ModelProperty]")
         {

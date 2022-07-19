@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.Permission.Commands
 {
-    public class PermissionRemove : SaanaaDbDeleteAsync
+    public class PermissionRemove : DbDeleteAsync
     {
         public PermissionRemove() : base("[Identity].[Permission]")
         {

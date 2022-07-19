@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.ApiResource.Queries
 {
-    public class GetApiResource : SaanaaDbSelectAsync<ApiResource?>
+    public class GetApiResource : DbSelectAsync<ApiResource?>
     {
         public GetApiResource() : base("[Identity].[ApiResource]")
         {

@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.1.0</Version>
+    <Company>SQ</Company>
+    <Copyright>SQ 2022</Copyright>
+    <Authors>Sadegh Ghafari</Authors>
+    <Product>Providers.Email</Product>
+    <PackageId>Providers.Email</PackageId>
+    <Nullable>enable</Nullable>
+    <PackageVersion>1.0.0</PackageVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.9.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0-rc.1.20451.14" />
+  </ItemGroup>
+
+</Project>

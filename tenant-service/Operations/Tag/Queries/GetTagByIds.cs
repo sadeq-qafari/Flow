@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Tag.Queries
 {
-    public class GetTagByIds : SaanaaDbQueryByIds<Tag>
+    public class GetTagByIds : DbQueryByIds<Tag>
     {
         public GetTagByIds() : base("[Tenant].[Tag]")
         {

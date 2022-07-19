@@ -1,9 +1,9 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.EntityTag.Dtos;
 
 namespace Tenant.Operations.EntityTag.Commands
 {
-    public class EntityTagAdd : SaanaaDbInsertAsync<EntityTagAddInDto>
+    public class EntityTagAdd : DbInsertAsync<EntityTagAddInDto>
     {
         public EntityTagAdd() : base("[Tenant].[EntityTag]",
             @"[ModelId],

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.PricingTenant.Dtos;
 
 namespace Tenant.Operations.PricingTenant.Queries
 {
-    public class GetPricingTenantExcel : SaanaaDbQueryExcel<PricingTenantDto>
+    public class GetPricingTenantExcel : DbQueryExcel<PricingTenantDto>
     {
         public GetPricingTenantExcel() : base("[Tenant].[PricingTenant]")
         {

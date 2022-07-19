@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.Service.Queries
 {
-    public class GetServiceAsDropDown : SaanaaDbQueryAsDropDown<Service>
+    public class GetServiceAsDropDown : DbQueryAsDropDown<Service>
     {
         public GetServiceAsDropDown() : base("[Core].[Service]")
         {

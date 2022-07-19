@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Core.Operations.ModelFilter.Dtos
 {
-    public class ModelFilterUpdateInDto : SaanaaDbUpdateInDto
+    public class ModelFilterUpdateInDto : DbUpdateInDto
     {
         public string Title { get; set; }
         public int? ModelId { get; set; }

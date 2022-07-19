@@ -1,9 +1,9 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.PricingLog.Dtos;
 
 namespace Tenant.Operations.PricingLog.Commands
 {
-    public class PricingLogUpdate : SaanaaDbUpdateAsync<PricingLogUpdateInDto>
+    public class PricingLogUpdate : DbUpdateAsync<PricingLogUpdateInDto>
     {
         public PricingLogUpdate() : base("[Tenant].[PricingLog]",
             @"[PricingItemId]=@PricingItemId,

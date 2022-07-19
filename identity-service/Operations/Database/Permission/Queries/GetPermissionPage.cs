@@ -1,10 +1,10 @@
 using Identity.Operations.Database.Permission.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.Permission.Queries
 {
-    public class GetPermissionPage : SaanaaDbQueryPage<PermissionDto>
+    public class GetPermissionPage : DbQueryPage<PermissionDto>
     {
         public GetPermissionPage() : base("[Identity].[Permission]")
         {
@@ -14,7 +14,7 @@ namespace Identity.Operations.Database.Permission.Queries
 
         protected override ISqlDialect GetSelectSql(bool isForCount = false)
         {
-            Parameters.Add("TypeLookup", SaanaaServices.GetModelProperty("Identity","Permission","typeLookup")!.Id);
+            Parameters.Add("TypeLookup", SqServices.GetModelProperty("Identity","Permission","typeLookup")!.Id);
             return SqlFactory!.Create().Select("[Identity].[Permission] Permission", isForCount ? "COUNT(*)" : @"
 						Permission.*, 
 						TypeLookup.Title AS TypeLookupTitle")

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Flow.Operations.WorkflowStepException;
 using Flow.Operations.WorkflowStepException.Commands;
 using Flow.Operations.WorkflowStepException.Dtos;
@@ -8,8 +10,6 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Flow.Controllers
 {
@@ -27,29 +27,29 @@ namespace Flow.Controllers
 
         [NeedPermission("Flow.WorkflowStepException.Read")]
         [HttpGet]
-        public Task<QueryPage<WorkflowStepExceptionDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) => 
+        public Task<QueryPage<WorkflowStepExceptionDto>?> Get([FromQuery] DbQueryPageInDto m) => 
             _operationFactory.New<GetWorkflowStepExceptionPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) => 
+        public Task<IEnumerable<DropDownDto<object>>> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) => 
             _operationFactory.New<GetWorkflowStepExceptionAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Flow.WorkflowStepException.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<WorkflowStepException>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) => 
+        public Task<IEnumerable<WorkflowStepException>?> GetByIds([FromQuery] DbQueryByIdsInDto m) => 
             _operationFactory.New<GetWorkflowStepExceptionByIds>().ExecuteAsync(m);
 
         [NeedPermission("Flow.WorkflowStepException.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetWorkflowStepExceptionExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "WorkflowStepException.xlsx");
         
 
         [NeedPermission("Flow.WorkflowStepException.Read")]
         [HttpGet("{id}")]
-        public Task<WorkflowStepException?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<WorkflowStepException?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetWorkflowStepException>().ExecuteAsync(m);
 
         [NeedPermission("Flow.WorkflowStepException.Create")]
@@ -64,7 +64,7 @@ namespace Flow.Controllers
 
         [NeedPermission("Flow.WorkflowStepException.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<WorkflowStepExceptionRemove>().ExecuteAsync(m);
     }
 }

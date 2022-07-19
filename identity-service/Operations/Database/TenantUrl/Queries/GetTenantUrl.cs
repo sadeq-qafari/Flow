@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.TenantUrl.Queries
 {
-    public class GetTenantUrl : SaanaaDbSelectAsync<TenantUrl?>
+    public class GetTenantUrl : DbSelectAsync<TenantUrl?>
     {
         public GetTenantUrl() : base("[Identity].[TenantUrl]")
         {

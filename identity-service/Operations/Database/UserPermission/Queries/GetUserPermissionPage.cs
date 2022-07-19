@@ -1,10 +1,10 @@
 using Identity.Operations.Database.UserPermission.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.UserPermission.Queries
 {
-    public class GetUserPermissionPage : SaanaaDbQueryPage<UserPermissionDto>
+    public class GetUserPermissionPage : DbQueryPage<UserPermissionDto>
     {
         public GetUserPermissionPage() : base("[Identity].[UserPermission]")
         {

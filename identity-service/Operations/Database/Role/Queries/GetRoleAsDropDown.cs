@@ -1,10 +1,10 @@
 using Identity.Operations.Database.Role.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.Role.Queries
 {
-    public class GetRoleAsDropDown : SaanaaDbQueryAsDropDown<RoleDto>
+    public class GetRoleAsDropDown : DbQueryAsDropDown<RoleDto>
     {
         public GetRoleAsDropDown() : base("[Identity].[Role]","Title","Id","ServiceTitle")
         {

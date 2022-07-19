@@ -1,10 +1,10 @@
+using Core.Meteor;
 using Flow.Operations.FormAction.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.FormAction.Queries
 {
-    public class GetFormActionPage : SaanaaDbQueryPage<FormActionDto>
+    public class GetFormActionPage : DbQueryPage<FormActionDto>
     {
         public GetFormActionPage() : base("[Flow].[FormAction]")
         {
@@ -14,7 +14,7 @@ namespace Flow.Operations.FormAction.Queries
 
         protected override ISqlDialect GetSelectSql(bool isForCount = false)
         {
-            Parameters.Add("TypeLookup", SaanaaServices.GetModelProperty("Flow","FormAction","typeLookup")!.Id);
+            Parameters.Add("TypeLookup", SqServices.GetModelProperty("Flow","FormAction","typeLookup")!.Id);
             return SqlFactory!.Create().Select("[Flow].[FormAction] FormAction", isForCount ? "COUNT(*)" : @"
 						FormAction.*, 
 						Form.Title AS FormTitle,

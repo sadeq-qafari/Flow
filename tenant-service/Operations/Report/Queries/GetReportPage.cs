@@ -1,10 +1,10 @@
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Report.Dtos;
 
 namespace Tenant.Operations.Report.Queries
 {
-    public class GetReportPage : SaanaaDbQueryPage<ReportDto>
+    public class GetReportPage : DbQueryPage<ReportDto>
     {
         public GetReportPage() : base("[Tenant].[Report]")
         {
@@ -14,7 +14,7 @@ namespace Tenant.Operations.Report.Queries
 
         protected override ISqlDialect GetSelectSql(bool isForCount = false)
         {
-            Parameters.Add("TypeLookup", SaanaaServices.GetModelProperty("Tenant","Report","typeLookup")!.Id);
+            Parameters.Add("TypeLookup", SqServices.GetModelProperty("Tenant","Report","typeLookup")!.Id);
             return SqlFactory!.Create().Select("[Tenant].[Report] Report", isForCount ? "COUNT(*)" : @"
 						Report.*,
 						TypeLookup.Title AS TypeLookupTitle")

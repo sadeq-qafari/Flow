@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.3.9</Version>
+    <Company>SqFlow</Company>
+    <Copyright>SQ 2022</Copyright>
+    <Authors>Sadegh Ghafari</Authors>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Nullable>enable</Nullable>
+    <AssemblyName>SqFlow.Core.Common</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Componentes\**" />
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Componentes\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Componentes\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="StringExtensions" Version="1.1.1" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

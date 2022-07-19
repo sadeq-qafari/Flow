@@ -1,9 +1,9 @@
 using Identity.Operations.Database.RolePermission.Dtos;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.Role.Dtos
 {
-    public class RoleUpdateInDto : SaanaaDbUpdateInDto
+    public class RoleUpdateInDto : DbUpdateInDto
     {
         public string Title { get; set; }
         public string Description { get; set; }

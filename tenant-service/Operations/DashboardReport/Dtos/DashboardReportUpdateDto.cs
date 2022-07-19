@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Tenant.Operations.DashboardReport.Dtos
 {
-    public class DashboardReportUpdateInDto : SaanaaDbUpdateInDto
+    public class DashboardReportUpdateInDto : DbUpdateInDto
     {
         public int ReportId { get; set; }
         public int Index { get; set; }

@@ -1,10 +1,10 @@
 using Identity.Operations.Database.TenantRegisterRequest.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.TenantRegisterRequest.Queries
 {
-    public class GetTenantRegisterRequestPage : SaanaaDbQueryPage<TenantRegisterRequestDto>
+    public class GetTenantRegisterRequestPage : DbQueryPage<TenantRegisterRequestDto>
     {
         public GetTenantRegisterRequestPage() : base("[Identity].[TenantRegisterRequest]")
         {
@@ -14,12 +14,12 @@ namespace Identity.Operations.Database.TenantRegisterRequest.Queries
 
         protected override ISqlDialect GetSelectSql(bool isForCount = false)
         {
-            Parameters.Add("StatusLookup", SaanaaServices.GetModelProperty("Identity","TenantRegisterRequest","statusLookup")!.Id);
-            Parameters.Add("OrganizationActivityType", SaanaaServices.GetModelProperty("Identity","TenantRegisterRequest","organizationActivityType")!.Id);
-			Parameters.Add("OrganizationTypeLookup", SaanaaServices.GetModelProperty("Identity","TenantRegisterRequest","organizationTypeLookup")!.Id);
-			Parameters.Add("OrganizationCustomTypeLookup", SaanaaServices.GetModelProperty("Identity","TenantRegisterRequest","organizationCustomTypeLookup")!.Id);
-			Parameters.Add("PersonRelationTypeLookup", SaanaaServices.GetModelProperty("Identity","TenantRegisterRequest","personRelationTypeLookup")!.Id);
-			Parameters.Add("PersonCustomRelationTypeLookup", SaanaaServices.GetModelProperty("Identity","TenantRegisterRequest","personCustomRelationTypeLookup")!.Id);
+            Parameters.Add("StatusLookup", SqServices.GetModelProperty("Identity","TenantRegisterRequest","statusLookup")!.Id);
+            Parameters.Add("OrganizationActivityType", SqServices.GetModelProperty("Identity","TenantRegisterRequest","organizationActivityType")!.Id);
+			Parameters.Add("OrganizationTypeLookup", SqServices.GetModelProperty("Identity","TenantRegisterRequest","organizationTypeLookup")!.Id);
+			Parameters.Add("OrganizationCustomTypeLookup", SqServices.GetModelProperty("Identity","TenantRegisterRequest","organizationCustomTypeLookup")!.Id);
+			Parameters.Add("PersonRelationTypeLookup", SqServices.GetModelProperty("Identity","TenantRegisterRequest","personRelationTypeLookup")!.Id);
+			Parameters.Add("PersonCustomRelationTypeLookup", SqServices.GetModelProperty("Identity","TenantRegisterRequest","personCustomRelationTypeLookup")!.Id);
             return SqlFactory!.Create().Select("[Identity].[TenantRegisterRequest] TenantRegisterRequest", isForCount ? "COUNT(*)" : @"
 						TenantRegisterRequest.*, 
 						StatusLookup.Title AS StatusLookupTitle,

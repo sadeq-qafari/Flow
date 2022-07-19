@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Identity.Operations.Database.RolePermission.Dtos;
 using Meteor.Operation.Db;
 using Meteor.Utils;
-using Saanaa.Core.AspNetCore.Redis;
+using Core.AspNetCore.Redis;
 
 namespace Identity.Operations.Database.RolePermission.Commands
 {

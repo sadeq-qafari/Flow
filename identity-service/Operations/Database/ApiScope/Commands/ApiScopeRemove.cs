@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.ApiScope.Commands
 {
-    public class ApiScopeRemove : SaanaaDbDeleteAsync
+    public class ApiScopeRemove : DbDeleteAsync
     {
         public ApiScopeRemove() : base("[Identity].[ApiScope]")
         {

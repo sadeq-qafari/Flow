@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.AspNetCore.Security;
+using Core.Meteor;
+using Core.Meteor.Dto;
 using Core.Operations.Application;
 using Core.Operations.Application.Commands;
 using Core.Operations.Application.Dtos;
@@ -8,9 +11,6 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Core.Controllers
 {
@@ -28,29 +28,29 @@ namespace Core.Controllers
 
         [NeedPermission("Core.Application.Read")]
         [HttpGet]
-        public Task<QueryPage<ApplicationDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<ApplicationDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetApplicationPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetApplicationAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Core.Application.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<Application>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<Application>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetApplicationByIds>().ExecuteAsync(m);
 
         [NeedPermission("Core.Application.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetApplicationExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Application.xlsx");
 
 
         [NeedPermission("Core.Application.Read")]
         [HttpGet("{id}")]
-        public Task<Application?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<Application?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetApplication>().ExecuteAsync(m);
 
         [NeedPermission("Core.Application.Create")]
@@ -65,7 +65,7 @@ namespace Core.Controllers
 
         [NeedPermission("Core.Application.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<ApplicationRemove>().ExecuteAsync(m);
 
         // ============== Custom Actions:
@@ -73,7 +73,7 @@ namespace Core.Controllers
         [HttpGet("terms")]
         public Task<string?> GetApplicationTerms()
         {
-            var applicationId = SaanaaTenants.GetTenant(HttpContext)!.ApplicationId;
+            var applicationId = SqTenants.GetTenant(HttpContext)!.ApplicationId;
             return _operationFactory.New<GetApplicationTerms>().ExecuteAsync(applicationId);
         }
     }

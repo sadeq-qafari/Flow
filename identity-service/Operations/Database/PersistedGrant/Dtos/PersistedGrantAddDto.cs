@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.PersistedGrant.Dtos
 {
-    public class PersistedGrantAddInDto : SaanaaDbInsertInDto
+    public class PersistedGrantAddInDto : DbInsertInDto
     {
 
 

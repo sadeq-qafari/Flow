@@ -2,11 +2,11 @@ using System.Threading.Tasks;
 using Identity.Operations.Database.RolePermission.Dtos;
 using Meteor.Operation.Db;
 using Meteor.Utils;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.RolePermission.Queries
 {
-    public class GetRolePermissions : DbOperationAsync<SaanaaDbSelectInDto, PermissionCheckList>
+    public class GetRolePermissions : DbOperationAsync<DbSelectInDto, PermissionCheckList>
     {
         protected override async Task ExecutionAsync()
         {

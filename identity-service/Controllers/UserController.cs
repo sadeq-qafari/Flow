@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.AspNetCore.Operations.Db.Identity.Dto;
 using Identity.Operations.Database.User;
 using Identity.Operations.Database.User.Commands;
 using Identity.Operations.Database.User.Dtos;
@@ -12,9 +13,8 @@ using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
-using Saanaa.Core.AspNetCore.Operations.Db.UserPermissions.Dto;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using GetUserPermissionsInDto = Identity.Operations.Database.User.Dtos.GetUserPermissionsInDto;
 
 namespace Identity.Controllers
@@ -33,22 +33,22 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.User.Read")]
         [HttpGet]
-        public Task<QueryPage<UserDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<UserDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetUserPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetUserAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Identity.User.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<User>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<User>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetUserByIds>().ExecuteAsync(m);
 
         [NeedPermission("Identity.User.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetUserExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "User.xlsx");
 
@@ -64,7 +64,7 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.User.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<UserRemove>().ExecuteAsync(m);
 
         // ============= Custom Actions :

@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.OrganizationDetail.Queries
 {
-    public class GetOrganizationDetailByIds : SaanaaDbQueryByIds<OrganizationDetail>
+    public class GetOrganizationDetailByIds : DbQueryByIds<OrganizationDetail>
     {
         public GetOrganizationDetailByIds() : base("[Tenant].[OrganizationDetail]")
         {

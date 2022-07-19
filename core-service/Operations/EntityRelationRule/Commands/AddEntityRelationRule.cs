@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
+using Core.Meteor;
 using Core.Operations.EntityRelationRule.Dto;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.EntityRelationRule.Commands
 {
-    public class AddEntityRelationRule : SaanaaDbInsertAsync<AddEntityRelationRuleInDto>
+    public class AddEntityRelationRule : DbInsertAsync<AddEntityRelationRuleInDto>
     {
         protected override Task PrepareExecutionAsync()
         {

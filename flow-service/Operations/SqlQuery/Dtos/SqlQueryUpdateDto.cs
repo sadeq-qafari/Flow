@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Flow.Operations.SqlQuery.Dtos
 {
-    public class SqlQueryUpdateInDto : SaanaaDbUpdateInDto
+    public class SqlQueryUpdateInDto : DbUpdateInDto
     {
         public string Title { get; set; }
         public string Query { get; set; }

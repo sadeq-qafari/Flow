@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Tenant.Operations.Department.Dto
 {
-    public class UpdateDepartmentInDto : SaanaaDbUpdateInDto
+    public class UpdateDepartmentInDto : DbUpdateInDto
     {
         public int ParentId { get; set; }
         public string? ParentTitle { get; set; }

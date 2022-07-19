@@ -5,9 +5,9 @@ using Identity.Operations.Database.Tenant.Queries;
 using Identity.Operations.Logic.Dto;
 using Meteor.Operation;
 using Meteor.Utils;
-using Saanaa.Core.AspNetCore.Operations.Logic.SendMessage;
-using Saanaa.Core.AspNetCore.Operations.Logic.SendMessage.Dto;
-using Saanaa.Core.AspNetCore.Redis;
+using Core.AspNetCore.Operations.Logic.SendMessage;
+using Core.AspNetCore.Operations.Logic.SendMessage.Dto;
+using Core.AspNetCore.Redis;
 
 namespace Identity.Operations.Logic.SendVerificationCode
 {

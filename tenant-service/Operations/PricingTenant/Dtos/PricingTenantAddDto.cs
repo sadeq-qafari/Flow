@@ -1,9 +1,9 @@
 using System;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Tenant.Operations.PricingTenant.Dtos
 {
-    public class PricingTenantAddInDto : SaanaaDbInsertInDto
+    public class PricingTenantAddInDto : DbInsertInDto
     {
         public int PricingId { get; set; }
         public string? Title { get; set; }

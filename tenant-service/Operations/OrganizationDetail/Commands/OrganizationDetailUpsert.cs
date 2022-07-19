@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using Dapper;
 using Meteor.Operation.Db;
 using Meteor.Utils;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Extensions;
+using Core.Meteor;
+using Core.Meteor.Extensions;
 using Tenant.Operations.OrganizationDetail.Dtos;
 
 namespace Tenant.Operations.OrganizationDetail.Commands

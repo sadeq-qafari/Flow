@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.ReportDbServer.Commands
 {
-    public class ReportDbServerRemove : SaanaaDbDeleteAsync
+    public class ReportDbServerRemove : DbDeleteAsync
     {
         public ReportDbServerRemove() : base("[Core].[ReportDbServer]")
         {

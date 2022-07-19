@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.Lookup.Queries
 {
-    public class GetLookup : SaanaaDbSelectAsync<Lookup?>
+    public class GetLookup : DbSelectAsync<Lookup?>
     {
         public GetLookup() : base("[Flow].[Lookup]")
         {

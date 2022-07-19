@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.OrganizationDetail.Commands
 {
-    public class OrganizationDetailRemove : SaanaaDbDeleteAsync
+    public class OrganizationDetailRemove : DbDeleteAsync
     {
         public OrganizationDetailRemove() : base("[Tenant].[OrganizationDetail]")
         {

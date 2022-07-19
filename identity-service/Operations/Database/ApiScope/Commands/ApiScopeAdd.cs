@@ -1,9 +1,9 @@
 using Identity.Operations.Database.ApiScope.Dtos;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.ApiScope.Commands
 {
-    public class ApiScopeAdd : SaanaaDbInsertAsync<ApiScopeAddInDto>
+    public class ApiScopeAdd : DbInsertAsync<ApiScopeAddInDto>
     {
         public ApiScopeAdd() : base("[Identity].[ApiScope]",
             @"[Name],

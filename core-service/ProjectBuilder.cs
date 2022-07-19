@@ -4,22 +4,22 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Meteor;
+using Core.Meteor.Models;
 using Humanizer;
 using Meteor.Utils;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Models;
 
 namespace Core
 {
     public class ProjectBuilder
     {
-        private readonly Saanaa.Core.Meteor.Models.Service _service;
+        private readonly Service _service;
         private readonly string _outputDirectory;
         private readonly string _serviceName;
 
         public ProjectBuilder(string serviceName, string outputDirectory)
         {
-            _service = SaanaaServices.GetService(serviceName) ?? throw Errors.NotFound($"service_name={serviceName}");
+            _service = SqServices.GetService(serviceName) ?? throw Errors.NotFound($"service_name={serviceName}");
             _serviceName = _service.Name.Pascalize();
             _outputDirectory = outputDirectory;
         }
@@ -139,8 +139,8 @@ using {_serviceName}.Operations.{modelName};
 using {_serviceName}.Operations.{modelName}.Commands;
 using {_serviceName}.Operations.{modelName}.Queries;
 using {_serviceName}.Operations.{modelName}.Dto;
-using Saanaa.Core.Meteor.Dto;
-using Saanaa.Core.AspNetCore.Security;
+using .Core.Meteor.Dto;
+using .Core.AspNetCore.Security;
 
 namespace {_serviceName}.Controllers
 {{
@@ -158,29 +158,29 @@ namespace {_serviceName}.Controllers
 
         [NeedPermission(""{_serviceName.Pascalize()}.{modelName.Pascalize()}.Read"")]
         [HttpGet]
-        public Task<QueryPage<{modelName}Dto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) => 
+        public Task<QueryPage<{modelName}Dto>?> Get([FromQuery] DbQueryPageInDto m) => 
             _operationFactory.New<Get{modelName}Page>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet(""dropdown"")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) => 
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) => 
             _operationFactory.New<Get{modelName}AsDropDown>().ExecuteAsync(m);
 
         [NeedPermission(""{_serviceName.Pascalize()}.{modelName.Pascalize()}.Read"")]
         [HttpGet(""ids"")]
-        public Task<IEnumerable<{modelName}>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) => 
+        public Task<IEnumerable<{modelName}>?> GetByIds([FromQuery] DbQueryByIdsInDto m) => 
             _operationFactory.New<Get{modelName}ByIds>().ExecuteAsync(m);
 
         [NeedPermission(""{_serviceName.Pascalize()}.{modelName.Pascalize()}.Read"")]
         [HttpGet(""excel"")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<Get{modelName}Excel>().ExecuteAsync(m),
                 ""application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"", ""{modelName.Pascalize()}.xlsx"");
         
 
         [NeedPermission(""{_serviceName.Pascalize()}.{modelName.Pascalize()}.Read"")]
         [HttpGet(""{{id}}"")]
-        public Task<{modelName}?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<{modelName}?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<Get{modelName}>().ExecuteAsync(m);
 
         [NeedPermission(""{_serviceName.Pascalize()}.{modelName.Pascalize()}.Create"")]
@@ -195,7 +195,7 @@ namespace {_serviceName}.Controllers
 
         [NeedPermission(""{_serviceName.Pascalize()}.{modelName.Pascalize()}.Delete"")]
         [HttpDelete(""{{id}}"")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<{modelName}Remove>().ExecuteAsync(m);
     }}
 }}");
@@ -240,11 +240,11 @@ namespace {_serviceName}.Controllers
 
         private void CreateGetAsDropDownQuery(Model model, string dir, string modelName)
         {
-            File.WriteAllText(Path.Combine(dir, $"Get{modelName}AsDropDown.cs"), $@"using Saanaa.Core.Meteor;
+            File.WriteAllText(Path.Combine(dir, $"Get{modelName}AsDropDown.cs"), $@"using .Core.Meteor;
 
 namespace {_serviceName}.Operations.{modelName}.Queries
 {{
-    public class Get{modelName}AsDropDown : SaanaaDbQueryAsDropDown<{modelName}>
+    public class Get{modelName}AsDropDown : DbQueryAsDropDown<{modelName}>
     {{
         public Get{modelName}AsDropDown() : base(""[{_serviceName}].[{modelName}]"")
         {{
@@ -257,14 +257,14 @@ namespace {_serviceName}.Operations.{modelName}.Queries
         private void CreateGetExcelQuery(Model model, string dir, string modelName)
         {
             var props = model.Properties.ToList();
-            File.WriteAllText(Path.Combine(dir, $"Get{modelName}Excel.cs"), $@"using Saanaa.Core.Meteor;
+            File.WriteAllText(Path.Combine(dir, $"Get{modelName}Excel.cs"), $@"using .Core.Meteor;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Saanaa.{_serviceName}.Operations.{modelName}.Dtos;
+using .{_serviceName}.Operations.{modelName}.Dtos;
 
-namespace Saanaa.{_serviceName}.Operations.{modelName}.Queries
+namespace .{_serviceName}.Operations.{modelName}.Queries
 {{
-    public class Get{modelName}Excel : SaanaaDbQueryExcel<{modelName}Dto>
+    public class Get{modelName}Excel : DbQueryExcel<{modelName}Dto>
     {{
         public Get{modelName}Excel() : base(""[{_serviceName}].[{modelName}]"")
         {{
@@ -279,11 +279,11 @@ namespace Saanaa.{_serviceName}.Operations.{modelName}.Queries
         private void CreateGetByIdsQuery(Model model, string dir, string modelName)
         {
             var props = model.Properties.ToList();
-            File.WriteAllText(Path.Combine(dir, $"Get{modelName}ByIds.cs"), $@"using Saanaa.Core.Meteor;
+            File.WriteAllText(Path.Combine(dir, $"Get{modelName}ByIds.cs"), $@"using .Core.Meteor;
 
 namespace {_serviceName}.Operations.{modelName}.Queries
 {{
-    public class Get{modelName}ByIds : SaanaaDbQueryByIds<{modelName}>
+    public class Get{modelName}ByIds : DbQueryByIds<{modelName}>
     {{
         public Get{modelName}ByIds() : base(""[{_serviceName}].[{modelName}]"")
         {{
@@ -295,13 +295,13 @@ namespace {_serviceName}.Operations.{modelName}.Queries
         private async Task CreateGetQueryPage(Model model, string dir, string modelName)
         {
             var props = model.Properties.ToList();
-            await File.WriteAllTextAsync(Path.Combine(dir, $"Get{modelName}Page.cs"), $@"using Saanaa.Core.Meteor;
+            await File.WriteAllTextAsync(Path.Combine(dir, $"Get{modelName}Page.cs"), $@"using .Core.Meteor;
 using Meteor.Database.SqlDialect;
 using {_serviceName}.Operations.{modelName}.Dto;
 
 namespace {_serviceName}.Operations.{modelName}.Queries
 {{
-    public class Get{modelName}Page : SaanaaDbQueryPage<{modelName}Dto>
+    public class Get{modelName}Page : DbQueryPage<{modelName}Dto>
     {{
         public Get{modelName}Page() : base(""[{_serviceName}].[{modelName}]"")
         {{
@@ -319,7 +319,7 @@ namespace {_serviceName}.Operations.{modelName}.Queries
                 return null;
 
             var relatedModelById = new Dictionary<int, Model> {{model.Id, model}};
-            var relatedServiceById = new Dictionary<int, Saanaa.Core.Meteor.Models.Service> {{_service.Id, _service}};
+            var relatedServiceById = new Dictionary<int, Service> {{_service.Id, _service}};
 
             string GetTableName(int modelId) => relatedModelById[modelId].Name.Pascalize();
 
@@ -340,17 +340,17 @@ namespace {_serviceName}.Operations.{modelName}.Queries
 
             foreach (var relatedModelProperty in relatedModelProperties)
             {
-                var modelPropertyLookupModelId = SaanaaServices.GetModel("Core", "ModelPropertyLookup")!.Id;
+                var modelPropertyLookupModelId = SqServices.GetModel("Core", "ModelPropertyLookup")!.Id;
                 relatedModelProperty.RelatedModelId ??= modelPropertyLookupModelId;
                 if (relatedModelById.ContainsKey(relatedModelProperty.RelatedModelId!.Value))
                     continue;
 
                 var s = relatedModelProperty.Element.Type == "lookup"
-                    ? SaanaaServices.GetService("Core")
-                    : SaanaaServices.Services.FirstOrDefault(x =>
+                    ? SqServices.GetService("Core")
+                    : SqServices.Services.FirstOrDefault(x =>
                         x.Models.Any(y => y.Id == relatedModelProperty.RelatedModelId!.Value));
                 var m = relatedModelProperty.Element.Type == "lookup"
-                    ? SaanaaServices.GetModel("Core", "ModelPropertyLookup")
+                    ? SqServices.GetModel("Core", "ModelPropertyLookup")
                     : s?.Models.FirstOrDefault(x => x.Id == relatedModelProperty.RelatedModelId!.Value);
                 if (m == null)
                     continue;
@@ -365,7 +365,7 @@ namespace {_serviceName}.Operations.{modelName}.Queries
 
         protected override ISqlDialect GetSelectSql(bool isForCount = false)
         {{
-            {string.Join("\n\t\t\t", relatedModelProperties.Where(x => x.Element?.Type == "lookup").Select((x, i) => $"Parameters.Add(\"{GetPropertyAliasName(x)}\", SaanaaServices.GetModelProperty(\"{_serviceName}\",\"{modelName}\",\"{x.Name}\")!.Id);"))}
+            {string.Join("\n\t\t\t", relatedModelProperties.Where(x => x.Element?.Type == "lookup").Select((x, i) => $"Parameters.Add(\"{GetPropertyAliasName(x)}\", SqSqServices.GetModelProperty(\"{_serviceName}\",\"{modelName}\",\"{x.Name}\")!.Id);"))}
             return SqlFactory!.Create().Select(""{GetFullTableName(model.Id)} {modelName}"", isForCount ? ""COUNT(*)"" : @""{"\n\t\t\t\t\t\t" + modelName}.*, {"\n\t\t\t\t\t\t" + string.Join(",\n\t\t\t\t\t\t", relatedModelProperties.Select((x, i) => $"{GetPropertyAliasName(x)}.Title AS {x.Name.Replace("Id", "").Pascalize()}Title"))}"")
 {string.Join(Environment.NewLine, relatedModelProperties.Select((x, i) => $"                .LeftJoin(\"{GetFullTableName(x.RelatedModelId!.Value)} {GetPropertyAliasName(x)}\",  \"{modelName}.{x.Name.Pascalize()} = {GetPropertyAliasName(x)}.{(x.Element.Type == "lookup" ? $"Value AND {GetPropertyAliasName(x)}.ModelPropertyId=@{GetPropertyAliasName(x)}" : "Id")}  AND  {GetPropertyAliasName(x)}.IsDeleted=0\")"))};
         }}
@@ -378,11 +378,11 @@ namespace {_serviceName}.Operations.{modelName}.Queries
         private void CreateGetQuery(Model model, string dir, string modelName)
         {
             var props = model.Properties.ToList();
-            File.WriteAllText(Path.Combine(dir, $"Get{modelName}.cs"), $@"using Saanaa.Core.Meteor;
+            File.WriteAllText(Path.Combine(dir, $"Get{modelName}.cs"), $@"using .Core.Meteor;
 
 namespace {_serviceName}.Operations.{modelName}.Queries
 {{
-    public class Get{modelName} : SaanaaDbSelectAsync<{modelName}?>
+    public class Get{modelName} : DbSelectAsync<{modelName}?>
     {{
         public Get{modelName}() : base(""[{_serviceName}].[{modelName}]"")
         {{
@@ -393,11 +393,11 @@ namespace {_serviceName}.Operations.{modelName}.Queries
 
         private void CreateDeleteCommand(Model model, string dir, string modelName)
         {
-            File.WriteAllText(Path.Combine(dir, $"{modelName}Remove.cs"), $@"using Saanaa.Core.Meteor;
+            File.WriteAllText(Path.Combine(dir, $"{modelName}Remove.cs"), $@"using .Core.Meteor;
 
 namespace {_serviceName}.Operations.{modelName}.Commands
 {{
-    public class {modelName}Remove : SaanaaDbDeleteAsync
+    public class {modelName}Remove : DbDeleteAsync
     {{
         public {modelName}Remove() : base(""[{_serviceName}].[{modelName}]"")
         {{
@@ -413,12 +413,12 @@ namespace {_serviceName}.Operations.{modelName}.Commands
                             && x.Name.ToLowerInvariant() != "isactive"
                             && x.Name.ToLowerInvariant() != "id")
                 .ToList();
-            File.WriteAllText(Path.Combine(dir, $"{modelName}Update.cs"), $@"using Saanaa.Core.Meteor;
+            File.WriteAllText(Path.Combine(dir, $"{modelName}Update.cs"), $@"using .Core.Meteor;
 using {_serviceName}.Operations.{modelName}.Dto;
 
 namespace {_serviceName}.Operations.{modelName}.Commands
 {{
-    public class {modelName}Update : SaanaaDbUpdateAsync<{modelName}UpdateInDto>
+    public class {modelName}Update : DbUpdateAsync<{modelName}UpdateInDto>
     {{
         public {modelName}Update() : base(""[{_serviceName}].[{modelName}]"",
             @""{string.Join(",\n\t\t\t\t\t", props.Select(x => $"[{x.Name.Pascalize()}]=@{x.Name.Pascalize()}"))}"")
@@ -436,12 +436,12 @@ namespace {_serviceName}.Operations.{modelName}.Commands
                             && x.Name.ToLowerInvariant() != "id")
                 .ToList();
             File.WriteAllText(Path.Combine(dir, $"{modelName}Add.cs"), $@"using System;
-using Saanaa.Core.Meteor;
+using .Core.Meteor;
 using {_serviceName}.Operations.{modelName}.Dto;
 
 namespace {_serviceName}.Operations.{modelName}.Commands
 {{
-    public class {modelName}Add : SaanaaDbInsertAsync<{modelName}AddInDto>
+    public class {modelName}Add : DbInsertAsync<{modelName}AddInDto>
     {{
         public {modelName}Add() : base(""[{_serviceName}].[{modelName}]"",
             @""{string.Join(",\n\t\t\t\t\t\t", props.Select(x => $"[{x.Name.Pascalize()}]"))}"",
@@ -458,8 +458,8 @@ namespace {_serviceName}.Operations.{modelName}.Commands
         {
             File.WriteAllText(modelFileName, $@"using System;
 using NodaTime;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
+using .Core.Meteor;
+using .Core.Meteor.Dto;
 
 namespace {_serviceName}.Operations.{modelName}
 {{
@@ -490,11 +490,11 @@ namespace {_serviceName}.Operations.{modelName}
         private async Task CreateAddDtoFile(Model model, string dtoFileName, string modelName)
         {
             await File.WriteAllTextAsync(dtoFileName, $@"using NodaTime;
-using Saanaa.Core.Meteor.Dto;
+using .Core.Meteor.Dto;
 
 namespace {_serviceName}.Operations.{modelName}.Dto
 {{
-    public class {modelName}AddInDto : SaanaaDbInsertInDto
+    public class {modelName}AddInDto : DbInsertInDto
     {{
 {string.Join(Environment.NewLine, model.Properties.Where(x => x.Name.ToLowerInvariant() != "id" && x.Name.ToLowerInvariant() != "isactive" && x.Insertable).Select(x => "        " + CreatePropertyDefinition(x)))}
 {(model.Properties.All(x => x.Name != "title") && (model.Properties.Any(x => x.Name == "Name")) ? Environment.NewLine + "public string Title => Name;" : "")}
@@ -506,11 +506,11 @@ namespace {_serviceName}.Operations.{modelName}.Dto
         private async Task CreateUpdateDtoFile(Model model, string dtoFileName, string modelName)
         {
             await File.WriteAllTextAsync(dtoFileName, $@"using NodaTime;
-using Saanaa.Core.Meteor.Dto;
+using .Core.Meteor.Dto;
 
 namespace {_serviceName}.Operations.{modelName}.Dto
 {{
-    public class {modelName}UpdateInDto : SaanaaDbUpdateInDto
+    public class {modelName}UpdateInDto : DbUpdateInDto
     {{
 {string.Join(Environment.NewLine, model.Properties.Where(x => x.Name.ToLowerInvariant() != "id" && x.Name.ToLowerInvariant() != "isactive" && x.Updatable).Select(x => "        " + CreatePropertyDefinition(x)))}
 {(model.Properties.All(x => x.Name != "title") && (model.Properties.Any(x => x.Name == "Name")) ? Environment.NewLine + "public string Title => Name;" : "")}

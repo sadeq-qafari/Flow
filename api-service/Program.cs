@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Api;
-using Saanaa.Core.AspNetCore;
-using Saanaa.Core.AspNetCore.Extensions;
+using Core.AspNetCore;
+using Core.AspNetCore.Extensions;
 using Serilog;
 using Serilog.Events;
 using Serilog.Exceptions;
@@ -15,7 +15,7 @@ namespace ApiGateway
     {
         public static void Main(string[] args)
         {
-            StartupCoreExtensions.LoadSaanaaServiceConfigs(
+            StartupCoreExtensions.LoadSqServiceConfigs(
                 EnvVars.Get("CONNECTION_STRING")!,
                 EnvVars.Get("SERVICE_NAME")!);
 

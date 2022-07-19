@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.ApiResource.Commands
 {
-    public class ApiResourceRemove : SaanaaDbDeleteAsync
+    public class ApiResourceRemove : DbDeleteAsync
     {
         public ApiResourceRemove() : base("[Identity].[ApiResource]")
         {

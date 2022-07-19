@@ -1,9 +1,9 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Tag.Dto;
 
 namespace Tenant.Operations.Tag.Commands
 {
-    public class AddTag : SaanaaDbInsertAsync<AddTagInDto>
+    public class AddTag : DbInsertAsync<AddTagInDto>
     {
         public AddTag() : base("[Tenant].[Tag]",
             @"[Title]",

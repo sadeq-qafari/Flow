@@ -1,9 +1,9 @@
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.Permission.Queries
 {
-    public class GetPermissionAsDropDown : SaanaaDbQueryAsDropDown<Permission>
+    public class GetPermissionAsDropDown : DbQueryAsDropDown<Permission>
     {
         public GetPermissionAsDropDown() : base("[Identity].[Permission]","Name")
         {

@@ -1,10 +1,10 @@
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.EntityTag.Dtos;
 
 namespace Tenant.Operations.EntityTag.Queries
 {
-    public class GetEntityTagPage : SaanaaDbQueryPage<EntityTagDto>
+    public class GetEntityTagPage : DbQueryPage<EntityTagDto>
     {
         public GetEntityTagPage() : base("[Tenant].[EntityTag]")
         {

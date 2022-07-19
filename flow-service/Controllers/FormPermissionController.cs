@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Flow.Operations.FormPermission;
 using Flow.Operations.FormPermission.Commands;
 using Flow.Operations.FormPermission.Dtos;
@@ -8,8 +10,6 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Flow.Controllers
 {
@@ -27,29 +27,29 @@ namespace Flow.Controllers
 
         [NeedPermission("Flow.FormPermission.Read")]
         [HttpGet]
-        public Task<QueryPage<FormPermissionDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<FormPermissionDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetFormPermissionPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetFormPermissionAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Flow.FormPermission.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<FormPermission>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<FormPermission>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetFormPermissionByIds>().ExecuteAsync(m);
 
         [NeedPermission("Flow.FormPermission.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetFormPermissionExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "FormPermission.xlsx");
 
 
         [NeedPermission("Flow.FormPermission.Read")]
         [HttpGet("{id}")]
-        public Task<FormPermission?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<FormPermission?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetFormPermission>().ExecuteAsync(m);
 
         [NeedPermission("Flow.FormPermission.Create")]
@@ -64,7 +64,7 @@ namespace Flow.Controllers
 
         [NeedPermission("Flow.FormPermission.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<FormPermissionRemove>().ExecuteAsync(m);
     }
 }

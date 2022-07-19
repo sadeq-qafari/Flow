@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.DashboardReport.Queries
 {
-    public class GetDashboardReport : SaanaaDbSelectAsync<DashboardReport?>
+    public class GetDashboardReport : DbSelectAsync<DashboardReport?>
     {
         public GetDashboardReport() : base("[Tenant].[DashboardReport]")
         {

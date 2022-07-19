@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.AspNetCore;
+using Core.AspNetCore.Security;
 using Core.Dto;
+using Core.Meteor;
+using Core.Meteor.Dto;
 using Core.Operations.Service.Commands;
 using Core.Operations.Service.Dto;
 using Core.Operations.Service.Queries;
@@ -10,10 +14,6 @@ using Meteor.Database;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Core.Controllers
 {
@@ -32,20 +32,20 @@ namespace Core.Controllers
         }
 
         [HttpGet("reload")]
-        public async Task<SaanaaServicesDto> ReloadServices(string? names)
+        public async Task<ServicesDto> ReloadServices(string? names)
         {
-            await SaanaaServices.Reload(_lazyDbConnection, ServiceConfig.Get("api_gateway_url"));
-            return GetSaanaaServicesDto(names);
+            await SqServices.Reload(_lazyDbConnection, ServiceConfig.Get("api_gateway_url"));
+            return GetServicesDto(names);
         }
 
         [HttpGet("config")]
-        public async Task<SaanaaServicesDto?> GetServices(string names, long? version)
+        public async Task<ServicesDto?> GetServices(string names, long? version)
         {
             var requestedVersion = version.GetValueOrDefault(0);
-            if (requestedVersion <= 0 || requestedVersion != SaanaaServices.LatestVersion)
-                return SaanaaServices.Services.Count == 0
+            if (requestedVersion <= 0 || requestedVersion != SqServices.LatestVersion)
+                return SqServices.Services.Count == 0
                     ? await ReloadServices(names)
-                    : GetSaanaaServicesDto(names);
+                    : GetServicesDto(names);
 
             return null;
         }
@@ -60,29 +60,29 @@ namespace Core.Controllers
 
         [NeedPermission("Core.Service.Read")]
         [HttpGet]
-        public Task<QueryPage<ServiceDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<ServiceDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetServicePage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetServiceAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Core.Service.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<Operations.Service.Service>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<Operations.Service.Service>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetServiceByIds>().ExecuteAsync(m);
 
         [NeedPermission("Core.Service.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetServiceExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Service.xlsx");
 
 
         [NeedPermission("Core.Service.Read")]
         [HttpGet("{id}")]
-        public Task<Operations.Service.Service?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<Operations.Service.Service?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetService>().ExecuteAsync(m);
 
         [NeedPermission("Core.Service.Create")]
@@ -97,24 +97,24 @@ namespace Core.Controllers
 
         [NeedPermission("Core.Service.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<RemoveService>().ExecuteAsync(m);
 
         // ============ Custom Actions:
 
-        private static SaanaaServicesDto GetSaanaaServicesDto(string? names)
+        private static ServicesDto GetServicesDto(string? names)
         {
             var serviceNames = names?.Split(',').Select(x => x.Trim()).ToList() ?? new List<string>();
-            return new SaanaaServicesDto
+            return new ServicesDto
             {
-                Services = SaanaaServices.GetServices(serviceNames),
-                Version = SaanaaServices.LatestVersion
+                Services = SqServices.GetServices(serviceNames),
+                Version = SqServices.LatestVersion
             };
         }
 
         [NeedPermission]
         [HttpGet("services")]
-        public async Task<SaanaaServicesDto?> GetAllServicesForTenant([FromQuery] GetServicesInDto m)
+        public async Task<ServicesDto?> GetAllServicesForTenant([FromQuery] GetServicesInDto m)
         {
             return await _operationFactory.New<GetServices>().ExecuteAsync(m);
         }

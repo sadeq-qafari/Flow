@@ -4,8 +4,8 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Tenant.Operations.Department;
 using Tenant.Operations.Department.Commands;
 using Tenant.Operations.Department.Dto;
@@ -27,29 +27,29 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.Department.Read")]
         [HttpGet]
-        public Task<QueryPage<DepartmentDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<DepartmentDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetDepartmentPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetDepartmentAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Department.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<Department>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<Department>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetDepartmentByIds>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Department.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetDepartmentExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Department.xlsx");
 
 
         [NeedPermission("Tenant.Department.Read")]
         [HttpGet("{id}")]
-        public Task<Department?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<Department?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetDepartment>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Department.Create")]
@@ -64,7 +64,7 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.Department.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<RemoveDepartment>().ExecuteAsync(m);
     }
 }

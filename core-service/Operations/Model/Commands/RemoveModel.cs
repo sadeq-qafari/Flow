@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.Model.Commands
 {
-    public class RemoveModel : SaanaaDbDeleteAsync
+    public class RemoveModel : DbDeleteAsync
     {
         public RemoveModel() : base("[Core].[Model]")
         {

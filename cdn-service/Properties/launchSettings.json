@@ -4,14 +4,14 @@
     "CDN": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "swagger",
       "applicationUrl": "http://localhost:5110",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "SERVICE_NAME": "Cdn",
-        "CONNECTION_STRING": "Server=127.0.0.1;Database=FlowDb;User Id=sa;Password=123;",
-        "OLD_CDN_DIR": "C:\\Saanaa\\Services\\CDN",
+        "CONNECTION_STRING": "Server=127.0.0.1;Database=FlowDb;User Id=sa;Password=FlowDb123;MultipleActiveResultSets=True",
+        "OLD_CDN_DIR": "",
         "COPY_OLD_CDN_FILES": "false"
       }
     }

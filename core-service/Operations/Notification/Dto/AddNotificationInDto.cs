@@ -1,8 +1,8 @@
-﻿using Saanaa.Core.Meteor.Dto;
+﻿using Core.Meteor.Dto;
 
 namespace Core.Operations.Notification.Dto
 {
-    public class AddNotificationInDto : SaanaaDbInsertInDto
+    public class AddNotificationInDto : DbInsertInDto
     {
         public string Name { get; set; }
         public string Title { get; }

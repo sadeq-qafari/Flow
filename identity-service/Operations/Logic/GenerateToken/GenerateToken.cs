@@ -13,7 +13,7 @@ using IdentityModel.Client;
 using Meteor.Operation;
 using Meteor.Utils;
 using Microsoft.AspNetCore.Http;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Logic.GenerateToken
 {

@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
+using Core.AspNetCore.Operations.Db.Identity.Dto;
 using Meteor.Operation.Db;
 using Meteor.Utils;
-using Saanaa.Core.AspNetCore.Operations.Db.UserPermissions.Dto;
 
 namespace Identity.Operations.Database.Permission.Queries
 {

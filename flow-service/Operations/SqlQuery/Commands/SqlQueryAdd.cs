@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Flow.Operations.SqlQuery.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.SqlQuery.Commands
 {
-    public class SqlQueryAdd : SaanaaDbInsertAsync<SqlQueryAddInDto>
+    public class SqlQueryAdd : DbInsertAsync<SqlQueryAddInDto>
     {
         public SqlQueryAdd() : base("[Flow].[SqlQuery]",
             @"[Title],

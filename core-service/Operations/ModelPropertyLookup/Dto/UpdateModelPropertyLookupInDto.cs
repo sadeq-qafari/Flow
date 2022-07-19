@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Core.Operations.ModelPropertyLookup.Dto
 {
-    public class UpdateModelPropertyLookupInDto : SaanaaDbUpdateInDto
+    public class UpdateModelPropertyLookupInDto : DbUpdateInDto
     {
         public int ModelPropertyId { get; set; }
         public string? ModelPropertyTitle { get; set; }

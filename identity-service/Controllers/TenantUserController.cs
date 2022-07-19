@@ -8,8 +8,8 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 
 namespace Identity.Controllers
 {
@@ -27,22 +27,22 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.TenantUser.Read")]
         [HttpGet]
-        public Task<QueryPage<TenantUserDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<TenantUserDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetTenantUserPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetTenantUserAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Identity.TenantUser.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<TenantUser>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<TenantUser>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetTenantUserByIds>().ExecuteAsync(m);
 
         [NeedPermission("Identity.TenantUser.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetTenantUserExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "TenantUser.xlsx");
 
@@ -64,7 +64,7 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.TenantUser.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<TenantUserRemove>().ExecuteAsync(m);
 
         // =================== Custom Actions:

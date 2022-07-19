@@ -1,9 +1,9 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Tag.Dto;
 
 namespace Tenant.Operations.Tag.Commands
 {
-    public class UpdateTag : SaanaaDbUpdateAsync<UpdateTagInDto>
+    public class UpdateTag : DbUpdateAsync<UpdateTagInDto>
     {
         public UpdateTag() : base("[Tenant].[Tag]",
             @"[Title]=@Title")

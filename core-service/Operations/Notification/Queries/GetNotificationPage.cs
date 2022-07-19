@@ -1,11 +1,11 @@
+using Core.Meteor;
 using Core.Operations.Notification.Dto;
 using Humanizer;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.Notification.Queries
 {
-    public class GetNotificationPage : SaanaaDbQueryPage<NotificationDto>
+    public class GetNotificationPage : DbQueryPage<NotificationDto>
     {
         public GetNotificationPage() : base("[Base].[Notification]")
         {

@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Favorite.Commands
 {
-    public class FavoriteRemove : SaanaaDbDeleteAsync
+    public class FavoriteRemove : DbDeleteAsync
     {
         public FavoriteRemove() : base("[Tenant].[Favorite]")
         {

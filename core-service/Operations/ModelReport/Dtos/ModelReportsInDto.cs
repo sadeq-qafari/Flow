@@ -1,4 +1,4 @@
-﻿using Saanaa.Core.Meteor;
+﻿using Core.Meteor;
 
 namespace Core.Operations.ModelReport.Dtos
 {

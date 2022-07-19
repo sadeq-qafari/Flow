@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Tag.Queries
 {
-    public class GetTag : SaanaaDbSelectAsync<Tag?>
+    public class GetTag : DbSelectAsync<Tag?>
     {
         public GetTag() : base("[Tenant].[Tag]")
         {

@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Flow.Operations.FormPermission.Dtos
 {
-    public class FormPermissionAddInDto : SaanaaDbInsertInDto
+    public class FormPermissionAddInDto : DbInsertInDto
     {
         public int RoleId { get; set; }
         public int FormId { get; set; }

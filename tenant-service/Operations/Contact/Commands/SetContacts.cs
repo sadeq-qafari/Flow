@@ -2,8 +2,8 @@
 using Dapper;
 using Meteor.Operation.Db;
 using Meteor.Utils;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Extensions;
+using Core.Meteor;
+using Core.Meteor.Extensions;
 using Tenant.Operations.Contact.Dto;
 
 namespace Tenant.Operations.Contact.Commands
@@ -21,7 +21,7 @@ namespace Tenant.Operations.Contact.Commands
                 x.Value
             });
 
-            var modelId = SaanaaServices.GetModel(Input.ServiceName, Input.ModelName)?.Id ??
+            var modelId = SqServices.GetModel(Input.ServiceName, Input.ModelName)?.Id ??
                           throw Errors.InvalidInput("model_not_found");
 
             var parameters = new DynamicParameters();

@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Core.Operations.Application.Dtos;
-using Saanaa.Core.Meteor;
+using Meteor.Operation;
 
 namespace Core.Operations.Application.Queries
 {
-    public class GetApplicationExcel : SaanaaDbQueryExcel<ApplicationDto>
+    public class GetApplicationExcel : DbQueryExcel<ApplicationDto>
     {
         public GetApplicationExcel() : base("[Core].[Application]")
         {

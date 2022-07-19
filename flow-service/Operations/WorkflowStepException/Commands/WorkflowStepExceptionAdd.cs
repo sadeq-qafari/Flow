@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Flow.Operations.WorkflowStepException.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.WorkflowStepException.Commands
 {
-    public class WorkflowStepExceptionAdd : SaanaaDbInsertAsync<WorkflowStepExceptionAddInDto>
+    public class WorkflowStepExceptionAdd : DbInsertAsync<WorkflowStepExceptionAddInDto>
     {
         public WorkflowStepExceptionAdd() : base("[Flow].[WorkflowStepException]",
             @"[WorkFlowStepId],

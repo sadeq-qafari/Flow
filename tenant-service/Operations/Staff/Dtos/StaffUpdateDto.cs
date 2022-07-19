@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Tenant.Operations.Staff.Dtos
 {
-    public class StaffUpdateInDto : SaanaaDbUpdateInDto
+    public class StaffUpdateInDto : DbUpdateInDto
     {
         public string? FirstName { get; set; }
         public string LastName { get; set; }

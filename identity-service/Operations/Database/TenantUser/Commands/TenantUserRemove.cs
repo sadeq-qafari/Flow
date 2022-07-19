@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.TenantUser.Commands
 {
-    public class TenantUserRemove : SaanaaDbDeleteAsync
+    public class TenantUserRemove : DbDeleteAsync
     {
         public TenantUserRemove() : base("[Identity].[TenantUser]")
         {

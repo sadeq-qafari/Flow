@@ -1,4 +1,4 @@
-﻿using Saanaa.Core.Meteor;
+﻿using Core.Meteor;
 
 namespace Flow.Operations.Form.Dtos
 {

@@ -17,9 +17,9 @@ using Meteor.Operation;
 using Meteor.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor;
+using Core.Meteor.Dto;
 
 namespace Identity.Controllers
 {
@@ -60,7 +60,7 @@ namespace Identity.Controllers
         [HttpPost("check/{username}")]
         public Task<bool> Check([FromRoute] CheckUserInDto m)
         {
-            m.TenantId = SaanaaTenants.GetTenant(HttpContext)!.Id;
+            m.TenantId = SqTenants.GetTenant(HttpContext)!.Id;
             return _operationFactory.New<CheckUser>().ExecuteAsync(m);
         }
 
@@ -86,7 +86,7 @@ namespace Identity.Controllers
         [HttpPost("register")]
         public async Task<bool> RegisterUser([FromBody] UserRegisterInDto m)
         {
-            m.TenantId = SaanaaTenants.GetTenant(HttpContext)!.Id;
+            m.TenantId = SqTenants.GetTenant(HttpContext)!.Id;
             return await _operationFactory.New<CacheUserRegisterInfo>().ExecuteAsync(m);
         }
 
@@ -129,7 +129,7 @@ namespace Identity.Controllers
 
         [Authorize]
         [HttpGet("logout")]
-        public Task<bool> Logout(SaanaaDbUpdateInDto m) =>
+        public Task<bool> Logout(DbUpdateInDto m) =>
             _operationFactory.New<ClearUserCache>().ExecuteAsync(m);
     }
 }

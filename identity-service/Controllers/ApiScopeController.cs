@@ -8,8 +8,8 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 
 namespace Identity.Controllers
 {
@@ -27,29 +27,29 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.ApiScope.Read")]
         [HttpGet]
-        public Task<QueryPage<ApiScopeDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<ApiScopeDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetApiScopePage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetApiScopeAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Identity.ApiScope.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<ApiScope>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<ApiScope>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetApiScopeByIds>().ExecuteAsync(m);
 
         [NeedPermission("Identity.ApiScope.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetApiScopeExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "ApiScope.xlsx");
 
 
         [NeedPermission("Identity.ApiScope.Read")]
         [HttpGet("{id}")]
-        public Task<ApiScope?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<ApiScope?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetApiScope>().ExecuteAsync(m);
 
         [NeedPermission("Identity.ApiScope.Create")]
@@ -64,7 +64,7 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.ApiScope.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<ApiScopeRemove>().ExecuteAsync(m);
     }
 }

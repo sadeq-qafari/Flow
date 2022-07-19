@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.TenantRegisterRequest.Dtos
 {
-    public class TenantRegisterRequestUpdateInDto : SaanaaDbUpdateInDto
+    public class TenantRegisterRequestUpdateInDto : DbUpdateInDto
     {
         public int? StatusLookup { get; set; }
         public string OrganizationTitle { get; set; }

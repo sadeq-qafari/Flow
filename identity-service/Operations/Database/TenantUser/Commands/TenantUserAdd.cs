@@ -1,9 +1,9 @@
 using Identity.Operations.Database.TenantUser.Dtos;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.TenantUser.Commands
 {
-    public class TenantUserAdd : SaanaaDbInsertAsync<TenantUserAddInDto>
+    public class TenantUserAdd : DbInsertAsync<TenantUserAddInDto>
     {
         public TenantUserAdd() : base("[Identity].[TenantUser]",
             @"[BranchId],

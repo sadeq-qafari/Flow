@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
+using Core.Meteor;
 using Core.Operations.ModelPropertyElement.Dto;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.ModelPropertyElement.Commands
 {
-    public class AddModelPropertyElement : SaanaaDbInsertAsync<AddModelPropertyElementInDto>
+    public class AddModelPropertyElement : DbInsertAsync<AddModelPropertyElementInDto>
     {
         protected override Task PrepareExecutionAsync()
         {

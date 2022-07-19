@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.AspNetCore.Security;
+using Core.Meteor;
+using Core.Meteor.Dto;
 using Core.Operations.Version;
 using Core.Operations.Version.Commands;
 using Core.Operations.Version.Dto;
@@ -8,9 +11,6 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Core.Controllers
 {
@@ -28,29 +28,29 @@ namespace Core.Controllers
 
         [NeedPermission("Core.Version.Read")]
         [HttpGet]
-        public Task<QueryPage<VersionDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<VersionDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetVersionPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetVersionAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Core.Version.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<Version>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<Version>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetVersionByIds>().ExecuteAsync(m);
 
         [NeedPermission("Core.Version.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetVersionExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Version.xlsx");
 
 
         [NeedPermission("Core.Version.Read")]
         [HttpGet("{id}")]
-        public Task<Version?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<Version?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetVersion>().ExecuteAsync(m);
 
         [NeedPermission("Core.Version.Create")]
@@ -65,7 +65,7 @@ namespace Core.Controllers
 
         [NeedPermission("Core.Version.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<RemoveVersion>().ExecuteAsync(m);
 
         // ============== Custom Actions:
@@ -73,14 +73,14 @@ namespace Core.Controllers
         [HttpGet("changeLog/{AppType}")]
         public async Task<IEnumerable<Version>?> GetChangeLog([FromRoute] GetChangeLogInDto m)
         {
-            m.TenantId = SaanaaTenants.GetTenant(HttpContext)!.Id;
+            m.TenantId = SqTenants.GetTenant(HttpContext)!.Id;
             return await _operationFactory.New<GetChangeLog>().ExecuteAsync(m);
         }
 
         [HttpGet("check")]
         public async Task<bool> CheckVersion([FromQuery] CheckVersionInDto m)
         {
-            m.TenantId = SaanaaTenants.GetTenant(HttpContext)!.Id;
+            m.TenantId = SqTenants.GetTenant(HttpContext)!.Id;
             return await _operationFactory.New<CheckVersion>().ExecuteAsync(m);
         }
 

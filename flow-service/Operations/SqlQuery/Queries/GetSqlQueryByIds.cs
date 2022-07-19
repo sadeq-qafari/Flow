@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.SqlQuery.Queries
 {
-    public class GetSqlQueryByIds : SaanaaDbQueryByIds<SqlQuery>
+    public class GetSqlQueryByIds : DbQueryByIds<SqlQuery>
     {
         public GetSqlQueryByIds() : base("[Flow].[SqlQuery]")
         {

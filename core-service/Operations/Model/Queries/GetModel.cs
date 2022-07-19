@@ -1,10 +1,10 @@
+using Core.Meteor;
 using Core.Operations.Model.Dto;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.Model.Queries
 {
-    public class GetModel : SaanaaDbSelectAsync<ModelDto?>
+    public class GetModel : DbSelectAsync<ModelDto?>
     {
         public GetModel() : base("[Core].[Model]")
         {

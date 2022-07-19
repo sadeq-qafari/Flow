@@ -1,10 +1,10 @@
+using Core.Meteor;
 using Flow.Operations.Lookup.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.Lookup.Queries
 {
-    public class GetLookupPage : SaanaaDbQueryPage<LookupDto>
+    public class GetLookupPage : DbQueryPage<LookupDto>
     {
         public GetLookupPage() : base("[Flow].[Lookup]")
         {
@@ -12,7 +12,7 @@ namespace Flow.Operations.Lookup.Queries
 
         protected override ISqlDialect GetSelectSql(bool isForCount = false)
         {
-            Parameters.Add("TypeLookupMP", SaanaaServices.GetModelProperty("Flow","Lookup","typeLookup")!.Id);
+            Parameters.Add("TypeLookupMP", SqServices.GetModelProperty("Flow","Lookup","typeLookup")!.Id);
             return SqlFactory!.Create().Select("[Flow].[Lookup] Lookup", isForCount ? "COUNT(*)" : @"
 						Lookup.*, 
 						TypeLookup.Title AS TypeLookupTitle")

@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Tenant.Operations.Pricing.Dtos
 {
-    public class PricingUpdateInDto : SaanaaDbUpdateInDto
+    public class PricingUpdateInDto : DbUpdateInDto
     {
         public int ApplicationId { get; set; }
         public string? Title { get; set; }

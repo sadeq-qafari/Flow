@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using Core.Meteor.Dto;
 using NodaTime;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Core.Operations.NotificationUser.Dto
 {
-    public class AddNotificationUserInDto : SaanaaDbInsertInDto
+    public class AddNotificationUserInDto : DbInsertInDto
     {
         public int UserId { get; set; }
         public int NotificationId { get; set; }

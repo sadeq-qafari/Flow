@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Saanaa.Core.AspNetCore;
-using Saanaa.Core.AspNetCore.Extensions;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
-using Saanaa.Core.Meteor.SqlServer;
+using Core.AspNetCore;
+using Core.AspNetCore.Extensions;
+using Core.Meteor;
+using Core.Meteor.Dto;
+using Core.Meteor.SqlServer;
 
 namespace Tenant
 {
@@ -24,7 +24,7 @@ namespace Tenant
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSaanaaCoreServices();
+            services.AddSqCoreServices();
             SqlMapper.AddTypeHandler(new SqlServerJsonTypeHandler<ImageInfoJson>());
             SqlMapper.AddTypeHandler(new SqlServerJsonTypeHandler<Dictionary<string,object>?>());
             // SqlMapper.AddTypeHandler(new SqlServerJsonTypeHandler<List<OrganizationDetailItem?>?>());
@@ -32,11 +32,11 @@ namespace Tenant
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseSaanaaCoreConfig();
+            app.UseSqCoreConfig();
             using var scope = app.ApplicationServices.CreateScope();
             var db = scope.ServiceProvider.GetService<LazyDbConnection>();
-            SaanaaServices.Reload(db, ServiceConfig.Get("api_gateway_url")).Wait();
-            SaanaaTenants.Reload(db).Wait();
+            SqServices.Reload(db, ServiceConfig.Get("api_gateway_url")).Wait();
+            SqTenants.Reload(db).Wait();
         }
 
     }

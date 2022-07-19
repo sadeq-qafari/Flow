@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.Menu.Queries
 {
-    public class GetMenuByIds : SaanaaDbQueryByIds<Menu>
+    public class GetMenuByIds : DbQueryByIds<Menu>
     {
         public GetMenuByIds() : base("[Flow].[Menu]")
         {

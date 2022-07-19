@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Flow.Operations.Workflow;
 using Flow.Operations.Workflow.Commands;
 using Flow.Operations.Workflow.Dtos;
@@ -8,8 +10,6 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Flow.Controllers
 {
@@ -27,29 +27,29 @@ namespace Flow.Controllers
 
         [NeedPermission("Flow.Workflow.Read")]
         [HttpGet]
-        public Task<QueryPage<WorkflowDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) => 
+        public Task<QueryPage<WorkflowDto>?> Get([FromQuery] DbQueryPageInDto m) => 
             _operationFactory.New<GetWorkflowPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) => 
+        public Task<IEnumerable<DropDownDto<object>>> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) => 
             _operationFactory.New<GetWorkflowAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Flow.Workflow.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<Workflow>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) => 
+        public Task<IEnumerable<Workflow>?> GetByIds([FromQuery] DbQueryByIdsInDto m) => 
             _operationFactory.New<GetWorkflowByIds>().ExecuteAsync(m);
 
         [NeedPermission("Flow.Workflow.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetWorkflowExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Workflow.xlsx");
         
 
         [NeedPermission("Flow.Workflow.Read")]
         [HttpGet("{id}")]
-        public Task<Workflow?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<Workflow?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetWorkflow>().ExecuteAsync(m);
 
         [NeedPermission("Flow.Workflow.Create")]
@@ -64,7 +64,7 @@ namespace Flow.Controllers
 
         [NeedPermission("Flow.Workflow.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<WorkflowRemove>().ExecuteAsync(m);
     }
 }

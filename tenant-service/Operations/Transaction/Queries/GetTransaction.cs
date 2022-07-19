@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Transaction.Queries
 {
-    public class GetTransaction : SaanaaDbSelectAsync<Transaction?>
+    public class GetTransaction : DbSelectAsync<Transaction?>
     {
         public GetTransaction() : base("[Tenant].[Transaction]")
         {

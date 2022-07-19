@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Identity.Operations.Database.User.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.User.Queries
 {
-    public class GetUserPage : SaanaaDbQueryPage<UserDto>
+    public class GetUserPage : DbQueryPage<UserDto>
     {
         public GetUserPage() : base("[Identity].[User]")
         {

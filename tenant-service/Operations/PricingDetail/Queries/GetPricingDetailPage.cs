@@ -1,10 +1,10 @@
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.PricingDetail.Dtos;
 
 namespace Tenant.Operations.PricingDetail.Queries
 {
-    public class GetPricingDetailPage : SaanaaDbQueryPage<PricingDetailDto>
+    public class GetPricingDetailPage : DbQueryPage<PricingDetailDto>
     {
         public GetPricingDetailPage() : base("[Tenant].[PricingDetail]")
         {
@@ -14,7 +14,7 @@ namespace Tenant.Operations.PricingDetail.Queries
 
         protected override ISqlDialect GetSelectSql(bool isForCount = false)
         {
-            Parameters.Add("TypeLookup", SaanaaServices.GetModelProperty("Tenant","PricingDetail","typeLookup")!.Id);
+            Parameters.Add("TypeLookup", SqServices.GetModelProperty("Tenant","PricingDetail","typeLookup")!.Id);
             return SqlFactory!.Create().Select("[Tenant].[PricingDetail] PricingDetail", isForCount ? "COUNT(*)" : @"
 						PricingDetail.*, 
 						Pricing.Title AS PricingTitle,

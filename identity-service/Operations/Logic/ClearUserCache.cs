@@ -2,12 +2,12 @@
 using Identity.Operations.Database.User.Queries;
 using Meteor.Operation.Db;
 using Meteor.Utils;
-using Saanaa.Core.AspNetCore.Redis;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Redis;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Logic
 {
-    public class ClearUserCache : DbOperationAsync<SaanaaDbUpdateInDto, bool>
+    public class ClearUserCache : DbOperationAsync<DbUpdateInDto, bool>
     {
         protected override async Task ExecutionAsync()
         {

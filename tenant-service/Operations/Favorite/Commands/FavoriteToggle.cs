@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Meteor.Operation.Db;
 using Meteor.Utils;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Favorite.Dtos;
 
 namespace Tenant.Operations.Favorite.Commands
@@ -11,7 +11,7 @@ namespace Tenant.Operations.Favorite.Commands
         public string TableName { get; set; } = "[Tenant].[Favorite]";
         protected override async Task ExecutionAsync()
         {
-            var modelId = SaanaaServices.GetModel(Input.ServiceName, Input.ModelName)?.Id
+            var modelId = SqServices.GetModel(Input.ServiceName, Input.ModelName)?.Id
                           ?? throw Errors.InvalidInput("model_not_found");
 
             Output = await NewSql(@"EXECUTE Tenant.sp_FavoriteEntityToggle @ModelId = @ModelId

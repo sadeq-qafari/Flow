@@ -1,9 +1,9 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.OrganizationDetail.Dtos;
 
 namespace Tenant.Operations.OrganizationDetail.Commands
 {
-    public class OrganizationDetailAdd : SaanaaDbInsertAsync<OrganizationDetailAddInDto>
+    public class OrganizationDetailAdd : DbInsertAsync<OrganizationDetailAddInDto>
     {
         public OrganizationDetailAdd() : base("[Tenant].[OrganizationDetail]",
             @"[Key],

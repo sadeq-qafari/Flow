@@ -1,5 +1,5 @@
 using NodaTime;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.TenantService.Dtos
 {

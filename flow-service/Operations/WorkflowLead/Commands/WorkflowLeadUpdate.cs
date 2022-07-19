@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Flow.Operations.WorkflowLead.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.WorkflowLead.Commands
 {
-    public class WorkflowLeadUpdate : SaanaaDbUpdateAsync<WorkflowLeadUpdateInDto>
+    public class WorkflowLeadUpdate : DbUpdateAsync<WorkflowLeadUpdateInDto>
     {
         public WorkflowLeadUpdate() : base("[Flow].[WorkflowLead]",
             @"[CurrentWorkflowStepId]=@CurrentWorkflowStepId,

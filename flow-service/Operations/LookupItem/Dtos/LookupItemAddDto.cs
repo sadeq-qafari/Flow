@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Flow.Operations.LookupItem.Dtos
 {
-    public class LookupItemAddInDto : SaanaaDbInsertInDto
+    public class LookupItemAddInDto : DbInsertInDto
     {
         public int LookupId { get; set; }
         public string Title { get; set; }

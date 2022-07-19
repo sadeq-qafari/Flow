@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.SqlQuery.Commands
 {
-    public class SqlQueryRemove : SaanaaDbDeleteAsync
+    public class SqlQueryRemove : DbDeleteAsync
     {
         public SqlQueryRemove() : base("[Flow].[SqlQuery]")
         {

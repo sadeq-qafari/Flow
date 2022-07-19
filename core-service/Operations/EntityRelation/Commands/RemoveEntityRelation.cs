@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.EntityRelation.Commands
 {
-    public class RemoveEntityRelation : SaanaaDbDeleteAsync
+    public class RemoveEntityRelation : DbDeleteAsync
     {
         public RemoveEntityRelation() : base("[Core].[EntityRelation]")
         {

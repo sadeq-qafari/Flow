@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.Notification.Commands
 {
-    public class RemoveNotification : SaanaaDbDeleteAsync
+    public class RemoveNotification : DbDeleteAsync
     {
         public RemoveNotification() : base("[Base].[Notification]")
         {

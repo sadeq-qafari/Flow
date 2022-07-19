@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
+using Core.Meteor;
 using Core.Operations.ServiceConfig.Dto;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.ServiceConfig.Commands
 {
-    public class AddServiceConfig : SaanaaDbInsertAsync<AddServiceConfigInDto>
+    public class AddServiceConfig : DbInsertAsync<AddServiceConfigInDto>
     {
         protected override Task PrepareExecutionAsync()
         {

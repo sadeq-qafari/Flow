@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.AspNetCore.Security;
+using Core.Meteor;
+using Core.Meteor.Dto;
 using Flow.Core;
 using Flow.Dto;
 using Flow.Operations.Form;
@@ -12,9 +15,6 @@ using Meteor.Database;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Flow.Controllers
 {
@@ -34,28 +34,28 @@ namespace Flow.Controllers
 
         [NeedPermission("Flow.Form.Read")]
         [HttpGet]
-        public Task<QueryPage<FormDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<FormDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetFormPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetFormAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Flow.Form.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<Form>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<Form>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetFormByIds>().ExecuteAsync(m);
 
         [NeedPermission("Flow.Form.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetFormExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Form.xlsx");
 
         // [NeedPermission("Flow.Form.Read")]
         // [HttpGet("{id}")]
-        // public Task<Form?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        // public Task<Form?> GetOne([FromRoute] DbSelectInDto m) =>
         //     _operationFactory.New<GetForm>().ExecuteAsync(m);
 
         [NeedPermission("Flow.Form.Create")]
@@ -72,7 +72,7 @@ namespace Flow.Controllers
 
         [NeedPermission("Flow.Form.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<FormRemove>().ExecuteAsync(m);
 
         [NeedPermission("Flow.Form.Create")]
@@ -88,7 +88,7 @@ namespace Flow.Controllers
         public async Task<SaanaaFormsDto> ReloadForms()
         {
             await SaanaaForms.Reload(_lazyDbConnection);
-            var tenantId = SaanaaTenants.GetTenant(HttpContext)!.Id;
+            var tenantId = SqTenants.GetTenant(HttpContext)!.Id;
             return GetSaanaaFormsDto(tenantId);
         }
 
@@ -96,7 +96,7 @@ namespace Flow.Controllers
         public async Task<SaanaaFormsDto?> GetForms(long? version)
         {
             var requestedVersion = version.GetValueOrDefault(0);
-            var tenantId = SaanaaTenants.GetTenant(HttpContext)!.Id;
+            var tenantId = SqTenants.GetTenant(HttpContext)!.Id;
             if (requestedVersion <= 0 || requestedVersion != SaanaaForms.LatestVersion)
                 return SaanaaForms.Forms.Count == 0
                     ? await ReloadForms()

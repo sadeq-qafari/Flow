@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Flow.Operations.FormLead;
 using Flow.Operations.FormLead.Commands;
 using Flow.Operations.FormLead.Dtos;
@@ -8,8 +10,6 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Flow.Controllers
 {
@@ -27,29 +27,29 @@ namespace Flow.Controllers
 
         [NeedPermission("Flow.FormLead.Read")]
         [HttpGet]
-        public Task<QueryPage<FormLeadDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) => 
+        public Task<QueryPage<FormLeadDto>?> Get([FromQuery] DbQueryPageInDto m) => 
             _operationFactory.New<GetFormLeadPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) => 
+        public Task<IEnumerable<DropDownDto<object>>> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) => 
             _operationFactory.New<GetFormLeadAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Flow.FormLead.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<FormLead>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) => 
+        public Task<IEnumerable<FormLead>?> GetByIds([FromQuery] DbQueryByIdsInDto m) => 
             _operationFactory.New<GetFormLeadByIds>().ExecuteAsync(m);
 
         [NeedPermission("Flow.FormLead.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetFormLeadExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "FormLead.xlsx");
         
 
         [NeedPermission("Flow.FormLead.Read")]
         [HttpGet("{id}")]
-        public Task<FormLead?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<FormLead?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetFormLead>().ExecuteAsync(m);
 
         [NeedPermission("Flow.FormLead.Create")]
@@ -64,7 +64,7 @@ namespace Flow.Controllers
 
         [NeedPermission("Flow.FormLead.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<FormLeadRemove>().ExecuteAsync(m);
     }
 }

@@ -1,11 +1,11 @@
+using Core.Meteor;
 using Core.Operations.Menu.Dto;
 using Humanizer;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.Menu.Queries
 {
-    public class GetMenuPage : SaanaaDbQueryPage<MenuDto>
+    public class GetMenuPage : DbQueryPage<MenuDto>
     {
         public GetMenuPage() : base("[Core].[Menu]")
         {

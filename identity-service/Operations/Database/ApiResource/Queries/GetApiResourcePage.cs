@@ -1,9 +1,9 @@
 using Identity.Operations.Database.ApiResource.Dtos;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.ApiResource.Queries
 {
-    public class GetApiResourcePage : SaanaaDbQueryPage<ApiResourceDto>
+    public class GetApiResourcePage : DbQueryPage<ApiResourceDto>
     {
         public GetApiResourcePage() : base("[Identity].[ApiResource]")
         {

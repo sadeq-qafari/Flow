@@ -1,11 +1,11 @@
+using Core.Meteor;
 using Core.Operations.EntityRelation.Dto;
 using Humanizer;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.EntityRelation.Queries
 {
-    public class GetEntityRelationPage : SaanaaDbQueryPage<EntityRelationDto>
+    public class GetEntityRelationPage : DbQueryPage<EntityRelationDto>
     {
         public GetEntityRelationPage() : base("[Core].[EntityRelation]")
         {

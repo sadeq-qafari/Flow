@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Flow.Operations.FormPermission.Dtos;
-using Saanaa.Core.Meteor;
+using Meteor.Operation;
 
 namespace Flow.Operations.FormPermission.Queries
 {
-    public class GetFormPermissionExcel : SaanaaDbQueryExcel<FormPermissionDto>
+    public class GetFormPermissionExcel : DbQueryExcel<FormPermissionDto>
     {
         public GetFormPermissionExcel() : base("[Flow].[FormPermission]")
         {

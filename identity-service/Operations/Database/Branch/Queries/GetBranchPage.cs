@@ -1,10 +1,10 @@
 using Identity.Operations.Database.Branch.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.Branch.Queries
 {
-    public class GetBranchPage : SaanaaDbQueryPage<BranchDto>
+    public class GetBranchPage : DbQueryPage<BranchDto>
     {
         public GetBranchPage() : base("[Identity].[Branch]")
         {

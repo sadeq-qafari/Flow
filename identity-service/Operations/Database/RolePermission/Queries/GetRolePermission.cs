@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.RolePermission.Queries
 {
-    public class GetRolePermission : SaanaaDbSelectAsync<RolePermission?>
+    public class GetRolePermission : DbSelectAsync<RolePermission?>
     {
         public GetRolePermission() : base("[Identity].[RolePermission]")
         {

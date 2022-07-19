@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.PricingDetailTenant.Queries
 {
-    public class GetPricingDetailTenantAsDropDown : SaanaaDbQueryAsDropDown<PricingDetailTenant>
+    public class GetPricingDetailTenantAsDropDown : DbQueryAsDropDown<PricingDetailTenant>
     {
         public GetPricingDetailTenantAsDropDown() : base("[Tenant].[PricingDetailTenant]")
         {

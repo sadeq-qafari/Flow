@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor;
+using Core.Meteor.Dto;
 
 namespace Tenant.Operations.Report
 {

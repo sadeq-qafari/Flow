@@ -1,8 +1,8 @@
-﻿using Saanaa.Core.Meteor;
+﻿using Core.Meteor;
 
 namespace Core.Operations.Notification.Queries
 {
-    public class GetNotification : SaanaaDbSelectAsync<Notification>
+    public class GetNotification : DbSelectAsync<Notification>
     {
         public GetNotification() : base("[Base].[Notification]")
         {

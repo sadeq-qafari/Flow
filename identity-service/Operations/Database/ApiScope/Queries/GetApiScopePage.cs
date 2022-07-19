@@ -1,10 +1,10 @@
 using Identity.Operations.Database.ApiScope.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.ApiScope.Queries
 {
-    public class GetApiScopePage : SaanaaDbQueryPage<ApiScopeDto>
+    public class GetApiScopePage : DbQueryPage<ApiScopeDto>
     {
         public GetApiScopePage() : base("[Identity].[ApiScope]")
         {

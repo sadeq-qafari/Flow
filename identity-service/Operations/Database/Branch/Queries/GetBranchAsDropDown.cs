@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.Branch.Queries
 {
-    public class GetBranchAsDropDown : SaanaaDbQueryAsDropDown<Branch>
+    public class GetBranchAsDropDown : DbQueryAsDropDown<Branch>
     {
         public GetBranchAsDropDown() : base("[Identity].[Branch]")
         {

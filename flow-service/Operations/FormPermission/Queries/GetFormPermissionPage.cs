@@ -1,10 +1,10 @@
+using Core.Meteor;
 using Flow.Operations.FormPermission.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.FormPermission.Queries
 {
-    public class GetFormPermissionPage : SaanaaDbQueryPage<FormPermissionDto>
+    public class GetFormPermissionPage : DbQueryPage<FormPermissionDto>
     {
         public GetFormPermissionPage() : base("[Flow].[FormPermission]")
         {
@@ -14,7 +14,7 @@ namespace Flow.Operations.FormPermission.Queries
 
         protected override ISqlDialect GetSelectSql(bool isForCount = false)
         {
-            Parameters.Add("PermissionTypeLookup", SaanaaServices.GetModelProperty("Flow","FormPermission","permissionTypeLookup")!.Id);
+            Parameters.Add("PermissionTypeLookup", SqServices.GetModelProperty("Flow","FormPermission","permissionTypeLookup")!.Id);
             return SqlFactory!.Create().Select("[Flow].[FormPermission] FormPermission", isForCount ? "COUNT(*)" : @"
 						FormPermission.*, 
 						Role.Title AS RoleTitle,

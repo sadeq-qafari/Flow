@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Flow.Operations.FormLeadLog.Dtos
 {
-    public class FormLeadLogUpdateInDto : SaanaaDbUpdateInDto
+    public class FormLeadLogUpdateInDto : DbUpdateInDto
     {
         public int? FormLeadId { get; set; }
         public int FormId { get; set; }

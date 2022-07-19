@@ -1,9 +1,9 @@
 using Identity.Operations.Database.ApiResource.Dtos;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.ApiResource.Commands
 {
-    public class ApiResourceAdd : SaanaaDbInsertAsync<ApiResourceAddInDto>
+    public class ApiResourceAdd : DbInsertAsync<ApiResourceAddInDto>
     {
         public ApiResourceAdd() : base("[Identity].[ApiResource]",
             @"[Enabled],

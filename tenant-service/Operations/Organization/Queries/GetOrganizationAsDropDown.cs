@@ -1,9 +1,9 @@
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Organization.Queries
 {
-    public class GetOrganizationAsDropDown : SaanaaDbQueryAsDropDown<Organization>
+    public class GetOrganizationAsDropDown : DbQueryAsDropDown<Organization>
     {
         public GetOrganizationAsDropDown() : base("[Tenant].[Organization]")
         {

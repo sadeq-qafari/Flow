@@ -4,8 +4,8 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Tenant.Operations.DashboardReport;
 using Tenant.Operations.DashboardReport.Commands;
 using Tenant.Operations.DashboardReport.Dtos;
@@ -27,29 +27,29 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.DashboardReport.Read")]
         [HttpGet]
-        public Task<QueryPage<DashboardReportDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) => 
+        public Task<QueryPage<DashboardReportDto>?> Get([FromQuery] DbQueryPageInDto m) => 
             _operationFactory.New<GetDashboardReportPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) => 
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) => 
             _operationFactory.New<GetDashboardReportAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.DashboardReport.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<DashboardReport>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) => 
+        public Task<IEnumerable<DashboardReport>?> GetByIds([FromQuery] DbQueryByIdsInDto m) => 
             _operationFactory.New<GetDashboardReportByIds>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.DashboardReport.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetDashboardReportExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "DashboardReport.xlsx");
         
 
         [NeedPermission("Tenant.DashboardReport.Read")]
         [HttpGet("{id}")]
-        public Task<DashboardReport?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<DashboardReport?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetDashboardReport>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.DashboardReport.Create")]
@@ -64,7 +64,7 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.DashboardReport.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<DashboardReportRemove>().ExecuteAsync(m);
     }
 }

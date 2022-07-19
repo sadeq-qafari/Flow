@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Transaction.Queries
 {
-    public class GetTransactionExcel : SaanaaDbQueryExcel<Transaction>
+    public class GetTransactionExcel : DbQueryExcel<Transaction>
     {
         public GetTransactionExcel() : base("[Tenant].[Transaction]")
         {

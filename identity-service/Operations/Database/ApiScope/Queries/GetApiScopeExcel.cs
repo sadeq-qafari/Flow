@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.ApiScope.Queries
 {
-    public class GetApiScopeExcel : SaanaaDbQueryExcel<ApiScope>
+    public class GetApiScopeExcel : DbQueryExcel<ApiScope>
     {
         public GetApiScopeExcel() : base("[Identity].[ApiScope]")
         {

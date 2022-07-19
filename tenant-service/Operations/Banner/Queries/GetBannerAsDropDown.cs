@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Banner.Queries
 {
-    public class GetBannerAsDropDown : SaanaaDbQueryAsDropDown<Banner>
+    public class GetBannerAsDropDown : DbQueryAsDropDown<Banner>
     {
         public GetBannerAsDropDown() : base("[Tenant].[Banner]")
         {

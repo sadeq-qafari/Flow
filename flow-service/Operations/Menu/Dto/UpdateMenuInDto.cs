@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Flow.Operations.Menu.Dto
 {
-    public class UpdateMenuInDto : SaanaaDbUpdateInDto
+    public class UpdateMenuInDto : DbUpdateInDto
     {
         public string Name { get; set; }
         public string Title { get; set; }

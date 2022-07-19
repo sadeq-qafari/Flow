@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Flow.Operations.WorkflowTransaction.Dtos
 {
-    public class WorkflowTransactionUpdateInDto : SaanaaDbUpdateInDto
+    public class WorkflowTransactionUpdateInDto : DbUpdateInDto
     {
         public int WorkflowLeadId { get; set; }
         public int? WorkflowStepId { get; set; }

@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.TenantService.Queries
 {
-    public class GetTenantServiceAsDropDown : SaanaaDbQueryAsDropDown<TenantService>
+    public class GetTenantServiceAsDropDown : DbQueryAsDropDown<TenantService>
     {
         public GetTenantServiceAsDropDown() : base("[Identity].[TenantService]")
         {

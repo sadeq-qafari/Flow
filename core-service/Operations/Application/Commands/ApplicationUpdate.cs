@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Core.Operations.Application.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.Application.Commands
 {
-    public class ApplicationUpdate : SaanaaDbUpdateAsync<ApplicationUpdateInDto>
+    public class ApplicationUpdate : DbUpdateAsync<ApplicationUpdateInDto>
     {
         public ApplicationUpdate() : base("[Core].[Application]",
             @"[Name]=@Name,

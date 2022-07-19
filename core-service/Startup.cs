@@ -1,3 +1,6 @@
+using Core.AspNetCore;
+using Core.AspNetCore.Extensions;
+using Core.Meteor;
 using Meteor.AspCore.Utils;
 using Meteor.Database;
 using Meteor.Database.MsSql;
@@ -5,10 +8,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Saanaa.Core.AspNetCore;
-using Saanaa.Core.AspNetCore.Extensions;
-using Saanaa.Core.Meteor;
-using Saanaa.Providers.Notification.SignalR;
 
 namespace Core
 {
@@ -26,7 +25,7 @@ namespace Core
         {
             services
                 .AddResponseCompression()
-                .AddSaanaaRedis()
+                .AddSqRedis()
                 .AddCors(options =>
                 {
                     options.AddPolicy("development", policy =>
@@ -48,13 +47,13 @@ namespace Core
                                 .AllowCredentials();
                         });
                 })
-                .AddSaanaaSwagger()
-                .AddSaanaaAuthentication()
-                .AddSaanaaTokenClient()
-                .AddSaanaaApiClient()
-                .AddSaanaaEmail()
-                .AddSaanaaOperation()
-                .AddSaanaaControllers()
+                .AddSqSwagger()
+                .AddSqAuthentication()
+                .AddSqTokenClient()
+                .AddSqApiClient()
+                // .AddSqEmail()
+                .AddSqOperation()
+                .AddSqControllers()
                 .AddMeteorJsonConverters();
 
             // EnvVars.SetDefaultValue(EnvVarKeys.DbUri, ServiceConfig.Get("ServiceConfigConnectionString"));
@@ -62,9 +61,9 @@ namespace Core
             //     .AddDbOperation<SqlServerDbConnectionFactory, MsSqlDialect>()
             //     .AddScopedOperationLogger<OperationLogger>();
 
-            services.AddGenericHub(options => options.IdentityServiceUrl = ServiceConfig.Get("identity_listening_url"));
+            //services.AddSqGenericHub(options => options.IdentityServiceUrl = ServiceConfig.Get("identity_listening_url"));
 
-            SaanaaServices
+            SqServices
                 .Reload(new LazyDbConnection(new MsSqlDbConnectionFactory(ServiceConfig.Get("ServiceConfigConnectionString"))),
                     ServiceConfig.Get("api_gateway_url")).Wait();
             // var service = new ProjectBuilder( "Core","D:/GeneratedProjects");
@@ -76,7 +75,7 @@ namespace Core
         {
             app
                 .UseResponseCompression()
-                .UseSaanaaCors()
+                .UseCors()
                 .UseLocalization()
                 .UseSwagger()
                 .UseRouting()
@@ -86,13 +85,13 @@ namespace Core
                 .UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllers();
-                    endpoints.MapHub<GenericHub>("/ws/notification");
+                    // endpoints.MapHub<GenericHub>("/ws/notification");
                 });
 
             using var scope = app.ApplicationServices.CreateScope();
             var db = scope.ServiceProvider.GetService<LazyDbConnection>();
-            SaanaaServices.Reload(db, ServiceConfig.Get("api_gateway_url")).Wait();
-            SaanaaTenants.Reload(db).Wait();
+            SqServices.Reload(db, ServiceConfig.Get("api_gateway_url")).Wait();
+            SqTenants.Reload(db).Wait();
             // var apiClient = scope.ServiceProvider.GetService<ApiClient>();
             // var res = apiClient.GetAsync<dynamic>("Tenant", "Person").Result;
         }

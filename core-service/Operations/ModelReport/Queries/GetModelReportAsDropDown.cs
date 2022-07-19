@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.ModelReport.Queries
 {
-    public class GetModelReportAsDropDown : SaanaaDbQueryAsDropDown<ModelReport>
+    public class GetModelReportAsDropDown : DbQueryAsDropDown<ModelReport>
     {
         public GetModelReportAsDropDown() : base("[Core].[ModelReport]")
         {

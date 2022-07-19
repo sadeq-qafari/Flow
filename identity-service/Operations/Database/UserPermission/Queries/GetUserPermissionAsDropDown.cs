@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.UserPermission.Queries
 {
-    public class GetUserPermissionAsDropDown : SaanaaDbQueryAsDropDown<UserPermission>
+    public class GetUserPermissionAsDropDown : DbQueryAsDropDown<UserPermission>
     {
         public GetUserPermissionAsDropDown() : base("[Identity].[UserPermission]")
         {

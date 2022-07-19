@@ -1,10 +1,10 @@
+using Core.Meteor;
 using Flow.Operations.LookupItem.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.LookupItem.Queries
 {
-    public class GetLookupItemPage : SaanaaDbQueryPage<LookupItemDto>
+    public class GetLookupItemPage : DbQueryPage<LookupItemDto>
     {
         public GetLookupItemPage() : base("[Flow].[LookupItem]")
         {

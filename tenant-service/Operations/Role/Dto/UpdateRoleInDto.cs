@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Tenant.Operations.Role.Dto
 {
-    public class UpdateRoleInDto : SaanaaDbUpdateInDto
+    public class UpdateRoleInDto : DbUpdateInDto
     {
         public string Title { get; set; }
         public int DepartmentId { get; set; }

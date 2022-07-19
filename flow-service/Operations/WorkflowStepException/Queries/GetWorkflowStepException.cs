@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.WorkflowStepException.Queries
 {
-    public class GetWorkflowStepException : SaanaaDbSelectAsync<WorkflowStepException?>
+    public class GetWorkflowStepException : DbSelectAsync<WorkflowStepException?>
     {
         public GetWorkflowStepException() : base("[Flow].[WorkflowStepException]")
         {

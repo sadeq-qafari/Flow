@@ -3,7 +3,7 @@ using Identity.Operations.Database.User.Dtos;
 using Identity.Operations.Database.User.Queries;
 using Meteor.Operation.Db;
 using Meteor.Utils;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.User.Commands
 {

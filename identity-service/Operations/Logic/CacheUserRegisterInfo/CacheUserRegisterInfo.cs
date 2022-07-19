@@ -5,7 +5,7 @@ using Identity.Operations.Database.User.Dtos;
 using Identity.Operations.Logic.Dto;
 using Meteor.Operation;
 using Meteor.Utils;
-using Saanaa.Core.AspNetCore.Redis;
+using Core.AspNetCore.Redis;
 
 namespace Identity.Operations.Logic.CacheUserRegisterInfo
 {

@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.FormPermission.Commands
 {
-    public class FormPermissionRemove : SaanaaDbDeleteAsync
+    public class FormPermissionRemove : DbDeleteAsync
     {
         public FormPermissionRemove() : base("[Flow].[FormPermission]")
         {

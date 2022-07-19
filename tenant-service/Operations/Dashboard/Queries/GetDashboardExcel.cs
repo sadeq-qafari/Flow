@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Dashboard.Queries
 {
-    public class GetDashboardExcel : SaanaaDbQueryExcel<Dashboard>
+    public class GetDashboardExcel : DbQueryExcel<Dashboard>
     {
         public GetDashboardExcel() : base("[Tenant].[Dashboard]")
         {

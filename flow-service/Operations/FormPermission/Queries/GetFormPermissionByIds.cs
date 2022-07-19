@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.FormPermission.Queries
 {
-    public class GetFormPermissionByIds : SaanaaDbQueryByIds<FormPermission>
+    public class GetFormPermissionByIds : DbQueryByIds<FormPermission>
     {
         public GetFormPermissionByIds() : base("[Flow].[FormPermission]")
         {

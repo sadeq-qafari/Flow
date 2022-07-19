@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Core.Operations.ReportDbServer.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.ReportDbServer.Commands
 {
-    public class ReportDbServerUpdate : SaanaaDbUpdateAsync<ReportDbServerUpdateInDto>
+    public class ReportDbServerUpdate : DbUpdateAsync<ReportDbServerUpdateInDto>
     {
         public ReportDbServerUpdate() : base("[Core].[ReportDbServer]",
             @"[Title]=@Title,

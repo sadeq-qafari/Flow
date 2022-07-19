@@ -7,8 +7,8 @@ using Meteor;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Hosting;
-using Saanaa.Core.AspNetCore;
-using Saanaa.Core.AspNetCore.Extensions;
+using Core.AspNetCore;
+using Core.AspNetCore.Extensions;
 
 namespace Cdn
 {
@@ -55,7 +55,7 @@ namespace Cdn
                 }
             }
 
-            StartupCoreExtensions.LoadSaanaaServiceConfigs(
+            StartupCoreExtensions.LoadSqServiceConfigs(
                 Environment.GetEnvironmentVariable("CONNECTION_STRING")!,
                 Environment.GetEnvironmentVariable("SERVICE_NAME")!);
 

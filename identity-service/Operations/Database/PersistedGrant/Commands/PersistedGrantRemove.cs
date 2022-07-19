@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.PersistedGrant.Commands
 {
-    public class PersistedGrantRemove : SaanaaDbDeleteAsync
+    public class PersistedGrantRemove : DbDeleteAsync
     {
         public PersistedGrantRemove() : base("[Identity].[PersistedGrant]")
         {

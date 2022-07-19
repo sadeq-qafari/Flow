@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Flow.Operations.Element.Dtos;
-using Saanaa.Core.Meteor;
+using Meteor.Operation;
 
 namespace Flow.Operations.Element.Queries
 {
-    public class GetElementExcel : SaanaaDbQueryExcel<ElementDto>
+    public class GetElementExcel : DbQueryExcel<ElementDto>
     {
         public GetElementExcel() : base("[Flow].[Element]")
         {

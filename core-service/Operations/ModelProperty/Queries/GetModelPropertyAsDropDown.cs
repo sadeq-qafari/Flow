@@ -1,10 +1,10 @@
+using Core.Meteor;
 using Core.Operations.ModelProperty.Dto;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.ModelProperty.Queries
 {
-    public class GetModelPropertyAsDropDown : SaanaaDbQueryAsDropDown<ModelPropertyDto>
+    public class GetModelPropertyAsDropDown : DbQueryAsDropDown<ModelPropertyDto>
     {
         public GetModelPropertyAsDropDown() : base("[Core].[ModelProperty]", "Title", "Id", "Name","ModelTitle")
         {

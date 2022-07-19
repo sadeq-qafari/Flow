@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Flow.Operations.FormProperty.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.FormProperty.Commands
 {
-    public class FormPropertyAdd : SaanaaDbInsertAsync<FormPropertyAddInDto>
+    public class FormPropertyAdd : DbInsertAsync<FormPropertyAddInDto>
     {
         public FormPropertyAdd() : base("[Flow].[FormProperty]",
             @"[LayoutIndex],

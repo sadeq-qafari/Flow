@@ -1,10 +1,10 @@
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Dashboard.Dtos;
 
 namespace Tenant.Operations.Dashboard.Queries
 {
-    public class GetDashboardPage : SaanaaDbQueryPage<DashboardDto>
+    public class GetDashboardPage : DbQueryPage<DashboardDto>
     {
         public GetDashboardPage() : base("[Tenant].[Dashboard]")
         {

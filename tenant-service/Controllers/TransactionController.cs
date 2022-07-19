@@ -5,8 +5,8 @@ using Meteor.Operation;
 using Meteor.Operation.Db;
 using Meteor.Utils;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Tenant.Operations.Transaction;
 using Tenant.Operations.Transaction.Commands;
 using Tenant.Operations.Transaction.Dtos;
@@ -28,29 +28,29 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.Transaction.Read")]
         [HttpGet]
-        public Task<QueryPage<TransactionDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<TransactionDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetTransactionPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetTransactionAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Transaction.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<Transaction>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<Transaction>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetTransactionByIds>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Transaction.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetTransactionExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Transaction.xlsx");
 
 
         [NeedPermission("Tenant.Transaction.Read")]
         [HttpGet("{id}")]
-        public Task<Transaction?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<Transaction?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetTransaction>().ExecuteAsync(m);
 
         [NeedPermission(Policies = "backend")]
@@ -65,7 +65,7 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.Transaction.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<TransactionRemove>().ExecuteAsync(m);
 
         // ============= Custom Actions:

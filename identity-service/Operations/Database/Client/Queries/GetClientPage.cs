@@ -1,10 +1,10 @@
 using Identity.Operations.Database.Client.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.Client.Queries
 {
-    public class GetClientPage : SaanaaDbQueryPage<ClientDto>
+    public class GetClientPage : DbQueryPage<ClientDto>
     {
         public GetClientPage() : base("[Identity].[Client]")
         {

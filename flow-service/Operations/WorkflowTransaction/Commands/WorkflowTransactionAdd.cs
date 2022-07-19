@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Flow.Operations.WorkflowTransaction.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.WorkflowTransaction.Commands
 {
-    public class WorkflowTransactionAdd : SaanaaDbInsertAsync<WorkflowTransactionAddInDto>
+    public class WorkflowTransactionAdd : DbInsertAsync<WorkflowTransactionAddInDto>
     {
         public WorkflowTransactionAdd() : base("[Flow].[WorkflowTransaction]",
             @"[WorkflowLeadId],

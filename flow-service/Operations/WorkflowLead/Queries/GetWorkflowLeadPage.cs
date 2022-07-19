@@ -1,10 +1,10 @@
+using Core.Meteor;
 using Flow.Operations.WorkflowLead.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.WorkflowLead.Queries
 {
-    public class GetWorkflowLeadPage : SaanaaDbQueryPage<WorkflowLeadDto>
+    public class GetWorkflowLeadPage : DbQueryPage<WorkflowLeadDto>
     {
         public GetWorkflowLeadPage() : base("[Flow].[WorkflowLead]")
         {
@@ -14,7 +14,7 @@ namespace Flow.Operations.WorkflowLead.Queries
 
         protected override ISqlDialect GetSelectSql(bool isForCount = false)
         {
-            Parameters.Add("StatusLookup", SaanaaServices.GetModelProperty("Flow","WorkflowLead","statusLookup")!.Id);
+            Parameters.Add("StatusLookup", SqServices.GetModelProperty("Flow","WorkflowLead","statusLookup")!.Id);
             return SqlFactory!.Create().Select("[Flow].[WorkflowLead] WorkflowLead", isForCount ? "COUNT(*)" : @"
 						WorkflowLead.*, 
 						CurrentWorkflowStep.Title AS CurrentWorkflowStepTitle,

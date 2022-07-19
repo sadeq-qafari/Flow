@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.WorkflowTransaction.Queries
 {
-    public class GetWorkflowTransactionByIds : SaanaaDbQueryByIds<WorkflowTransaction>
+    public class GetWorkflowTransactionByIds : DbQueryByIds<WorkflowTransaction>
     {
         public GetWorkflowTransactionByIds() : base("[Flow].[WorkflowTransaction]")
         {

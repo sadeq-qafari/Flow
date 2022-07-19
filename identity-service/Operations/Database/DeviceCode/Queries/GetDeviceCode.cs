@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.DeviceCode.Queries
 {
-    public class GetDeviceCode : SaanaaDbSelectAsync<DeviceCode?>
+    public class GetDeviceCode : DbSelectAsync<DeviceCode?>
     {
         public GetDeviceCode() : base("[Identity].[DeviceCode]")
         {

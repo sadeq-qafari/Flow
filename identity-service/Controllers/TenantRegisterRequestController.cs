@@ -8,9 +8,9 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.Meteor.Dto;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor;
+using Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor;
 
 namespace Identity.Controllers
 {
@@ -28,35 +28,35 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.TenantRegisterRequest.Read")]
         [HttpGet]
-        public Task<QueryPage<TenantRegisterRequestDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<TenantRegisterRequestDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetTenantRegisterRequestPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetTenantRegisterRequestAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Identity.TenantRegisterRequest.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<TenantRegisterRequest>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<TenantRegisterRequest>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetTenantRegisterRequestByIds>().ExecuteAsync(m);
 
         [NeedPermission("Identity.TenantRegisterRequest.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetTenantRegisterRequestExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "TenantRegisterRequest.xlsx");
 
 
         [NeedPermission("Identity.TenantRegisterRequest.Read")]
         [HttpGet("{id}")]
-        public Task<TenantRegisterRequest?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<TenantRegisterRequest?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetTenantRegisterRequest>().ExecuteAsync(m);
 
         [HttpPost]
         public Task<long> Add(TenantRegisterRequestAddInDto m)
         {
-            m.TenantId = SaanaaTenants.GetTenant(HttpContext)!.Id;
+            m.TenantId = SqTenants.GetTenant(HttpContext)!.Id;
             return _operationFactory.New<TenantRegisterRequestAdd>().ExecuteAsync(m);
         }
 
@@ -67,7 +67,7 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.TenantRegisterRequest.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<TenantRegisterRequestRemove>().ExecuteAsync(m);
 
         // ============= Custom Actions:

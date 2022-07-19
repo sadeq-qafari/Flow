@@ -1,9 +1,9 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Person.Dto;
 
 namespace Tenant.Operations.Person.Commands
 {
-    public class AddPerson : SaanaaDbInsertAsync<AddPersonInDto>
+    public class AddPerson : DbInsertAsync<AddPersonInDto>
     {
         public AddPerson() : base("[Tenant].[Person]",
             "[FirstName], [LastName], [NationalNumber], [GenderLookup], [Description]",

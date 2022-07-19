@@ -1,9 +1,9 @@
-﻿using NodaTime;
-using Saanaa.Core.Meteor.Dto;
+﻿using Core.Meteor.Dto;
+using NodaTime;
 
 namespace Core.Operations.Version.Dto
 {
-    public class AddVersionInDto : SaanaaDbInsertInDto
+    public class AddVersionInDto : DbInsertInDto
     {
         public Instant ReleaseDate { get; set; }
         public string Description { get; set; }

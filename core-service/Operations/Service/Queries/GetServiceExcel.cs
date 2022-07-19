@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Core.Operations.Service.Dto;
-using Saanaa.Core.Meteor;
+using Meteor.Operation;
 
 namespace Core.Operations.Service.Queries
 {
-    public class GetServiceExcel : SaanaaDbQueryExcel<ServiceDto>
+    public class GetServiceExcel : DbQueryExcel<ServiceDto>
     {
         public GetServiceExcel() : base("[Core].[Service]")
         {

@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.LookupItem.Commands
 {
-    public class LookupItemRemove : SaanaaDbDeleteAsync
+    public class LookupItemRemove : DbDeleteAsync
     {
         public LookupItemRemove() : base("[Flow].[LookupItem]")
         {

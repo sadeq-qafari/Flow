@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.AspNetCore.Operations.Db.Identity.Dto;
 using Identity.Operations.Database.Permission;
 using Identity.Operations.Database.Permission.Commands;
 using Identity.Operations.Database.Permission.Dtos;
@@ -8,9 +9,8 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Operations.Db.UserPermissions.Dto;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 
 namespace Identity.Controllers
 {
@@ -28,29 +28,29 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.Permission.Read")]
         [HttpGet]
-        public Task<QueryPage<PermissionDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<PermissionDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetPermissionPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetPermissionAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Identity.Permission.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<Permission>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<Permission>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetPermissionByIds>().ExecuteAsync(m);
 
         [NeedPermission("Identity.Permission.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetPermissionExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Permission.xlsx");
 
 
         [NeedPermission("Identity.Permission.Read")]
         [HttpGet("{id}")]
-        public Task<Permission?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<Permission?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetPermission>().ExecuteAsync(m);
 
         [NeedPermission("Identity.Permission.Create")]
@@ -65,7 +65,7 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.Permission.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<PermissionRemove>().ExecuteAsync(m);
 
         // ============= Custom Actions:

@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Banner.Commands
 {
-    public class BannerRemove : SaanaaDbDeleteAsync
+    public class BannerRemove : DbDeleteAsync
     {
         public BannerRemove() : base("[Tenant].[Banner]")
         {

@@ -4,9 +4,9 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor;
+using Core.Meteor.Dto;
 using Tenant.Operations.Dashboard.Dtos;
 using Tenant.Operations.Report;
 using Tenant.Operations.Report.Commands;
@@ -29,29 +29,29 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.Report.Read")]
         [HttpGet]
-        public Task<QueryPage<ReportDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<ReportDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetReportPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetReportAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Report.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<Report>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<Report>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetReportByIds>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Report.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetReportExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Report.xlsx");
 
 
         [NeedPermission("Tenant.Report.Read")]
         [HttpGet("{id}")]
-        public Task<Report?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<Report?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetReport>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Report.Create")]
@@ -66,7 +66,7 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.Report.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<ReportRemove>().ExecuteAsync(m);
 
         // ======= Customized Actions:
@@ -79,7 +79,7 @@ namespace Tenant.Controllers
         [HttpGet("name")]
         public Task<List<object>?> GetReportByName([FromQuery] ReportByNameInDto m)
         {
-            m.TenantId = SaanaaTenants.GetTenant(HttpContext).Id;
+            m.TenantId = SqTenants.GetTenant(HttpContext).Id;
             return _operationFactory.New<GetReportByName>().ExecuteAsync(m);
         }
     }

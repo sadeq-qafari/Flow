@@ -1,9 +1,9 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.PricingDetailTenant.Dtos;
 
 namespace Tenant.Operations.PricingDetailTenant.Commands
 {
-    public class PricingDetailTenantAdd : SaanaaDbInsertAsync<PricingDetailTenantAddInDto>
+    public class PricingDetailTenantAdd : DbInsertAsync<PricingDetailTenantAddInDto>
     {
         public PricingDetailTenantAdd() : base("[Tenant].[PricingDetailTenant]",
             @"[PricingItemId],

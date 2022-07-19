@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.DeviceCode.Queries
 {
-    public class GetDeviceCodeExcel : SaanaaDbQueryExcel<DeviceCode>
+    public class GetDeviceCodeExcel : DbQueryExcel<DeviceCode>
     {
         public GetDeviceCodeExcel() : base("[Identity].[DeviceCode]")
         {

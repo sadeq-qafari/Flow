@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Department.Queries
 {
-    public class GetDepartmentByIds : SaanaaDbQueryByIds<Department>
+    public class GetDepartmentByIds : DbQueryByIds<Department>
     {
         public GetDepartmentByIds() : base("[Tenant].[Department]")
         {

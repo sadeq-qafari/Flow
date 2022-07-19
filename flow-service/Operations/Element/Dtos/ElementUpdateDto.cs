@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Flow.Operations.Element.Dtos
 {
-    public class ElementUpdateInDto : SaanaaDbUpdateInDto
+    public class ElementUpdateInDto : DbUpdateInDto
     {
         public string? Name { get; set; }
         public string? Title { get; set; }

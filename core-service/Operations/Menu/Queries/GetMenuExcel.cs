@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Core.Operations.Menu.Dto;
-using Saanaa.Core.Meteor;
+using Meteor.Operation;
 
 namespace Core.Operations.Menu.Queries
 {
-    public class GetMenuExcel : SaanaaDbQueryExcel<MenuDto>
+    public class GetMenuExcel : DbQueryExcel<MenuDto>
     {
         public GetMenuExcel() : base("[Core].[Menu]")
         {

@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Flow.Operations.FormLeadLog.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.FormLeadLog.Commands
 {
-    public class FormLeadLogAdd : SaanaaDbInsertAsync<FormLeadLogAddInDto>
+    public class FormLeadLogAdd : DbInsertAsync<FormLeadLogAddInDto>
     {
         public FormLeadLogAdd() : base("[Flow].[FormLeadLog]",
             @"[FormLeadId],

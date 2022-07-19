@@ -1,9 +1,9 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Organization.Dto;
 
 namespace Tenant.Operations.Organization.Commands
 {
-    public class UpdateOrganization : SaanaaDbUpdateAsync<UpdateOrganizationInDto>
+    public class UpdateOrganization : DbUpdateAsync<UpdateOrganizationInDto>
     {
         public UpdateOrganization() : base("[Tenant].[Organization]",
             @"[Id]=@Id, [Title]=@Title, [OfficialTitle]=@OfficialTitle, [Logo]=@Logo, [About]=@About,

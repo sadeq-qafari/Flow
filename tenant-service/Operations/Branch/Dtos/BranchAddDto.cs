@@ -1,10 +1,10 @@
 using NodaTime;
-using Saanaa.Core.Meteor.Dto;
-using Saanaa.Core.Meteor.SqlServer;
+using Core.Meteor.Dto;
+using Core.Meteor.SqlServer;
 
 namespace Tenant.Operations.Branch.Dtos
 {
-    public class BranchAddInDto : SaanaaDbInsertInDto
+    public class BranchAddInDto : DbInsertInDto
     {
 
         public string Title { get; set; }

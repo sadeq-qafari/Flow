@@ -1,8 +1,8 @@
 using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using Saanaa.Core.AspNetCore;
-using Saanaa.Core.AspNetCore.Extensions;
+using Core.AspNetCore;
+using Core.AspNetCore.Extensions;
 using Serilog;
 using Serilog.Events;
 
@@ -10,6 +10,7 @@ namespace Identity
 {
     public class Program
     {
+        [STAThread]
         public static void Main(string[] args)
         {
             Log.Logger = Meteor.Logger.DefaultLogger.Config("Identity")
@@ -20,7 +21,7 @@ namespace Identity
                 .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Verbose)
                 .CreateLogger();
             Log.Debug("app is starting");
-            StartupCoreExtensions.LoadSaanaaServiceConfigs(
+            StartupCoreExtensions.LoadSqServiceConfigs(
                 Environment.GetEnvironmentVariable("CONNECTION_STRING")!,
                 Environment.GetEnvironmentVariable("SERVICE_NAME")!);
             CreateHostBuilder(args).Build().Run();

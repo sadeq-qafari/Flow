@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Staff.Queries
 {
-    public class GetStaffAsDropDown : SaanaaDbQueryAsDropDown<Staff>
+    public class GetStaffAsDropDown : DbQueryAsDropDown<Staff>
     {
         public GetStaffAsDropDown() : base("[Tenant].[v_Staff]")
         {

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Core.Operations.EntityRelationRule;
 using Core.Operations.EntityRelationRule.Commands;
 using Core.Operations.EntityRelationRule.Dto;
@@ -8,8 +10,6 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
 using EntityRelationRuleDto = Core.Operations.EntityRelationRule.Dto.EntityRelationRuleDto;
 
 namespace Core.Controllers
@@ -28,22 +28,22 @@ namespace Core.Controllers
 
         [NeedPermission("Core.EntityRelationRule.Read")]
         [HttpGet]
-        public Task<QueryPage<EntityRelationRuleDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<EntityRelationRuleDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetEntityRelationRulePage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetEntityRelationRuleAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Core.EntityRelationRule.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<EntityRelationRule>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<EntityRelationRule>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetEntityRelationRuleByIds>().ExecuteAsync(m);
 
         [NeedPermission("Core.EntityRelationRule.Read")]
         [HttpGet("{id}")]
-        public Task<EntityRelationRule?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<EntityRelationRule?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetEntityRelationRule>().ExecuteAsync(m);
 
         [NeedPermission("Core.EntityRelationRule.Create")]
@@ -58,7 +58,7 @@ namespace Core.Controllers
 
         [NeedPermission("Core.EntityRelationRule.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<RemoveEntityRelationRule>().ExecuteAsync(m);
     }
 }

@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.ModelPropertyLookup.Queries
 {
-    public class GetModelPropertyLookupByIds : SaanaaDbQueryByIds<ModelPropertyLookup>
+    public class GetModelPropertyLookupByIds : DbQueryByIds<ModelPropertyLookup>
     {
         public GetModelPropertyLookupByIds() : base("[Core].[ModelPropertyLookup]")
         {

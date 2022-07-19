@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Staff.Queries
 {
-    public class GetStaff : SaanaaDbSelectAsync<Staff?>
+    public class GetStaff : DbSelectAsync<Staff?>
     {
         public GetStaff() : base("[Tenant].[v_Staff]")
         {

@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Tag.Queries
 {
-    public class GetTagExcel : SaanaaDbQueryExcel<Tag>
+    public class GetTagExcel : DbQueryExcel<Tag>
     {
         public GetTagExcel() : base("[Tenant].[Tag]")
         {

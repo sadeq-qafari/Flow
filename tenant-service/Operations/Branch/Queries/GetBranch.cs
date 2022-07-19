@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Branch.Queries
 {
-    public class GetBranch : SaanaaDbSelectAsync<Branch?>
+    public class GetBranch : DbSelectAsync<Branch?>
     {
         public GetBranch() : base("[Identity].[Branch]")
         {

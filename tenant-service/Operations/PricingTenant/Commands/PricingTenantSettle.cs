@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Meteor.Operation.Db;
-using Saanaa.Core.AspNetCore.Operations.Db.Accounting.Commands;
-using Saanaa.Core.AspNetCore.Operations.Db.Accounting.Dto;
-using Saanaa.Core.AspNetCore.Operations.Db.Payment.Command;
-using Saanaa.Core.AspNetCore.Operations.Db.Payment.Dto;
-using Saanaa.Core.Meteor;
+using Core.AspNetCore.Operations.Db.Accounting.Commands;
+using Core.AspNetCore.Operations.Db.Accounting.Dto;
+using Core.AspNetCore.Operations.Db.Payment.Command;
+using Core.AspNetCore.Operations.Db.Payment.Dto;
+using Core.Meteor;
 using Tenant.Operations.Transaction.Commands;
 using Tenant.Operations.Transaction.Dtos;
 using TransactionType = Tenant.Operations.Transaction.TransactionType;

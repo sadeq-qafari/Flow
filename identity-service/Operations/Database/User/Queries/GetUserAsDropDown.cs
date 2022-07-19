@@ -1,10 +1,10 @@
 using Identity.Operations.Database.User.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.User.Queries
 {
-    public class GetUserAsDropDown : SaanaaDbQueryAsDropDown<UserDto>
+    public class GetUserAsDropDown : DbQueryAsDropDown<UserDto>
     {
         public GetUserAsDropDown() : base("[Identity].[User]","Title","Id","RoleTitle")
         {

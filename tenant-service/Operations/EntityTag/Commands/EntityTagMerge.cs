@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Meteor.Operation.Db;
 using Meteor.Utils;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.EntityTag.Dtos;
 
 namespace Tenant.Operations.EntityTag.Commands
@@ -13,7 +13,7 @@ namespace Tenant.Operations.EntityTag.Commands
         protected override async Task ExecutionAsync()
         {
             var tagIds = string.Empty;
-            var modelId = SaanaaServices.GetModel(Input.ServiceName, Input.ModelName)?.Id;
+            var modelId = SqServices.GetModel(Input.ServiceName, Input.ModelName)?.Id;
             if (modelId == null)
                 throw Errors.InvalidInput("entity_tag_model_not_found");
             if (Input.TagIds?.Count > 0) tagIds = string.Join(',', Input.TagIds!);

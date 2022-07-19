@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.User.Queries
 {
-    public class GetUserByIds : SaanaaDbQueryByIds<User>
+    public class GetUserByIds : DbQueryByIds<User>
     {
         public GetUserByIds() : base("[Identity].[User]")
         {

@@ -1,10 +1,10 @@
+using Core.Meteor;
 using Flow.Operations.WorkflowStepException.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.WorkflowStepException.Queries
 {
-    public class GetWorkflowStepExceptionPage : SaanaaDbQueryPage<WorkflowStepExceptionDto>
+    public class GetWorkflowStepExceptionPage : DbQueryPage<WorkflowStepExceptionDto>
     {
         public GetWorkflowStepExceptionPage() : base("[Flow].[WorkflowStepException]")
         {

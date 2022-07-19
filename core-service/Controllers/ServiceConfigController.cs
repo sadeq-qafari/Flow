@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Core.Operations.ServiceConfig;
 using Core.Operations.ServiceConfig.Commands;
 using Core.Operations.ServiceConfig.Dto;
@@ -8,8 +10,6 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Core.Controllers
 {
@@ -27,29 +27,29 @@ namespace Core.Controllers
 
         [NeedPermission("Core.ServiceConfig.Read")]
         [HttpGet]
-        public Task<QueryPage<ServiceConfigDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<ServiceConfigDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetServiceConfigPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetServiceConfigAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Core.ServiceConfig.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<ServiceConfig>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<ServiceConfig>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetServiceConfigByIds>().ExecuteAsync(m);
 
         [NeedPermission("Core.ServiceConfig.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetServiceConfigExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "ServiceConfig.xlsx");
 
 
         [NeedPermission("Core.ServiceConfig.Read")]
         [HttpGet("{id}")]
-        public Task<ServiceConfig?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<ServiceConfig?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetServiceConfig>().ExecuteAsync(m);
 
         [NeedPermission("Core.ServiceConfig.Create")]
@@ -64,7 +64,7 @@ namespace Core.Controllers
 
         [NeedPermission("Core.ServiceConfig.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<RemoveServiceConfig>().ExecuteAsync(m);
     }
 }

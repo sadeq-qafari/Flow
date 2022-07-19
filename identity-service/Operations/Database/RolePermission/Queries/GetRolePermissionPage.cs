@@ -1,10 +1,10 @@
 using Identity.Operations.Database.RolePermission.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.RolePermission.Queries
 {
-    public class GetRolePermissionPage : SaanaaDbQueryPage<RolePermissionDto>
+    public class GetRolePermissionPage : DbQueryPage<RolePermissionDto>
     {
         public GetRolePermissionPage() : base("[Identity].[RolePermission]")
         {

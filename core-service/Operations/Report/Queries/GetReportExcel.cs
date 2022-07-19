@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Core.Operations.Report.Dtos;
-using Saanaa.Core.Meteor;
+using Meteor.Operation;
 
 namespace Core.Operations.Report.Queries
 {
-    public class GetReportExcel : SaanaaDbQueryExcel<ReportDto>
+    public class GetReportExcel : DbQueryExcel<ReportDto>
     {
         public GetReportExcel() : base("[Core].[Report]")
         {

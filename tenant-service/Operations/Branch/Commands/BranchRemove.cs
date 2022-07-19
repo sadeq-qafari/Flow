@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Branch.Commands
 {
-    public class BranchRemove : SaanaaDbDeleteAsync
+    public class BranchRemove : DbDeleteAsync
     {
         public BranchRemove() : base("[Identity].[Branch]")
         {

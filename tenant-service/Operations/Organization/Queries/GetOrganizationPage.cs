@@ -1,11 +1,11 @@
 using Humanizer;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Organization.Dto;
 
 namespace Tenant.Operations.Organization.Queries
 {
-    public class GetOrganizationPage : SaanaaDbQueryPage<OrganizationDto>
+    public class GetOrganizationPage : DbQueryPage<OrganizationDto>
     {
         public GetOrganizationPage() : base("[Tenant].[Organization]")
         {

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Core.Operations.ModelFilter;
 using Core.Operations.ModelFilter.Commands;
 using Core.Operations.ModelFilter.Dtos;
@@ -8,8 +10,6 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Core.Controllers
 {
@@ -27,29 +27,29 @@ namespace Core.Controllers
 
         [NeedPermission("Core.ModelFilter.Read")]
         [HttpGet]
-        public Task<QueryPage<ModelFilterDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) => 
+        public Task<QueryPage<ModelFilterDto>?> Get([FromQuery] DbQueryPageInDto m) => 
             _operationFactory.New<GetModelFilterPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) => 
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) => 
             _operationFactory.New<GetModelFilterAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Core.ModelFilter.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<ModelFilter>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) => 
+        public Task<IEnumerable<ModelFilter>?> GetByIds([FromQuery] DbQueryByIdsInDto m) => 
             _operationFactory.New<GetModelFilterByIds>().ExecuteAsync(m);
 
         [NeedPermission("Core.ModelFilter.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetModelFilterExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "ModelFilter.xlsx");
         
 
         [NeedPermission("Core.ModelFilter.Read")]
         [HttpGet("{id}")]
-        public Task<ModelFilter?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<ModelFilter?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetModelFilter>().ExecuteAsync(m);
 
         [NeedPermission("Core.ModelFilter.Create")]
@@ -64,7 +64,7 @@ namespace Core.Controllers
 
         [NeedPermission("Core.ModelFilter.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<ModelFilterRemove>().ExecuteAsync(m);
     }
 }

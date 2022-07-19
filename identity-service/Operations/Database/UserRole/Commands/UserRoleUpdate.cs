@@ -1,9 +1,9 @@
 using Identity.Operations.Database.UserRole.Dtos;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.UserRole.Commands
 {
-    public class UserRoleUpdate : SaanaaDbUpdateAsync<UserRoleUpdateInDto>
+    public class UserRoleUpdate : DbUpdateAsync<UserRoleUpdateInDto>
     {
         public UserRoleUpdate() : base("[Identity].[UserRole]",
             @"[UserId]=@UserId,

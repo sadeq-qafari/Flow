@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.ModelPropertyElement.Queries
 {
-    public class GetModelPropertyElementAsDropDown : SaanaaDbQueryAsDropDown<ModelPropertyElement>
+    public class GetModelPropertyElementAsDropDown : DbQueryAsDropDown<ModelPropertyElement>
     {
         public GetModelPropertyElementAsDropDown() : base("[Core].[ModelPropertyElement]","Name")
         {

@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.OrganizationDetail.Queries
 {
-    public class GetOrganizationDetailAsDropDown : SaanaaDbQueryAsDropDown<OrganizationDetail>
+    public class GetOrganizationDetailAsDropDown : DbQueryAsDropDown<OrganizationDetail>
     {
         public GetOrganizationDetailAsDropDown() : base("[Tenant].[OrganizationDetail]")
         {

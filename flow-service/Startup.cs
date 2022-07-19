@@ -1,4 +1,8 @@
 using System.Collections.Generic;
+using Core.AspNetCore;
+using Core.AspNetCore.Extensions;
+using Core.Meteor;
+using Core.Meteor.SqlServer;
 using Dapper;
 using Flow.Core;
 using Flow.Core.Models;
@@ -9,10 +13,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Saanaa.Core.AspNetCore;
-using Saanaa.Core.AspNetCore.Extensions;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.SqlServer;
 
 namespace Flow
 {
@@ -27,7 +27,7 @@ namespace Flow
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSaanaaCoreServices();
+            services.AddSqCoreServices();
             SqlMapper.AddTypeHandler(new SqlServerJsonTypeHandler<List<FormPropertyItem>?>());
             SqlMapper.AddTypeHandler(new SqlServerJsonTypeHandler<List<FormActionItem>?>());
             SqlMapper.AddTypeHandler(new SqlServerJsonTypeHandler<List<FormPropertySimpleDto>?>());
@@ -38,11 +38,11 @@ namespace Flow
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseSaanaaCoreConfig();
+            app.UseSqCoreConfig();
             using var scope = app.ApplicationServices.CreateScope();
             var db = scope.ServiceProvider.GetService<LazyDbConnection>();
-            SaanaaServices.Reload(db, ServiceConfig.Get("api_gateway_url")).Wait();
-            SaanaaTenants.Reload(db).Wait();
+            SqServices.Reload(db, ServiceConfig.Get("api_gateway_url")).Wait();
+            SqTenants.Reload(db).Wait();
             SaanaaForms.Reload(db).Wait();
         }
     }

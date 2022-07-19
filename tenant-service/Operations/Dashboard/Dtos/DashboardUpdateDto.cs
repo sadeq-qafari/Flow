@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Tenant.Operations.Dashboard.Dtos
 {
-    public class DashboardUpdateInDto : SaanaaDbUpdateInDto
+    public class DashboardUpdateInDto : DbUpdateInDto
     {
         public string? Title { get; set; }
         public int? PersonId { get; set; }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
@@ -16,10 +17,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Saanaa.Core.AspNetCore;
-using Saanaa.Core.AspNetCore.Extensions;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.SqlServer;
+using Core.AspNetCore;
+using Core.AspNetCore.Extensions;
+using Core.Meteor;
+using Core.Meteor.SqlServer;
 
 namespace Identity
 {
@@ -34,7 +35,8 @@ namespace Identity
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSaanaaCoreServices();
+            Console.WriteLine("We started running");
+            services.AddSqCoreServices();
             services.AddHttpContextAccessor();
 
             EnvVars.SetDefaultValue(EnvVarKeys.DbUri, ServiceConfig.Get("ServiceConfigConnectionString"));
@@ -85,17 +87,17 @@ namespace Identity
                 .AddProfileService<ProfileService>();
 
             builder.AddSigningCredential(new X509Certificate2(
-                Path.Combine(Environment.CurrentDirectory, "Certificate/token_signing.pfx"), "qw12QW!@"));
+                Path.Combine(Environment.CurrentDirectory, Environment.GetEnvironmentVariable("CERTIFICATE_FILE_NAME")!), Environment.GetEnvironmentVariable("CERTIFICATE_PASSWORD")!));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseSaanaaCoreConfig();
+            app.UseSqCoreConfig();
             app.UseIdentityServer();
             using var scope = app.ApplicationServices.CreateScope();
             var db = scope.ServiceProvider.GetService<LazyDbConnection>();
-            SaanaaServices.Reload(db, ServiceConfig.Get("api_gateway_url")).Wait();
-            SaanaaTenants.Reload(db).Wait();
+            SqServices.Reload(db, ServiceConfig.Get("api_gateway_url")).Wait();
+            SqTenants.Reload(db).Wait();
         }
     }
 }

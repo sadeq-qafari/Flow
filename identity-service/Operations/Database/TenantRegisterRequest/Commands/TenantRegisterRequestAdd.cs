@@ -4,13 +4,13 @@ using System.Threading.Tasks;
 using Humanizer;
 using Identity.Operations.Database.TenantRegisterRequest.Dtos;
 using Meteor.Utils;
-using Saanaa.Core.AspNetCore.Operations.Logic.SendMessage;
-using Saanaa.Core.AspNetCore.Operations.Logic.SendMessage.Dto;
-using Saanaa.Core.Meteor;
+using Core.AspNetCore.Operations.Logic.SendMessage;
+using Core.AspNetCore.Operations.Logic.SendMessage.Dto;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.TenantRegisterRequest.Commands
 {
-    public class TenantRegisterRequestAdd : SaanaaDbInsertAsync<TenantRegisterRequestAddInDto>
+    public class TenantRegisterRequestAdd : DbInsertAsync<TenantRegisterRequestAddInDto>
     {
         public TenantRegisterRequestAdd() : base("[Identity].[TenantRegisterRequest]",
             @"[StatusLookup],

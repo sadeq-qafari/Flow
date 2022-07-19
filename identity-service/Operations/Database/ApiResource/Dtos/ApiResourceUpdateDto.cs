@@ -1,9 +1,9 @@
 using NodaTime;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.ApiResource.Dtos
 {
-    public class ApiResourceUpdateInDto : SaanaaDbUpdateInDto
+    public class ApiResourceUpdateInDto : DbUpdateInDto
     {
         public bool Enabled { get; set; }
         public string Name { get; set; }

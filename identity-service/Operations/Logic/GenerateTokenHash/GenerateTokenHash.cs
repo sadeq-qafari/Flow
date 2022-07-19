@@ -4,7 +4,7 @@ using Identity.Operations.Database.Branch.Queries;
 using Identity.Operations.Logic.Dto;
 using Meteor.Operation.Db;
 using Meteor.Utils;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Logic.GenerateTokenHash
 {

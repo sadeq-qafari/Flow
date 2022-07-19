@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.PersistedGrant.Queries
 {
-    public class GetPersistedGrantExcel : SaanaaDbQueryExcel<PersistedGrant>
+    public class GetPersistedGrantExcel : DbQueryExcel<PersistedGrant>
     {
         public GetPersistedGrantExcel() : base("[Identity].[PersistedGrant]")
         {

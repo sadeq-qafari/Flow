@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Core.Operations.Model.Dto
 {
-    public class AddModelInDto : SaanaaDbInsertInDto
+    public class AddModelInDto : DbInsertInDto
     {
         public int ServiceId { get; set; }
         public string Name { get; set; }

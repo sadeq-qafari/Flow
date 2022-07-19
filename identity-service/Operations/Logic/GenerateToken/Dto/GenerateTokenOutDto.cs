@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Core.AspNetCore.Operations.Db.Identity.Dto;
 using Identity.Operations.Database.TenantUser.Dtos;
-using Saanaa.Core.AspNetCore.Operations.Db.UserPermissions.Dto;
 
 namespace Identity.Operations.Logic.GenerateToken.Dto
 {

@@ -1,9 +1,9 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Transaction.Dtos;
 
 namespace Tenant.Operations.Transaction.Commands
 {
-    public class TransactionUpdate : SaanaaDbUpdateAsync<TransactionUpdateInDto>
+    public class TransactionUpdate : DbUpdateAsync<TransactionUpdateInDto>
     {
         public TransactionUpdate() : base("[Tenant].[Transaction]",
             @"[PersonId]=@PersonId,

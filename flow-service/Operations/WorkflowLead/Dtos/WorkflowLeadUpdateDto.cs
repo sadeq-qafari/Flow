@@ -1,9 +1,9 @@
 using System;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Flow.Operations.WorkflowLead.Dtos
 {
-    public class WorkflowLeadUpdateInDto : SaanaaDbUpdateInDto
+    public class WorkflowLeadUpdateInDto : DbUpdateInDto
     {
         public int? CurrentWorkflowStepId { get; set; }
         public DateTime LatestActionDate { get; set; }

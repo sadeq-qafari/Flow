@@ -1,6 +1,6 @@
 ﻿using Meteor.Operation;
 using Meteor.Utils;
-using Saanaa.Core.AspNetCore.Redis;
+using Core.AspNetCore.Redis;
 
 namespace Identity.Operations
 {

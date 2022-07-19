@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.FormLeadData.Queries
 {
-    public class GetFormLeadDataByIds : SaanaaDbQueryByIds<FormLeadData>
+    public class GetFormLeadDataByIds : DbQueryByIds<FormLeadData>
     {
         public GetFormLeadDataByIds() : base("[Flow].[FormLeadData]")
         {

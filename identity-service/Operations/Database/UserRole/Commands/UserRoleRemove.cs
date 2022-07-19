@@ -1,12 +1,12 @@
 using System;
 using System.Threading.Tasks;
 using Meteor.Utils;
-using Saanaa.Core.AspNetCore.Redis;
-using Saanaa.Core.Meteor;
+using Core.AspNetCore.Redis;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.UserRole.Commands
 {
-    public class UserRoleRemove : SaanaaDbDeleteAsync
+    public class UserRoleRemove : DbDeleteAsync
     {
         public UserRoleRemove() : base("[Identity].[UserRole]")
         {

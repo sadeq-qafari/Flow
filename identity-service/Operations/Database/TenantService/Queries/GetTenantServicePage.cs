@@ -1,10 +1,10 @@
 using Identity.Operations.Database.TenantService.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.TenantService.Queries
 {
-    public class GetTenantServicePage : SaanaaDbQueryPage<TenantServiceDto>
+    public class GetTenantServicePage : DbQueryPage<TenantServiceDto>
     {
         public GetTenantServicePage() : base("[Identity].[TenantService]")
         {

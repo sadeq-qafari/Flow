@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Core.Operations.ModelPropertyElement;
 using Core.Operations.ModelPropertyElement.Commands;
 using Core.Operations.ModelPropertyElement.Dto;
@@ -8,8 +10,6 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Core.Controllers
 {
@@ -27,29 +27,29 @@ namespace Core.Controllers
 
         [NeedPermission("Core.ModelPropertyElement.Read")]
         [HttpGet]
-        public Task<QueryPage<ModelPropertyElementDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<ModelPropertyElementDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetModelPropertyElementPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetModelPropertyElementAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Core.ModelPropertyElement.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<ModelPropertyElement>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<ModelPropertyElement>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetModelPropertyElementByIds>().ExecuteAsync(m);
 
         [NeedPermission("Core.ModelPropertyElement.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetModelPropertyElementExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "ModelPropertyElement.xlsx");
 
 
         [NeedPermission("Core.ModelPropertyElement.Read")]
         [HttpGet("{id}")]
-        public Task<ModelPropertyElement?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<ModelPropertyElement?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetModelPropertyElement>().ExecuteAsync(m);
 
         [NeedPermission("Core.ModelPropertyElement.Create")]
@@ -64,7 +64,7 @@ namespace Core.Controllers
 
         [NeedPermission("Core.ModelPropertyElement.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<RemoveModelPropertyElement>().ExecuteAsync(m);
     }
 }

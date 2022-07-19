@@ -1,9 +1,9 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Banner.Dtos;
 
 namespace Tenant.Operations.Banner.Commands
 {
-    public class BannerUpdate : SaanaaDbUpdateAsync<BannerUpdateInDto>
+    public class BannerUpdate : DbUpdateAsync<BannerUpdateInDto>
     {
         public BannerUpdate() : base("[Tenant].[Banner]",
             @"[Title]=@Title,

@@ -1,9 +1,9 @@
 using Identity.Operations.Database.TenantUrl.Dtos;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.TenantUrl.Commands
 {
-    public class TenantUrlAdd : SaanaaDbInsertAsync<TenantUrlAddInDto>
+    public class TenantUrlAdd : DbInsertAsync<TenantUrlAddInDto>
     {
         public TenantUrlAdd() : base("[Identity].[TenantUrl]",
             @"[TypeLookup],

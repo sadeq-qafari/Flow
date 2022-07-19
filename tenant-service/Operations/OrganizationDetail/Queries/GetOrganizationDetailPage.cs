@@ -1,10 +1,10 @@
 using Humanizer;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.OrganizationDetail.Dtos;
 
 namespace Tenant.Operations.OrganizationDetail.Queries
 {
-    public class GetOrganizationDetailPage : SaanaaDbQueryPage<OrganizationDetailDto>
+    public class GetOrganizationDetailPage : DbQueryPage<OrganizationDetailDto>
     {
         public GetOrganizationDetailPage() : base("[Tenant].[OrganizationDetail]")
         {

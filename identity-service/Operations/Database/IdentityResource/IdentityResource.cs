@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using NodaTime;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.IdentityResource
 {

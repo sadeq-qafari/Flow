@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Meteor.Operation.Db;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.Tenant.Queries
 {
-    public class GetTenantRoles : DbOperationAsync<SaanaaDbSelectInDto, IEnumerable<int>>
+    public class GetTenantRoles : DbOperationAsync<DbSelectInDto, IEnumerable<int>>
     {
         protected override async Task ExecutionAsync()
         {

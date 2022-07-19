@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Identity.Operations.Database.TenantUrl.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.TenantUrl.Queries
 {
-    public class GetTenantUrlPage : SaanaaDbQueryPage<TenantUrlDto>
+    public class GetTenantUrlPage : DbQueryPage<TenantUrlDto>
     {
         public GetTenantUrlPage() : base("[Identity].[TenantUrl]")
         {
@@ -15,7 +15,7 @@ namespace Identity.Operations.Database.TenantUrl.Queries
 
         protected override ISqlDialect GetSelectSql(bool isForCount = false)
         {
-            Parameters.Add("TypeLookup", SaanaaServices.GetModelProperty("Identity","TenantUrl","typeLookup")!.Id);
+            Parameters.Add("TypeLookup", SqServices.GetModelProperty("Identity","TenantUrl","typeLookup")!.Id);
             return SqlFactory!.Create().Select("[Identity].[TenantUrl] TenantUrl", isForCount ? "COUNT(*)" : @"
 						TenantUrl.*, 
 						TypeLookup.Title AS TypeLookupTitle,

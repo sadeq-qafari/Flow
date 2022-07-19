@@ -1,4 +1,6 @@
 using System.Linq;
+using Core.AspNetCore;
+using Core.Meteor.SqlServer;
 using Meteor;
 using Meteor.Database.SqlDialect.MsSql;
 using Meteor.Operation;
@@ -11,8 +13,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
-using Saanaa.Core.AspNetCore;
-using Saanaa.Core.Meteor.SqlServer;
 
 namespace Api
 {
@@ -41,6 +41,7 @@ namespace Api
             EnvVars.SetDefaultValue(EnvVarKeys.DbUri, ServiceConfig.Get("ServiceConfigConnectionString"));
             services.AddOperationFactory()
                 .AddDbOperation<SqlServerDbConnectionFactory, MsSqlDialect>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

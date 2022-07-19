@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.PricingItem.Queries
 {
-    public class GetPricingItemByIds : SaanaaDbQueryByIds<PricingItem>
+    public class GetPricingItemByIds : DbQueryByIds<PricingItem>
     {
         public GetPricingItemByIds() : base("[Tenant].[PricingItem]")
         {

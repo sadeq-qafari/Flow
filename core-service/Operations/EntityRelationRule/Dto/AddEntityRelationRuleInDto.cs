@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Core.Operations.EntityRelationRule.Dto
 {
-    public class AddEntityRelationRuleInDto : SaanaaDbInsertInDto
+    public class AddEntityRelationRuleInDto : DbInsertInDto
     {
         public int ModelIdA { get; set; }
         public int ModelIdB { get; set; }

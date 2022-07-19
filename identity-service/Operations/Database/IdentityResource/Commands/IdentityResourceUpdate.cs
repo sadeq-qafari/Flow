@@ -1,9 +1,9 @@
 using Identity.Operations.Database.IdentityResource.Dtos;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.IdentityResource.Commands
 {
-    public class IdentityResourceUpdate : SaanaaDbUpdateAsync<IdentityResourceUpdateInDto>
+    public class IdentityResourceUpdate : DbUpdateAsync<IdentityResourceUpdateInDto>
     {
         public IdentityResourceUpdate() : base("[Identity].[IdentityResource]",
             @"[Enabled]=@Enabled,

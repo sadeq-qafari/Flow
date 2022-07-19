@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.Lookup.Queries
 {
-    public class GetLookupAsDropDown : SaanaaDbQueryAsDropDown<Lookup>
+    public class GetLookupAsDropDown : DbQueryAsDropDown<Lookup>
     {
         public GetLookupAsDropDown() : base("[Flow].[Lookup]")
         {

@@ -1,6 +1,6 @@
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
-using Saanaa.Core.Meteor.SqlServer;
+using Core.Meteor;
+using Core.Meteor.Dto;
+using Core.Meteor.SqlServer;
 
 namespace Tenant.Operations.Branch
 {

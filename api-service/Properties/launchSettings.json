@@ -8,7 +8,7 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "CONNECTION_STRING": "Server=127.0.0.1;Database=FlowDb;User Id=sa;Password=123;",
+        "CONNECTION_STRING": "Server=127.0.0.1;Database=FlowDb;User Id=sa;Password=FlowDb123;MultipleActiveResultSets=True",
         "SERVICE_NAME": "Api"
       }
     }

@@ -2,23 +2,23 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Dto;
+using Core.Meteor;
 using Core.Operations.Service.Dto;
 using Meteor.Operation.Db;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.Service.Queries
 {
-    public class GetServices : DbOperationAsync<GetServicesInDto, SaanaaServicesDto>
+    public class GetServices : DbOperationAsync<GetServicesInDto, ServicesDto>
     {
         protected override async Task ExecutionAsync()
         {
             var requestedVersion = Input.Version.GetValueOrDefault(0);
-            if (requestedVersion <= 0 || requestedVersion != SaanaaServices.LatestVersion)
+            if (requestedVersion <= 0 || requestedVersion != SqServices.LatestVersion)
             {
                 var names = await NewSql(sql => sql.Select("[Identity].[TenantService] TenantService","Service.Name")
                     .InnerJoin("[Core].[Service] Service", "Service.Id = TenantService.ServiceId AND TenantService.TenantId = @TenantId AND TenantService.IsDeleted = 0 AND Service.IsDeleted = 0")
                 ).QueryAsync<string>();
-                Output = GetSaanaaServicesDto(string.Join(',', names));
+                Output = GetServicesDto(string.Join(',', names));
             }
             else
             {
@@ -26,13 +26,13 @@ namespace Core.Operations.Service.Queries
             }
         }
 
-        private static SaanaaServicesDto GetSaanaaServicesDto(string? names)
+        private static ServicesDto GetServicesDto(string? names)
         {
             var serviceNames = names?.Split(',').Select(x => x.Trim()).ToList() ?? new List<string>();
-            return new SaanaaServicesDto
+            return new ServicesDto
             {
-                Services = SaanaaServices.GetServices(serviceNames),
-                Version = SaanaaServices.LatestVersion
+                Services = SqServices.GetServices(serviceNames),
+                Version = SqServices.LatestVersion
             };
         }
     }

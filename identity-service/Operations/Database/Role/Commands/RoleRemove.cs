@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.Role.Commands
 {
-    public class RoleRemove : SaanaaDbDeleteAsync
+    public class RoleRemove : DbDeleteAsync
     {
         public RoleRemove() : base("[Identity].[Role]")
         {

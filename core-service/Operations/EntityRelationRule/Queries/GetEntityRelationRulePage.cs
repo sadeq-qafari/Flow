@@ -1,11 +1,11 @@
+using Core.Meteor;
 using Core.Operations.EntityRelationRule.Dto;
 using Humanizer;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.EntityRelationRule.Queries
 {
-    public class GetEntityRelationRulePage : SaanaaDbQueryPage<EntityRelationRuleDto>
+    public class GetEntityRelationRulePage : DbQueryPage<EntityRelationRuleDto>
     {
         public GetEntityRelationRulePage() : base("[Core].[EntityRelationRule]")
         {

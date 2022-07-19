@@ -1,11 +1,11 @@
+using Core.Meteor;
 using Core.Operations.Version.Dto;
 using Humanizer;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.Version.Queries
 {
-    public class GetVersionPage : SaanaaDbQueryPage<VersionDto>
+    public class GetVersionPage : DbQueryPage<VersionDto>
     {
         public GetVersionPage() : base("[Core].[Version]")
         {

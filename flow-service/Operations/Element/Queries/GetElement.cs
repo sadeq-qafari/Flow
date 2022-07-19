@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Flow.Operations.Element.Queries
 {
-    public class GetElement : SaanaaDbSelectAsync<Element?>
+    public class GetElement : DbSelectAsync<Element?>
     {
         public GetElement() : base("[Flow].[Element]")
         {

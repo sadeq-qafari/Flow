@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.ApiScope.Dtos
 {
-    public class ApiScopeUpdateInDto : SaanaaDbUpdateInDto
+    public class ApiScopeUpdateInDto : DbUpdateInDto
     {
         public string Name { get; set; }
         public string? DisplayName { get; set; }

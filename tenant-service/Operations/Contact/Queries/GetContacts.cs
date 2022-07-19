@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Meteor.Operation.Db;
 using Meteor.Utils;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Contact.Dto;
 
 namespace Tenant.Operations.Contact.Queries
@@ -11,7 +11,7 @@ namespace Tenant.Operations.Contact.Queries
     {
         protected override async Task ExecutionAsync()
         {
-            var modelId = SaanaaServices.GetModel(Input.ServiceName, Input.ModelName)?.Id ??
+            var modelId = SqServices.GetModel(Input.ServiceName, Input.ModelName)?.Id ??
                           throw Errors.InvalidInput("model_not_found");
             Output = await NewSql(sql => sql
                     .Select("[Tenant].[Contact] Contact")

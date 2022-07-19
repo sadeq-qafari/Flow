@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Flow.Operations.FormPermission.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.FormPermission.Commands
 {
-    public class FormPermissionAdd : SaanaaDbInsertAsync<FormPermissionAddInDto>
+    public class FormPermissionAdd : DbInsertAsync<FormPermissionAddInDto>
     {
         public FormPermissionAdd() : base("[Flow].[FormPermission]",
             @"[RoleId],

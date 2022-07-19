@@ -4,8 +4,8 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Tenant.Operations.Pricing;
 using Tenant.Operations.Pricing.Commands;
 using Tenant.Operations.Pricing.Dtos;
@@ -27,29 +27,29 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.Pricing.Read")]
         [HttpGet]
-        public Task<QueryPage<PricingDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<PricingDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetPricingPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetPricingAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Pricing.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<Pricing>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<Pricing>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetPricingByIds>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Pricing.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetPricingExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Pricing.xlsx");
 
 
         [NeedPermission("Tenant.Pricing.Read")]
         [HttpGet("{id}")]
-        public Task<Pricing?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<Pricing?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetPricing>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Pricing.Create")]
@@ -64,7 +64,7 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.Pricing.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<PricingRemove>().ExecuteAsync(m);
 
         // =========== Custom Actions:

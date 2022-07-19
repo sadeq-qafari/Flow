@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.PricingLog.Queries
 {
-    public class GetPricingLogByIds : SaanaaDbQueryByIds<PricingLog>
+    public class GetPricingLogByIds : DbQueryByIds<PricingLog>
     {
         public GetPricingLogByIds() : base("[Tenant].[PricingLog]")
         {

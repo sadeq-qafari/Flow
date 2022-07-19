@@ -4,8 +4,8 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Tenant.Operations.Setting;
 using Tenant.Operations.Setting.Commands;
 using Tenant.Operations.Setting.Dto;
@@ -27,29 +27,29 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.Setting.Read")]
         [HttpGet]
-        public Task<QueryPage<SettingDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<SettingDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetSettingPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetSettingAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Setting.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<Setting>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<Setting>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetSettingByIds>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Setting.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetSettingExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Setting.xlsx");
 
 
         [NeedPermission("Tenant.Setting.Read")]
         [HttpGet("{id}")]
-        public Task<Setting?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<Setting?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetSetting>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.Setting.Create")]
@@ -64,7 +64,7 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.Setting.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<RemoveSetting>().ExecuteAsync(m);
     }
 }

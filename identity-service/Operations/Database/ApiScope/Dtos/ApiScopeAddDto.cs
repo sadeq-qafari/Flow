@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.ApiScope.Dtos
 {
-    public class ApiScopeAddInDto : SaanaaDbInsertInDto
+    public class ApiScopeAddInDto : DbInsertInDto
     {
         public string Name { get; set; }
         public string? DisplayName { get; set; }

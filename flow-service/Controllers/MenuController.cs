@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Flow.Operations.Menu;
 using Flow.Operations.Menu.Commands;
 using Flow.Operations.Menu.Dto;
@@ -8,8 +10,6 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Flow.Controllers
 {
@@ -27,22 +27,22 @@ namespace Flow.Controllers
 
         [NeedPermission("Flow.Menu.Read")]
         [HttpGet]
-        public Task<QueryPage<MenuDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<MenuDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetMenuPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetMenuAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Flow.Menu.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<Menu>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<Menu>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetMenuByIds>().ExecuteAsync(m);
 
         [NeedPermission("Flow.Menu.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetMenuExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Menu.xlsx");
 
@@ -64,7 +64,7 @@ namespace Flow.Controllers
 
         [NeedPermission("Flow.Menu.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<RemoveMenu>().ExecuteAsync(m);
     }
 }

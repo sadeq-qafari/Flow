@@ -1,9 +1,9 @@
 using Identity.Operations.Database.DeviceCode.Dtos;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.DeviceCode.Commands
 {
-    public class DeviceCodeAdd : SaanaaDbInsertAsync<DeviceCodeAddInDto>
+    public class DeviceCodeAdd : DbInsertAsync<DeviceCodeAddInDto>
     {
         public DeviceCodeAdd() : base("[Identity].[DeviceCode]",
             @"",

@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Core.Operations.Application.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Core.Operations.Application.Commands
 {
-    public class ApplicationAdd : SaanaaDbInsertAsync<ApplicationAddInDto>
+    public class ApplicationAdd : DbInsertAsync<ApplicationAddInDto>
     {
         public ApplicationAdd() : base("[Core].[Application]",
             @"[Name],

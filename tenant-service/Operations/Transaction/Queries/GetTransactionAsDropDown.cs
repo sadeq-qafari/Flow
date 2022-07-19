@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Transaction.Queries
 {
-    public class GetTransactionAsDropDown : SaanaaDbQueryAsDropDown<Transaction>
+    public class GetTransactionAsDropDown : DbQueryAsDropDown<Transaction>
     {
         public GetTransactionAsDropDown() : base("[Tenant].[Transaction]")
         {

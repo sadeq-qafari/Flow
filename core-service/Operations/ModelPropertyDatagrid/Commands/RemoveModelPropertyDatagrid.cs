@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.ModelPropertyDatagrid.Commands
 {
-    public class RemoveModelPropertyDatagrid : SaanaaDbDeleteAsync
+    public class RemoveModelPropertyDatagrid : DbDeleteAsync
     {
         public RemoveModelPropertyDatagrid() : base("[Core].[ModelPropertyDatagrid]")
         {

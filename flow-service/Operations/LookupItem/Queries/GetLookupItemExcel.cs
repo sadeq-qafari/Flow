@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Flow.Operations.LookupItem.Dtos;
-using Saanaa.Core.Meteor;
+using Meteor.Operation;
 
 namespace Flow.Operations.LookupItem.Queries
 {
-    public class GetLookupItemExcel : SaanaaDbQueryExcel<LookupItemDto>
+    public class GetLookupItemExcel : DbQueryExcel<LookupItemDto>
     {
         public GetLookupItemExcel() : base("[Flow].[LookupItem]")
         {

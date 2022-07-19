@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Role.Queries
 {
-    public class GetRoleByIds : SaanaaDbQueryByIds<Role>
+    public class GetRoleByIds : DbQueryByIds<Role>
     {
         public GetRoleByIds() : base("[Tenant].[Role]")
         {

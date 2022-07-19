@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Flow.Operations.Lookup.Dtos
 {
-    public class LookupUpdateInDto : SaanaaDbUpdateInDto
+    public class LookupUpdateInDto : DbUpdateInDto
     {
         public string Title { get; set; }
         public int TypeLookup { get; set; }

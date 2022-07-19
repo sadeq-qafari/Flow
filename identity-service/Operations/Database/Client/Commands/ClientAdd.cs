@@ -1,9 +1,9 @@
 using Identity.Operations.Database.Client.Dtos;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.Client.Commands
 {
-    public class ClientAdd : SaanaaDbInsertAsync<ClientAddInDto>
+    public class ClientAdd : DbInsertAsync<ClientAddInDto>
     {
         public ClientAdd() : base("[Identity].[Client]",
             @"[Enabled],

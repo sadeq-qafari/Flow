@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Tenant.Operations.Dashboard.Queries
 {
-    public class GetDashboardAsDropDown : SaanaaDbQueryAsDropDown<Dashboard>
+    public class GetDashboardAsDropDown : DbQueryAsDropDown<Dashboard>
     {
         public GetDashboardAsDropDown() : base("[Tenant].[Dashboard]")
         {

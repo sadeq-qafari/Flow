@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Core.Operations.Application.Dtos
 {
-    public class ApplicationUpdateInDto : SaanaaDbUpdateInDto
+    public class ApplicationUpdateInDto : DbUpdateInDto
     {
         public string Name { get; set; }
         public string Title { get; set; }

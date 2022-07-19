@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Flow.Operations.FormProperty.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.FormProperty.Commands
 {
-    public class FormPropertyUpdate : SaanaaDbUpdateAsync<FormPropertyUpdateInDto>
+    public class FormPropertyUpdate : DbUpdateAsync<FormPropertyUpdateInDto>
     {
         public FormPropertyUpdate() : base("[Flow].[FormProperty]",
             @"[LayoutIndex]=@LayoutIndex,

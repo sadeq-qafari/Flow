@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.UserRole.Dtos
 {
-    public class UserRoleUpdateInDto : SaanaaDbUpdateInDto
+    public class UserRoleUpdateInDto : DbUpdateInDto
     {
         public int UserId { get; set; }
         public int RoleId { get; set; }

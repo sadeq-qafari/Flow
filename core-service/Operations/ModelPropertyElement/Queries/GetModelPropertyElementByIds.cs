@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.ModelPropertyElement.Queries
 {
-    public class GetModelPropertyElementByIds : SaanaaDbQueryByIds<ModelPropertyElement>
+    public class GetModelPropertyElementByIds : DbQueryByIds<ModelPropertyElement>
     {
         public GetModelPropertyElementByIds() : base("[Core].[ModelPropertyElement]")
         {

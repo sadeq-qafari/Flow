@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.DeviceCode.Dtos
 {
-    public class DeviceCodeUpdateInDto : SaanaaDbUpdateInDto
+    public class DeviceCodeUpdateInDto : DbUpdateInDto
     {
 
 

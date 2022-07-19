@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Flow.Operations.LookupItem.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.LookupItem.Commands
 {
-    public class LookupItemUpdate : SaanaaDbUpdateAsync<LookupItemUpdateInDto>
+    public class LookupItemUpdate : DbUpdateAsync<LookupItemUpdateInDto>
     {
         public LookupItemUpdate() : base("[Flow].[LookupItem]",
             @"[LookupId]=@LookupId,

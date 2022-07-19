@@ -1,10 +1,10 @@
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.PricingLog.Dtos;
 
 namespace Tenant.Operations.PricingLog.Queries
 {
-    public class GetPricingLogPage : SaanaaDbQueryPage<PricingLogDto>
+    public class GetPricingLogPage : DbQueryPage<PricingLogDto>
     {
         public GetPricingLogPage() : base("[Tenant].[PricingLog]")
         {

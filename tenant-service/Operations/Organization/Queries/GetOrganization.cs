@@ -1,10 +1,10 @@
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Organization.Dto;
 
 namespace Tenant.Operations.Organization.Queries
 {
-    public class GetOrganization : SaanaaDbSelectAsync<OrganizationDto?>
+    public class GetOrganization : DbSelectAsync<OrganizationDto?>
     {
         public GetOrganization() : base("[Tenant].[Organization]")
         {

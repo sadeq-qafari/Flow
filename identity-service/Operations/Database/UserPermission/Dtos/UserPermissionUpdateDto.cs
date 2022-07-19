@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.UserPermission.Dtos
 {
-    public class UserPermissionUpdateInDto : SaanaaDbUpdateInDto
+    public class UserPermissionUpdateInDto : DbUpdateInDto
     {
         public int UserId { get; set; }
         public int PermissionId { get; set; }

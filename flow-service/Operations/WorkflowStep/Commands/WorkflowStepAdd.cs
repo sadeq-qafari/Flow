@@ -1,9 +1,9 @@
+using Core.Meteor;
 using Flow.Operations.WorkflowStep.Dtos;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.WorkflowStep.Commands
 {
-    public class WorkflowStepAdd : SaanaaDbInsertAsync<WorkflowStepAddInDto>
+    public class WorkflowStepAdd : DbInsertAsync<WorkflowStepAddInDto>
     {
         public WorkflowStepAdd() : base("[Flow].[WorkflowStep]",
             @"[WorkflowId],

@@ -1,8 +1,8 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Core.Operations.Version.Queries
 {
-    public class GetVersionAsDropDown : SaanaaDbQueryAsDropDown<Version>
+    public class GetVersionAsDropDown : DbQueryAsDropDown<Version>
     {
         public GetVersionAsDropDown() : base("[Core].[Version]")
         {

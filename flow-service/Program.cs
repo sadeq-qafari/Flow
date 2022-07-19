@@ -1,10 +1,10 @@
 using System;
+using Core.AspNetCore;
+using Core.AspNetCore.Extensions;
+using Core.AspNetCore.Logger;
 using Meteor;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using Saanaa.Core.AspNetCore;
-using Saanaa.Core.AspNetCore.Extensions;
-using Saanaa.Core.AspNetCore.Logger;
 using Serilog;
 
 namespace Flow
@@ -14,12 +14,12 @@ namespace Flow
         public static void Main(string[] args)
         {
             // Load Service Configurations
-            StartupCoreExtensions.LoadSaanaaServiceConfigs(
+            StartupCoreExtensions.LoadSqServiceConfigs(
                 EnvVars.Get("CONNECTION_STRING")!,
                 EnvVars.Get("SERVICE_NAME")!);
 
             // Configure System Log
-            Log.Logger = SaanaaLogger.CreateSaanaaLogger();
+            Log.Logger = CoreLogger.CreateCoreLogger();
 
             try
             {

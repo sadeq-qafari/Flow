@@ -1,12 +1,12 @@
 using System.Threading.Tasks;
+using Core.AspNetCore.Operations.Db.Identity.Dto;
 using Meteor.Operation.Db;
 using Meteor.Utils;
-using Saanaa.Core.AspNetCore.Operations.Db.UserPermissions.Dto;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.Tenant.Queries
 {
-    public class GetTenantPermissions : DbOperationAsync<SaanaaDbSelectInDto,PermissionStore>
+    public class GetTenantPermissions : DbOperationAsync<DbSelectInDto,PermissionStore>
     {
         protected override async Task ExecutionAsync()
         {

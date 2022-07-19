@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor.Dto;
 
 namespace Identity.Operations.Database.TenantUser.Dtos
 {

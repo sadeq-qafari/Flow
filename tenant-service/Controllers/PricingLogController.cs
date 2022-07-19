@@ -4,8 +4,8 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Tenant.Operations.PricingLog;
 using Tenant.Operations.PricingLog.Commands;
 using Tenant.Operations.PricingLog.Dtos;
@@ -27,29 +27,29 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.PricingLog.Read")]
         [HttpGet]
-        public Task<QueryPage<PricingLogDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) => 
+        public Task<QueryPage<PricingLogDto>?> Get([FromQuery] DbQueryPageInDto m) => 
             _operationFactory.New<GetPricingLogPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) => 
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) => 
             _operationFactory.New<GetPricingLogAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.PricingLog.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<PricingLog>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) => 
+        public Task<IEnumerable<PricingLog>?> GetByIds([FromQuery] DbQueryByIdsInDto m) => 
             _operationFactory.New<GetPricingLogByIds>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.PricingLog.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetPricingLogExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "PricingLog.xlsx");
         
 
         [NeedPermission("Tenant.PricingLog.Read")]
         [HttpGet("{id}")]
-        public Task<PricingLog?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<PricingLog?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetPricingLog>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.PricingLog.Create")]
@@ -64,7 +64,7 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.PricingLog.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<PricingLogRemove>().ExecuteAsync(m);
     }
 }

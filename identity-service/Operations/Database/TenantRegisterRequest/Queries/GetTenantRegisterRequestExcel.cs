@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Identity.Operations.Database.TenantRegisterRequest.Dtos;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 
 namespace Identity.Operations.Database.TenantRegisterRequest.Queries
 {
-    public class GetTenantRegisterRequestExcel : SaanaaDbQueryExcel<TenantRegisterRequestDto>
+    public class GetTenantRegisterRequestExcel : DbQueryExcel<TenantRegisterRequestDto>
     {
         public GetTenantRegisterRequestExcel() : base("[Identity].[TenantRegisterRequest]")
         {

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.AspNetCore.Operations.Db.Identity.Dto;
+using Core.AspNetCore.Redis;
 using Core.Operations.Menu.Dto;
 using Meteor.Operation.Db;
 using Meteor.Utils;
-using Saanaa.Core.AspNetCore.Operations.Db.UserPermissions.Dto;
-using Saanaa.Core.AspNetCore.Redis;
 
 namespace Core.Operations.Menu.Queries
 {

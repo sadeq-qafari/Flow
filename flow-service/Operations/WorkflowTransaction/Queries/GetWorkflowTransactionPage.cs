@@ -1,10 +1,10 @@
+using Core.Meteor;
 using Flow.Operations.WorkflowTransaction.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.WorkflowTransaction.Queries
 {
-    public class GetWorkflowTransactionPage : SaanaaDbQueryPage<WorkflowTransactionDto>
+    public class GetWorkflowTransactionPage : DbQueryPage<WorkflowTransactionDto>
     {
         public GetWorkflowTransactionPage() : base("[Flow].[WorkflowTransaction]")
         {
@@ -14,7 +14,7 @@ namespace Flow.Operations.WorkflowTransaction.Queries
 
         protected override ISqlDialect GetSelectSql(bool isForCount = false)
         {
-            Parameters.Add("ActionTypeLookup", SaanaaServices.GetModelProperty("Flow","WorkflowTransaction","actionTypeLookup")!.Id);
+            Parameters.Add("ActionTypeLookup", SqServices.GetModelProperty("Flow","WorkflowTransaction","actionTypeLookup")!.Id);
             return SqlFactory!.Create().Select("[Flow].[WorkflowTransaction] WorkflowTransaction", isForCount ? "COUNT(*)" : @"
 						WorkflowTransaction.*, 
 						WorkflowLead.Title AS WorkflowLeadTitle,

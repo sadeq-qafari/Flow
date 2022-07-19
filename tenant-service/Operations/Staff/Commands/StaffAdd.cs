@@ -1,9 +1,9 @@
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Staff.Dtos;
 
 namespace Tenant.Operations.Staff.Commands
 {
-    public class StaffAdd : SaanaaDbInsertAsync<StaffAddInDto>
+    public class StaffAdd : DbInsertAsync<StaffAddInDto>
     {
         public StaffAdd() : base("[Tenant].[v_Staff]",
             @"[FirstName],

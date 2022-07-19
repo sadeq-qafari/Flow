@@ -1,10 +1,10 @@
+using Core.Meteor;
 using Flow.Operations.FormLead.Dtos;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
 
 namespace Flow.Operations.FormLead.Queries
 {
-    public class GetFormLeadPage : SaanaaDbQueryPage<FormLeadDto>
+    public class GetFormLeadPage : DbQueryPage<FormLeadDto>
     {
         public GetFormLeadPage() : base("[Flow].[FormLead]")
         {

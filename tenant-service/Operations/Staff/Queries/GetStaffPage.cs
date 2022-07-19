@@ -1,11 +1,11 @@
 using Humanizer;
 using Meteor.Database.SqlDialect;
-using Saanaa.Core.Meteor;
+using Core.Meteor;
 using Tenant.Operations.Staff.Dtos;
 
 namespace Tenant.Operations.Staff.Queries
 {
-    public class GetStaffPage : SaanaaDbQueryPage<StaffDto>
+    public class GetStaffPage : DbQueryPage<StaffDto>
     {
         public GetStaffPage() : base("[Tenant].[v_Staff]")
         {
@@ -15,7 +15,7 @@ namespace Tenant.Operations.Staff.Queries
 
         protected override ISqlDialect GetSelectSql(bool isForCount = false)
         {
-            Parameters.Add("GenderLookup", SaanaaServices.GetModelProperty("Tenant","Staff","genderLookup")!.Id);
+            Parameters.Add("GenderLookup", SqServices.GetModelProperty("Tenant","Staff","genderLookup")!.Id);
             return SqlFactory!.Create().Select("[Tenant].[v_Staff] Staff", isForCount ? "COUNT(*)" : @"
 						Staff.*, 
 						GenderLookup.Title AS GenderLookupTitle")

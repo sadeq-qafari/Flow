@@ -5,9 +5,8 @@ using Meteor.Operation;
 using Meteor.Operation.Db;
 using Meteor.Utils;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Operations.Db.Payment.Dto;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 using Tenant.Operations.PricingTenant;
 using Tenant.Operations.PricingTenant.Commands;
 using Tenant.Operations.PricingTenant.Dtos;
@@ -29,29 +28,29 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.PricingTenant.Read")]
         [HttpGet]
-        public Task<QueryPage<PricingTenantDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<PricingTenantDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetPricingTenantPage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetPricingTenantAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.PricingTenant.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<PricingTenant>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<PricingTenant>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetPricingTenantByIds>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.PricingTenant.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetPricingTenantExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "PricingTenant.xlsx");
 
 
         [NeedPermission("Tenant.PricingTenant.Read")]
         [HttpGet("{id}")]
-        public Task<PricingTenant?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<PricingTenant?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetPricingTenant>().ExecuteAsync(m);
 
         [NeedPermission("Tenant.PricingTenant.Create")]
@@ -66,18 +65,18 @@ namespace Tenant.Controllers
 
         [NeedPermission("Tenant.PricingTenant.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<PricingTenantRemove>().ExecuteAsync(m);
 
         // ============= Custom Actions:
 
-        [NeedPermission(Policies = "backend")]
-        [HttpPost("settle")]
-        public async Task<bool?> SettleOrderFlight([FromBody] object m)
-        {
-            var jsonModel = m.ToJson();
-            var model = jsonModel.FromJson<PaymentResult>();
-            return await _operationFactory.New<PricingTenantSettle>().ExecuteAsync(model);
-        }
+        // [NeedPermission(Policies = "backend")]
+        // [HttpPost("settle")]
+        // public async Task<bool?> SettleOrderFlight([FromBody] object m)
+        // {
+        //     var jsonModel = m.ToJson();
+        //     var model = jsonModel.FromJson<PaymentResult>();
+        //     return await _operationFactory.New<PricingTenantSettle>().ExecuteAsync(model);
+        // }
     }
 }

@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Meteor;
 using Flow.Operations.WorkflowStepException.Dtos;
-using Saanaa.Core.Meteor;
+using Meteor.Operation;
 
 namespace Flow.Operations.WorkflowStepException.Queries
 {
-    public class GetWorkflowStepExceptionExcel : SaanaaDbQueryExcel<WorkflowStepExceptionDto>
+    public class GetWorkflowStepExceptionExcel : DbQueryExcel<WorkflowStepExceptionDto>
     {
         public GetWorkflowStepExceptionExcel() : base("[Flow].[WorkflowStepException]")
         {

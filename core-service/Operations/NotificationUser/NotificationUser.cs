@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using Core.Meteor;
+using Core.Meteor.Dto;
 using NodaTime;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Core.Operations.NotificationUser
 {

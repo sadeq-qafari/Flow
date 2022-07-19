@@ -1,6 +1,6 @@
 using System;
-using Saanaa.Core.Meteor;
-using Saanaa.Core.Meteor.Dto;
+using Core.Meteor;
+using Core.Meteor.Dto;
 
 namespace Flow.Operations.WorkflowLead
 {

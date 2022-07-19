@@ -8,8 +8,8 @@ using Meteor.AspCore.Filters;
 using Meteor.Operation;
 using Meteor.Operation.Db;
 using Microsoft.AspNetCore.Mvc;
-using Saanaa.Core.AspNetCore.Security;
-using Saanaa.Core.Meteor.Dto;
+using Core.AspNetCore.Security;
+using Core.Meteor.Dto;
 
 namespace Identity.Controllers
 {
@@ -27,29 +27,29 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.IdentityResource.Read")]
         [HttpGet]
-        public Task<QueryPage<IdentityResourceDto>?> Get([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public Task<QueryPage<IdentityResourceDto>?> Get([FromQuery] DbQueryPageInDto m) =>
             _operationFactory.New<GetIdentityResourcePage>().ExecuteAsync(m);
 
         [NeedPermission]
         [HttpGet("dropdown")]
-        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] SaanaaDbQueryAsDropDownInDto m) =>
+        public Task<IEnumerable<DropDownDto<object>>?> GetAsDropDown([FromQuery] DbQueryAsDropDownInDto m) =>
             _operationFactory.New<GetIdentityResourceAsDropDown>().ExecuteAsync(m);
 
         [NeedPermission("Identity.IdentityResource.Read")]
         [HttpGet("ids")]
-        public Task<IEnumerable<IdentityResource>?> GetByIds([FromQuery] SaanaaDbQueryByIdsInDto m) =>
+        public Task<IEnumerable<IdentityResource>?> GetByIds([FromQuery] DbQueryByIdsInDto m) =>
             _operationFactory.New<GetIdentityResourceByIds>().ExecuteAsync(m);
 
         [NeedPermission("Identity.IdentityResource.Read")]
         [HttpGet("excel")]
-        public async Task<IActionResult> GetAsExcel([FromQuery] SaanaaDbQueryPageInDto m) =>
+        public async Task<IActionResult> GetAsExcel([FromQuery] DbQueryPageInDto m) =>
             File(await _operationFactory.New<GetIdentityResourceExcel>().ExecuteAsync(m),
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "IdentityResource.xlsx");
 
 
         [NeedPermission("Identity.IdentityResource.Read")]
         [HttpGet("{id}")]
-        public Task<IdentityResource?> GetOne([FromRoute] SaanaaDbSelectInDto m) =>
+        public Task<IdentityResource?> GetOne([FromRoute] DbSelectInDto m) =>
             _operationFactory.New<GetIdentityResource>().ExecuteAsync(m);
 
         [NeedPermission("Identity.IdentityResource.Create")]
@@ -64,7 +64,7 @@ namespace Identity.Controllers
 
         [NeedPermission("Identity.IdentityResource.Delete")]
         [HttpDelete("{id}")]
-        public Task<bool> Delete([FromRoute] SaanaaDbDeleteInDto m) =>
+        public Task<bool> Delete([FromRoute] DbDeleteInDto m) =>
             _operationFactory.New<IdentityResourceRemove>().ExecuteAsync(m);
     }
 }

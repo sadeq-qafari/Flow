@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
+using Core.Meteor.Dto;
 using Core.Operations.ModelReport.Dtos;
 using Meteor.Operation.Db;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Core.Operations.ModelReport.Queries
 {
-    public class GetModelReportInfo : DbOperationAsync<SaanaaDbSelectInDto, ModelReportInfoDto>
+    public class GetModelReportInfo : DbOperationAsync<DbSelectInDto, ModelReportInfoDto>
     {
         protected override async Task ExecutionAsync()
         {

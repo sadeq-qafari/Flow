@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
+using Core.Meteor.Dto;
 using Flow.Operations.Lookup.Dtos;
 using Meteor.Operation.Db;
-using Saanaa.Core.Meteor.Dto;
 
 namespace Flow.Operations.Lookup.Queries
 {
-    public class GetLookupInfo : DbOperationAsync<SaanaaDbSelectInDto,LookupInfoDto>
+    public class GetLookupInfo : DbOperationAsync<DbSelectInDto, LookupInfoDto>
     {
         protected override async Task ExecutionAsync()
         {
