@@ -87,7 +87,7 @@ namespace Identity
                 .AddProfileService<ProfileService>();
 
             builder.AddSigningCredential(new X509Certificate2(
-                Path.Combine(Environment.CurrentDirectory, Environment.GetEnvironmentVariable("CERTIFICATE_FILE_NAME")!), Environment.GetEnvironmentVariable("CERTIFICATE_PASSWORD")!));
+                Path.Combine(Environment.CurrentDirectory, "Certificate\\token_signing.pfx"), "qw12QW!@"));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

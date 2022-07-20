@@ -8,10 +8,7 @@
 
     <ItemGroup>
         <PackageReference Include="EPPlus.Core" Version="1.5.4"/>
-    </ItemGroup>
-    
-    <ItemGroup>
-        <ProjectReference Include="..\framework\Core\Core.AspNetCore\Core.AspNetCore.csproj"/>
+        <PackageReference Include="SqFlow.Core.AspNetCore" Version="1.0.0" />
     </ItemGroup>
 
 </Project>

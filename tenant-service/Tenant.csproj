@@ -5,6 +5,10 @@
         <Nullable>enable</Nullable>
         <LangVersion>10</LangVersion>
     </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="SqFlow.Core.AspNetCore" Version="1.0.0" />
+    </ItemGroup>
     
     <ItemGroup>
       <Compile Remove="Operations\PricingTenant\Dtos\PaymentResult.cs" />
@@ -12,7 +16,4 @@
       <Compile Remove="Operations\PricingTenant\Commands\PricingTenantSettle.cs" />
     </ItemGroup>
     
-    <ItemGroup>
-        <ProjectReference Include="..\framework\Core\Core.AspNetCore\Core.AspNetCore.csproj" />
-    </ItemGroup>
 </Project>

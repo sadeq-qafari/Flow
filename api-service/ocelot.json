@@ -5,7 +5,7 @@
       "DownstreamScheme": "ws",
       "DownstreamHostAndPorts": [
         {
-          "Host": "core",
+          "Host": "localhost",
           "Port": 5001
         }
       ],
@@ -23,7 +23,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "core",
+          "Host": "localhost",
           "Port": 5001
         }
       ],
@@ -41,7 +41,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "tenant",
+          "Host": "localhost",
           "Port": 5036
         }
       ],
@@ -59,7 +59,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "cdn",
+          "Host": "localhost",
           "Port": 5110
         }
       ],
@@ -77,7 +77,7 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "identity",
+          "Host": "localhost",
           "Port": 5200
         }
       ],
@@ -96,7 +96,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "flow",
+          "Host": "localhost",
           "Port": 5038
         }
       ],
@@ -112,6 +112,6 @@
 
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://*:5000"
+    "BaseUrl": "http://localhost:5000"
   }
 }

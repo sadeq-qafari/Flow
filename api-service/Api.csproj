@@ -22,7 +22,4 @@
         </Content>
     </ItemGroup>
     
-<!--    <ItemGroup>-->
-<!--        <ProjectReference Include="..\framework\Core\Core.AspNetCore\Core.AspNetCore.csproj"/>-->
-<!--    </ItemGroup>-->
 </Project>
