@@ -176,7 +176,7 @@ namespace Flow.Controllers
 
         [NeedPermission]
         [HttpPost("import")]
-        public Task<bool> ImportFormData([FromForm] ImportFormDataInDto m)
+        public Task<Dictionary<int, List<FormDataModel>>?> ImportFormData([FromForm] ImportFormDataInDto m)
         {
             m.File = Request.Form.Files.FirstOrDefault();
             return _operationFactory.New<ImportFormData>().ExecuteAsync(m);

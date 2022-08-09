@@ -1089,5 +1089,8 @@ namespace Core.Common.Extensions
             }
             return new string[]{query};
         }
+
+        public static string Strip(this string? text) => 
+            text?.Replace(" ", string.Empty) ?? string.Empty;
     }
 }
