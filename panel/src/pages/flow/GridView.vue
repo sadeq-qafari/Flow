@@ -17,7 +17,7 @@ export default {
   }),
   computed: {
     formName() {
-      return this.$route.params.formName
+      return this.$route.params.formName?.toString()
     },
     formsLoaded() {
       return this.$store.state.forms && this.$store.state.forms.length > 0

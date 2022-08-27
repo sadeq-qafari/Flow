@@ -17,6 +17,7 @@ const routes: RouteConfig[] = [
       {path: '/service/flow/form/info', component: () => import('pages/flow/FormDesigner.vue')},
       {path: '/service/flow/lookup/info', component: () => import('pages/flow/LookupInfo.vue')},
       {path: '/flow', component: () => import('pages/flow/FlowDashboard.vue')},
+      {path: '/flow/import/:formName', component: () => import('pages/flow/FormImport.vue')},
       {path: '/flow/:formName', component: () => import('pages/flow/GridView.vue')},
       {path: '/flow/:formName/:formLeadId', component: () => import('pages/flow/FormView.vue')},
       //#endregion flow

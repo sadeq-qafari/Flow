@@ -18,12 +18,17 @@
 
     <!-- header -->
     <template v-slot:top>
-      <div v-if="!hideHeader" class="no-margin full-width rounded-borders row justify-between items-center q-py-xs text-weight-bold bg-blue-grey-2">
+      <div v-if="!hideHeader"
+           class="no-margin full-width rounded-borders row justify-between items-center q-py-xs text-weight-bold bg-blue-grey-2">
+        <div class="q-px-sm" v-if="showCheckbox">
+          <q-checkbox dense :value="totalCheck" @input="totalCheckToggle($event)"/>
+        </div>
         <div class="q-px-sm">
           {{ formData.title }}
         </div>
+        <q-space/>
         <div class="q-px-sm">
-          <q-btn flat padding="0" icon="open_in_new" dense :to="`flow/${formName}?filter=${searchValue}`"/>
+          <q-btn flat padding="0" icon="open_in_new" dense :to="`/flow/${formName}?filter=${searchValue}`"/>
         </div>
       </div>
     </template>
@@ -32,7 +37,10 @@
     <template v-for="col in cols" v-slot:[`body-cell-${col.name}`]="props">
       <q-td class="text-center">
         <span class="grid-cell">
-          <span v-if="col.property.type=='decimal'">
+          <span v-if="showCheckbox && col.name=='checkbox_field'" class="flex">
+            <q-checkbox dense :value="!!props.value" @input="checkToggle(props,$event)"/>
+          </span>
+          <span v-else-if="col.property.type=='decimal'">
             {{ props.value && props.value.replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}
           </span>
           <span v-else-if="col.property.type=='boolean'">
@@ -59,6 +67,7 @@ export default defineComponent({
     cols: [] as Array<any>,
     form: {} as IForm,
     isLoading: false,
+    totalCheck: false,
     pagination: {
       sortBy: 'desc',
       descending: false,
@@ -75,7 +84,11 @@ export default defineComponent({
     hideHeader: {
       type: Boolean,
       default: false
-    }
+    },
+    showCheckbox: {
+      type: Boolean,
+      default: false
+    },
   },
 
   //===========COMPUTED==========//
@@ -83,7 +96,7 @@ export default defineComponent({
     //@ts-ignore
     formData(): Object<any> {
       return this.$store.getters.getFormByName(this.formName)
-    }
+    },
   },
   //===========METHODS===========//
   methods: {
@@ -96,8 +109,20 @@ export default defineComponent({
         sortable: this.isSortable(property),
         align: 'center',
         format: (v: any, r: object) => this.formatField(v, r, property),
+        style: 'max-width: 100px',
+        headerStyle: 'max-width: 100px',
         property
       }))
+      if (this.showCheckbox)
+        this.cols.unshift({
+          name: 'checkbox_field',
+          label: 'انتخاب',
+          field: 'is_checked',
+          sortable: false,
+          align: 'left',
+          style: 'width: 50px',
+          headerStyle: 'width: 50px'
+        })
     },
     getFieldName(property: any) {
       if (property.relatedFormId > 0) {
@@ -107,6 +132,31 @@ export default defineComponent({
       } else {
         return property.name
       }
+    },
+    checkToggle(props: any, val: boolean) {
+      this.$emit('setCheck', {
+        value: val,
+        id: props.row.Id,
+        index: props.rowIndex,
+        formName: this.formName
+      })
+      this.calculateTotalCheck()
+    },
+    totalCheckToggle(val: boolean) {
+      this.$emit('setTotalCheck', {
+        value: val,
+        totalCheck: this.totalCheck,
+        formName: this.formName
+      })
+      this.calculateTotalCheck()
+    },
+    calculateTotalCheck(){
+      let checkList = (this.data as any).map((x: any) => !!x.is_checked)
+      console.log(checkList)
+      //@ts-ignore
+      this.totalCheck = null
+      if (checkList.every((x: boolean) => x)) this.totalCheck = true
+      if (checkList.every((x: boolean) => !x)) this.totalCheck = false
     },
     isSortable(field: IFormProperty) {
       return true
@@ -141,5 +191,10 @@ export default defineComponent({
 .highlight {
   font-weight: 500;
   background-color: yellow;
+}
+.grid-cell {
+  max-width: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 </style>

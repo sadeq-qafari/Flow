@@ -64,8 +64,10 @@
 
           <!-- import excel-->
           <q-file ref="file" v-model="file" @input="importData" accept=".xls,.xlsx" style="display: none"/>
-          <q-btn class="rounded-borders" icon="backup" color="teal-2" text-color="teal-7" unelevated
-                 @click="$refs.file.pickFiles()" :loading="isImporting" dense/>
+          <router-link style="text-decoration: none" tag="div" :to="`/flow/import/${formName}`">
+            <q-btn class="rounded-borders" icon="backup" color="teal-2" text-color="teal-7" unelevated dense/>
+          </router-link>
+
 
           <!-- export excel -->
           <q-btn class="rounded-borders" icon="description" color="teal-2" text-color="teal-7" unelevated
