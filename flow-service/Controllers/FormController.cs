@@ -169,17 +169,20 @@ namespace Flow.Controllers
 
         [NeedPermission("Flow.Form.Read")]
         [HttpGet("search")]
-        public Task<Dictionary<string, IEnumerable<object>>?> SearchForms([FromQuery] SearchFormsInDto m)
-        {
-            return _operationFactory.New<SearchForms>().ExecuteAsync(m);
-        }
+        public Task<Dictionary<string, IEnumerable<object>>?> SearchForms([FromQuery] SearchFormsInDto m) => 
+            _operationFactory.New<SearchForms>().ExecuteAsync(m);
 
         [NeedPermission]
-        [HttpPost("import")]
-        public Task<Dictionary<int, List<FormDataModel>>?> ImportFormData([FromForm] ImportFormDataInDto m)
+        [HttpPost("importExcel")]
+        public Task<ImportExcelDto?> ImportFormData([FromForm] ImportExcelInDto m)
         {
             m.File = Request.Form.Files.FirstOrDefault();
-            return _operationFactory.New<ImportFormData>().ExecuteAsync(m);
+            return _operationFactory.New<ImportExcel>().ExecuteAsync(m);
         }
+        
+        [NeedPermission]
+        [HttpPost("batchInsert")]
+        public Task<bool> BatchInsert([FromBody] BatchInsertInDto m) => 
+            _operationFactory.New<BatchInsert>().ExecuteAsync(m);
     }
 }
