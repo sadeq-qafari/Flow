@@ -18,7 +18,7 @@ namespace Flow.Operations.Form.Queries
                 return;
 
             var tasks = new List<Tuple<string, Task<IEnumerable<object>>>>();
-            foreach (var form in SaanaaForms.Forms)
+            foreach (var form in FlowForms.Forms)
             {
                 var where = GetFormWhere(form.Properties);
                 if (where.Length <= 0)

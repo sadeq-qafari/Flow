@@ -27,13 +27,13 @@ namespace Flow.Operations.Form.Commands
             try
             {
                 // Get form
-                form = SaanaaForms.GetForm(Input.FormName) ?? throw Errors.InvalidInput("form_not_found");
+                form = FlowForms.GetForm(Input.FormName) ?? throw Errors.InvalidInput("form_not_found");
                 dataDict.Add(form.Id, new List<FormDataModel>());
 
                 // Get related forms
                 foreach (var formProperty in form.Properties!.Where(x => x.RelatedFormId > 0))
                 {
-                    var relatedForm = SaanaaForms.GetForm(formProperty.RelatedFormId);
+                    var relatedForm = FlowForms.GetForm(formProperty.RelatedFormId);
                     if (relatedForm is null) continue;
                     relatedForms.Add(relatedForm);
                     relatedProperties.Add(formProperty);
@@ -136,7 +136,7 @@ namespace Flow.Operations.Form.Commands
                 foreach (var item in dataDict)
                 {
                     // Get form by its id
-                    var formItem = SaanaaForms.GetForm(item.Key)!;
+                    var formItem = FlowForms.GetForm(item.Key)!;
                     var data = new List<Dictionary<string, string>>();
                     var rows = item.Value.GroupBy(x => x.Guid);
                     foreach (var row in rows)
@@ -216,7 +216,7 @@ namespace Flow.Operations.Form.Commands
 
         private async Task<string> AddToRelatedPack(FormPropertyModel relatedProp, string fieldValue)
         {
-            var relatedForm = SaanaaForms.GetForm(relatedProp.RelatedFormId);
+            var relatedForm = FlowForms.GetForm(relatedProp.RelatedFormId);
             if (relatedForm is null)
                 return string.Empty;
 

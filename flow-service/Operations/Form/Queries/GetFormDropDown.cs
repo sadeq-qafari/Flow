@@ -23,7 +23,7 @@ namespace Flow.Operations.Form.Queries
 
         protected override async Task ExecutionAsync()
         {
-            Form = SaanaaForms.GetForm(Input.FormName) ?? throw Errors.NotFound();
+            Form = FlowForms.GetForm(Input.FormName) ?? throw Errors.NotFound();
 
             var colNames =
                 Form.Properties!

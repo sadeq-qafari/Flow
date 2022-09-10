@@ -106,9 +106,9 @@ namespace Flow.Operations.Form.Commands
         protected override async Task OnSuccessAsync()
         {
             var ldbConnection = OperationFactory!.GetService<LazyDbConnection>()!;
-            await SaanaaForms.Reload(ldbConnection);
+            await FlowForms.Reload(ldbConnection);
 
-            var formProperties = SaanaaForms.GetForm(Output)!.Properties;
+            var formProperties = FlowForms.GetForm(Output)!.Properties;
 
             if (formProperties == null || !formProperties.Any())
                 return;

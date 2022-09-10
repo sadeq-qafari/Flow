@@ -43,7 +43,7 @@ namespace Flow
             var db = scope.ServiceProvider.GetService<LazyDbConnection>();
             SqServices.Reload(db, ServiceConfig.Get("api_gateway_url")).Wait();
             SqTenants.Reload(db).Wait();
-            SaanaaForms.Reload(db).Wait();
+            FlowForms.Reload(db).Wait();
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Flow.Operations.Form.Queries
 
         protected override async Task ExecutionAsync()
         {
-            FormName = SaanaaForms.GetForm(Input.FormName)?.Name ?? throw Errors.NotFound("form_not_found");
+            FormName = FlowForms.GetForm(Input.FormName)?.Name ?? throw Errors.NotFound("form_not_found");
 
             var totalCount = await NewSql(GetSelectSql(true).SqlText)
                 .ExecuteScalarAsync<int>();
@@ -66,7 +66,7 @@ namespace Flow.Operations.Form.Queries
 
         private string GetFilter()
         {
-            List<FormPropertyModel> properties = SaanaaForms.GetForm(Input.FormName)!.Properties!;
+            List<FormPropertyModel> properties = FlowForms.GetForm(Input.FormName)!.Properties!;
             var props = properties.Where(x => new List<string>() { "string", "text" }
                 .Contains(x.Type) || x.RelatedFormId > 0 || x.LookupId > 0);
             var colWheres = new List<string>();

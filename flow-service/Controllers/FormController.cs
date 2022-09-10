@@ -80,14 +80,14 @@ namespace Flow.Controllers
         public async Task<int> FormUpsert([FromBody] FormUpsertInDto m)
         {
             var res = await _operationFactory.New<FormUpsert>().ExecuteAsync(m);
-            await SaanaaForms.Reload(_lazyDbConnection);
+            await FlowForms.Reload(_lazyDbConnection);
             return res;
         }
 
         [HttpGet("reload")]
         public async Task<SaanaaFormsDto> ReloadForms()
         {
-            await SaanaaForms.Reload(_lazyDbConnection);
+            await FlowForms.Reload(_lazyDbConnection);
             var tenantId = SqTenants.GetTenant(HttpContext)!.Id;
             return GetSaanaaFormsDto(tenantId);
         }
@@ -97,8 +97,8 @@ namespace Flow.Controllers
         {
             var requestedVersion = version.GetValueOrDefault(0);
             var tenantId = SqTenants.GetTenant(HttpContext)!.Id;
-            if (requestedVersion <= 0 || requestedVersion != SaanaaForms.LatestVersion)
-                return SaanaaForms.Forms.Count == 0
+            if (requestedVersion <= 0 || requestedVersion != FlowForms.LatestVersion)
+                return FlowForms.Forms.Count == 0
                     ? await ReloadForms()
                     : GetSaanaaFormsDto(tenantId);
 
@@ -109,8 +109,8 @@ namespace Flow.Controllers
         {
             return new SaanaaFormsDto
             {
-                Forms = SaanaaForms.GetForms(tenantId),
-                Version = SaanaaForms.LatestVersion
+                Forms = FlowForms.GetForms(tenantId),
+                Version = FlowForms.LatestVersion
             };
         }
 
