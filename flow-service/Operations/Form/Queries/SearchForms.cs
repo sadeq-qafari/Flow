@@ -18,14 +18,14 @@ namespace Flow.Operations.Form.Queries
                 return;
 
             var tasks = new List<Tuple<string, Task<IEnumerable<object>>>>();
-            foreach (var form in FlowForms.Forms)
+            foreach (var form in FlowForms.GetForms(Input.TenantId))
             {
                 var where = GetFormWhere(form.Properties);
                 if (where.Length <= 0)
                     continue;
 
                 where = $"({where}) AND TenantId = @TenantId";
-                var task = NewSql(sql => sql.Select($"[Flow].[v_{form.Name}]").Where(where)).QueryAsync<object>();
+                var task = NewSql(sql => sql.Select($"[Flow].[v_{form.Name}_{Input.TenantId}]").Where(where)).QueryAsync<object>();
                 tasks.Add(new Tuple<string, Task<IEnumerable<object>>>(form.Name!, task));
             }
 

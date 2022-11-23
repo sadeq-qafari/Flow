@@ -10,9 +10,9 @@ namespace Flow.Operations.Form.Queries
     {
         protected override async Task ExecutionAsync()
         {
-            var formName = FlowForms.GetForm(Input.FormName)?.Name ?? throw Errors.NotFound("form_not_found");
+            var formName = FlowForms.GetForm(Input.FormName,Input.TenantId)?.Name ?? throw Errors.NotFound("form_not_found");
 
-            Output = await NewSql(sql=>sql.Select($"[Flow].[v_{formName}]").Where("Id=@Id AND TenantId=@TenantId"))
+            Output = await NewSql(sql=>sql.Select($"[Flow].[v_{formName}_{Input.TenantId}]").Where("Id=@Id AND TenantId=@TenantId"))
                 .QueryFirstOrDefaultAsync<object>();
         }
     }

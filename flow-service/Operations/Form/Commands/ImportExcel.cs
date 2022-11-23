@@ -27,7 +27,7 @@ namespace Flow.Operations.Form.Commands
             try
             {
                 // Get form
-                form = FlowForms.GetForm(Input.FormName) ?? throw Errors.InvalidInput("form_not_found");
+                form = FlowForms.GetForm(Input.FormName,Input.TenantId) ?? throw Errors.InvalidInput("form_not_found");
                 dataDict.Add(form.Id, new List<FormDataModel>());
 
                 // Get related forms
@@ -226,7 +226,7 @@ namespace Flow.Operations.Form.Commands
             // check if data exists in db
             var fieldName = $"REPLACE([{relatedFormProperty.Name}],SPACE(1),N'')";
             var relatedData = await NewSql(
-                    sql => sql.Select($"[Flow].[v_{relatedForm.Name}]")
+                    sql => sql.Select($"[Flow].[v_{relatedForm.Name}_{Input.TenantId}]")
                         .Where($"{fieldName}=@SearchValue AND TenantId=@TenantId"),
                     new
                     {

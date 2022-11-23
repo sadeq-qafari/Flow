@@ -23,7 +23,7 @@ namespace Flow.Operations.Form.Queries
             var grid = await OperationFactory!.New<GetFormGrid>().ExecuteAsync(Input);
             Items = grid?.Items;
 
-            var form = FlowForms.GetForm(Input.FormName);
+            var form = FlowForms.GetForm(Input.FormName,Input.TenantId);
 
             using var workbook = new XLWorkbook { RightToLeft = true };
             Worksheet = workbook.Worksheets.Add(form?.Title ?? "Data");

@@ -17,7 +17,7 @@ namespace Flow.Operations.Form.Commands
             var data = Input.Data.Select(leadData =>
                 new SubmitFormData()
                 {
-                    FormPropertyId = FlowForms.GetForm(Input.FormName)?.Properties?
+                    FormPropertyId = FlowForms.GetForm(Input.FormName,Input.TenantId)?.Properties?
                         .FirstOrDefault(x => x.Name == leadData.Key)?
                         .Id ?? 0,
                     Value = leadData.Value?.ToString()
@@ -29,7 +29,7 @@ namespace Flow.Operations.Form.Commands
                 x.Value
             }) ?? new DataTable();
 
-            var formId = FlowForms.GetForm(Input.FormName)?.Id ?? throw Errors.NotFound("form_not_found");
+            var formId = FlowForms.GetForm(Input.FormName,Input.TenantId)?.Id ?? throw Errors.NotFound("form_not_found");
 
             var parameters = new DynamicParameters();
             parameters.Add("FormId", formId);

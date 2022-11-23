@@ -76,14 +76,14 @@ namespace Flow.Core
         public static IEnumerable<FormModel> GetForms(int? tenantId) =>
             Forms.Where(x => x.TenantId == tenantId);
 
-        public static FormModel? GetForm(string? name) =>
-            Forms.FirstOrDefault(x => string.Equals(x.Name, name, StringComparison.InvariantCultureIgnoreCase));
+        public static FormModel? GetForm(string? name, int? tenantId) =>
+            Forms.FirstOrDefault(x =>  string.Equals(x.Name, name, StringComparison.InvariantCultureIgnoreCase) && x.TenantId==tenantId);
 
         public static FormModel? GetForm(int? formId) =>
             Forms.FirstOrDefault(x => x.Id == formId);
 
-        public static FormPropertyModel? GetFormProperty(string? formName, string? formPropertyName) =>
-            GetForm(formName)?.Properties
+        public static FormPropertyModel? GetFormProperty(string? formName, string? formPropertyName,int tenantId) =>
+            GetForm(formName,tenantId)?.Properties
                 .FirstOrDefault(x => string.Equals(x.Name, formName, StringComparison.InvariantCultureIgnoreCase));
     }
 }

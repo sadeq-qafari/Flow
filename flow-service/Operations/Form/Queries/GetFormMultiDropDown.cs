@@ -23,7 +23,7 @@ namespace Flow.Operations.Form.Queries
 
         protected override async Task ExecutionAsync()
         {
-            Form = FlowForms.GetForm(Input.FormName) ?? throw Errors.NotFound();
+            Form = FlowForms.GetForm(Input.FormName,Input.TenantId) ?? throw Errors.NotFound();
 
             var colNames =
                 Form.Properties!
@@ -32,7 +32,7 @@ namespace Flow.Operations.Form.Queries
 
 
             Output = await NewSql(sql => sql
-                    .Select($"[Flow].[v_{Form.Name}]", string.Join(",", new[] {"[Id]"}.Concat(colNames)))
+                    .Select($"[Flow].[v_{Form.Name}_{Input.TenantId}]", string.Join(",", new[] {"[Id]"}.Concat(colNames)))
                     .Where(GetWhere()), new
                 {
                     Input.FormName,

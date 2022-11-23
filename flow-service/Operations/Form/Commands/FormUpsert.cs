@@ -178,7 +178,7 @@ INNER JOIN Flow.LookupItem [{property.Name}]
 
             if (OldFormName?.Length > 0)
             {
-                query.Append($"IF OBJECT_ID('[Flow].[v_{OldFormName}]') IS NOT NULL DROP VIEW [Flow].[v_{OldFormName}]");
+                query.Append($"IF OBJECT_ID('[Flow].[v_{OldFormName}_{Input.TenantId}]') IS NOT NULL DROP VIEW [Flow].[v_{OldFormName}]");
                 await NewSql(query.ToString()).ExecuteAsync();
             }
 
@@ -192,7 +192,7 @@ INNER JOIN Flow.LookupItem [{property.Name}]
 
             query.Clear();
             query.Append($@"
-            CREATE VIEW [Flow].[v_{Input.Name}]
+            CREATE VIEW [Flow].[v_{Input.Name}_{Input.TenantId}]
             AS
             WITH pivot_data AS
             (");
